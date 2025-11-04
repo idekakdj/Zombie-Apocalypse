@@ -16,7 +16,9 @@ public abstract class Survivors extends Actor
         hp = startHP;
         List<Zombies> nearbyZombies = this.getObjectsInRange(DETECTION, Zombies.class);
         for(Zombies z : nearbyZombies){
-            if
+            int x = z.getX();
+            int y = z.getY();
+            
         }
     }
     public void takeDamage(int damage){

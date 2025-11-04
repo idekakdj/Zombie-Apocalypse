@@ -11,13 +11,22 @@ public abstract class Zombies extends SuperSmoothMover
     protected int damage;
     protected int health;
     protected int speed;
-    protected int spawnRate;
+    
+    protected int attackCooldown;
     
     protected abstract void attack();
     
     public void act()
     {
-        
+        if (!isDead()) {
+            moveZombie();
+            checkHitSurvivor(); 
+            if (attackCooldown > 0) {
+                attackCooldown--;
+            }
+        } else {
+            killZombie();
+        }
     }
     
     protected void takeDamage(int dmg) {
@@ -25,10 +34,25 @@ public abstract class Zombies extends SuperSmoothMover
     }
     
     protected boolean isDead() {
-        if (health <= 0) {
-            return true;
+        return health <= 0;
+    }
+    
+    protected void checkHitSurvivor() {  
+        if (isTouching(Survivors.class) && attackCooldown == 0) {
+            attack();
+            attackCooldown = 30; 
         }
+    }
+    
+    protected void killZombie() {
+        getWorld().removeObject(this);
+    }
+    
+    protected void moveZombie() {
+        int centerX = getWorld().getWidth() / 2;
+        int centerY = getWorld().getHeight() / 2;
         
-        return false;
+        turnTowards(centerX, centerY);
+        move(speed);
     }
 }

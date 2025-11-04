@@ -1,11 +1,36 @@
 #Greenfoot project file
+<<<<<<< HEAD
 class.GameWorld.image=gameworld.png
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
+=======
+<<<<<<< Updated upstream
+editor.fx.0.height=735
+editor.fx.0.width=813
+editor.fx.0.x=313
+editor.fx.0.y=39
+>>>>>>> 62f8702da54fe9b3e601edd3652c4c4dc5abd246
 height=881
 package.numDependencies=0
+=======
+dependency1.from=Zombies
+dependency1.to=Survivors
+dependency1.type=UsesDependency
+dependency2.from=Regular
+dependency2.to=Survivors
+dependency2.type=UsesDependency
+dependency3.from=Survivors
+dependency3.to=Zombies
+dependency3.type=UsesDependency
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=884
+package.numDependencies=3
+>>>>>>> Stashed changes
 package.numTargets=12
 project.charset=UTF-8
 publish.hasSource=false
@@ -106,7 +131,11 @@ target9.width=120
 target9.x=0
 target9.y=0
 version=3.1.0
+<<<<<<< Updated upstream
 width=1303
+=======
+width=1306
+>>>>>>> Stashed changes
 world.lastInstantiated=GameWorld
 xPosition=0
 yPosition=0
