@@ -9,13 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Survivors extends Actor
 {
     protected final int startHP = 100;
-    
+    protected int hp;
     public void act()
     {
-        
+        hp = startHP;
     }
-    public boolean checkHit(){
-        this.getInteresectingObects(Zombies.class);
-        ArrayList<Zombies> zombies = 
+    public void takeDamage(int damage){
+        hp = hp - damage;
     }
 }
