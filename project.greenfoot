@@ -1,8 +1,9 @@
 #Greenfoot project file
-editor.fx.0.height=735
-editor.fx.0.width=813
-editor.fx.0.x=313
-editor.fx.0.y=39
+class.GameWorld.image=gameworld.png
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 height=881
 package.numDependencies=0
 package.numTargets=12
