@@ -19,8 +19,12 @@ public class GameWorld extends World
         super(1024, 700, 1); 
         
         for(int i = 0; i < 25; i++) {
-            spawnZombieAtEdge();
+            prepare();
         }
+    }
+    
+    private void prepare() {
+        spawnZombieAtEdge();
     }
     
     private void spawnZombieAtEdge() {
