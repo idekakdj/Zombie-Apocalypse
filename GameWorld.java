@@ -28,6 +28,10 @@ public class GameWorld extends World
         
         // Or spawn at a random edge location
         spawnZombieAtEdge();
+        
+        //spawn survivors in middle
+        SurvivorOne s1 = new SurvivorOne();
+        addObject(s1, getWidth()/2, getHeight()/2);
     }
     
     private void spawnZombieAtEdge() {

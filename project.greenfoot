@@ -1,37 +1,24 @@
 #Greenfoot project file
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 class.GameWorld.image=gameworld.png
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
-=======
-<<<<<<< Updated upstream
+class.SurvivorOne.image=survivorone.png
+dependency1.from=GameWorld
+dependency1.to=Regular
+dependency1.type=UsesDependency
+dependency2.from=GameWorld
+dependency2.to=SurvivorOne
+dependency2.type=UsesDependency
+dependency3.from=Regular
+dependency3.to=Survivors
+dependency3.type=UsesDependency
+dependency4.from=Survivors
+dependency4.to=Zombies
+dependency4.type=UsesDependency
 editor.fx.0.height=735
 editor.fx.0.width=813
 editor.fx.0.x=313
 editor.fx.0.y=39
->>>>>>> 62f8702da54fe9b3e601edd3652c4c4dc5abd246
-height=881
-package.numDependencies=0
-=======
-dependency1.from=Zombies
-dependency1.to=Survivors
-=======
-dependency1.from=GameWorld
-dependency1.to=Regular
->>>>>>> Stashed changes
-dependency1.type=UsesDependency
-dependency2.from=Regular
-dependency2.to=Survivors
-dependency2.type=UsesDependency
-editor.fx.0.height=686
-editor.fx.0.width=1294
-editor.fx.0.x=-7
-editor.fx.0.y=-7
-height=686
-package.numDependencies=2
+height=865
+package.numDependencies=4
 package.numTargets=12
 project.charset=UTF-8
 publish.hasSource=false
@@ -132,7 +119,7 @@ target9.width=120
 target9.x=0
 target9.y=0
 version=3.1.0
-width=1294
+width=1453
 world.lastInstantiated=GameWorld
 xPosition=0
 yPosition=0
