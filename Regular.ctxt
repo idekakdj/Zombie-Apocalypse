@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=Regular()
 comment3.params=
 comment3.target=void\ attack()
-numComments=4
+comment4.params=
+comment4.target=void\ checkHitSurvivor()
+numComments=5

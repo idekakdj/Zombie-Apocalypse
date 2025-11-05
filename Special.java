@@ -17,7 +17,11 @@ public class Special extends Zombies
         
     }
     
-    public void attack() {
+    protected void attack() {
+        
+    }
+    
+    protected void checkHitSurvivor() {
         
     }
 }

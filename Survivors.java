@@ -21,6 +21,7 @@ public abstract class Survivors extends Actor
             
         }
     }
+    
     public void takeDamage(int damage){
         hp = hp - damage;
     }

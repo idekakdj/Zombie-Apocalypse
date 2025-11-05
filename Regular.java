@@ -14,6 +14,7 @@ public class Regular extends Zombies
     
     public void act()
     {
+        super.act();
         
     }
     
@@ -21,13 +22,23 @@ public class Regular extends Zombies
         health = REG_HEALTH;
         speed = REG_SPEED;
         damage = REG_DAMAGE;
+        
+        GreenfootImage img = new GreenfootImage("Zombie.png");
+        setImage(img);
+        
     }
     
-    public void attack() {
+    protected void attack() {
         Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
         if (s != null) {
             s.takeDamage(damage);  
         }
     }
     
+    protected void checkHitSurvivor() {
+        if (isTouching(Survivors.class) && attackCooldown == 0) {
+            attack();
+            attackCooldown = 30; 
+        }
+    }
 }
