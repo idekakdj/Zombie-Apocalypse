@@ -18,15 +18,12 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 700, 1); 
         
-        prepare();
+        for(int i = 0; i < 25; i++) {
+            prepare();
+        }
     }
     
     private void prepare() {
-        // Spawn a zombie at a specific location
-        Regular zombie = new Regular();
-        addObject(zombie, 100, 100);  // x, y coordinates
-        
-        // Or spawn at a random edge location
         spawnZombieAtEdge();
         
         //spawn survivors in middle
