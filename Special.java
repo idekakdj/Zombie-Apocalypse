@@ -6,18 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Special extends Zombies
+public class Special extends Zombie
 {
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
     
+    public Special()
+    {
+        enableStaticRotation();
+    }
+
     public void act()
     {
         
-    }
-    
-    public Special() {
-        enableStaticRotation();
     }
     
     protected void attack() {

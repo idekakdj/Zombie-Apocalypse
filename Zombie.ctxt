@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Zombie
+comment0.text=\n\ Write\ a\ description\ of\ class\ Zombies\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ updateHpBar()
+comment2.params=
+comment2.target=void\ attack()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=dmg
+comment4.target=void\ takeDamage(int)
+comment5.params=
+comment5.target=boolean\ isDead()
+numComments=6

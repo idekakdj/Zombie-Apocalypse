@@ -14,13 +14,14 @@ public class Boss extends Zombies
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
-    
-    public void act()
+
+    private SuperStatBar hpBar;
+
+    public Boss()
     {
-        super.act();
-    }
-    
-    public Boss() {
+        // fill in stats in brackets to give attributes to boss
+        hpBar = new SuperStatBar(); 
+       
         health = BOSS_HEALTH;
         speed = BOSS_SPEED;
         damage = BOSS_DAMAGE;
@@ -37,6 +38,11 @@ public class Boss extends Zombies
         setImage(leftImage);
     }
     
+    public void act()
+    {
+        super.act();
+    }
+
     protected void attack() {
         Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
         if (s != null) {
@@ -51,7 +57,7 @@ public class Boss extends Zombies
         }
     }
     
-        protected GreenfootImage getLeftImage() {
+    protected GreenfootImage getLeftImage() {
         return leftImage;
     }
     
