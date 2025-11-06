@@ -6,12 +6,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Zombies extends SuperSmoothMover
+public abstract class Zombie extends SuperSmoothMover
 {
     protected int damage;
     protected int health;
     protected int speed;
     protected int spawnRate;
+    
+    // Jayden added code superstatbar:
+    
+    protected void updateHpBar()
+    {
+        
+    }
+    
     
     protected abstract void attack();
     
