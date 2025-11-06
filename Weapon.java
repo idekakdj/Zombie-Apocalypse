@@ -24,7 +24,7 @@ public abstract class Weapon extends Actor
    
     public Weapon()
     {
-        
+        //
        
     }
     
