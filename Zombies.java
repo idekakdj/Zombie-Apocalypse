@@ -10,13 +10,16 @@ public abstract class Zombies extends SuperSmoothMover
 {
     protected int damage;
     protected int health;
-    protected int speed;
-    
+    protected double speed;
     protected int attackCooldown;
     
     protected abstract void attack();
     
     protected abstract void checkHitSurvivor();
+    
+    protected abstract GreenfootImage getLeftImage();
+    
+    protected abstract GreenfootImage getRightImage();
     
     public void act()
     {
@@ -43,11 +46,18 @@ public abstract class Zombies extends SuperSmoothMover
         getWorld().removeObject(this);
     }
     
-    protected void moveZombie() {
+    protected void moveZombie() {  
         int x = getWorld().getWidth() / 2;
         int y = getWorld().getHeight() / 2;
         
         turnTowards(x, y);
+        
+        if (getX() < x) {
+            setImage(getLeftImage()); 
+        } else {
+            setImage(getRightImage()); 
+        }
+        
         move(speed);
     }
 }

@@ -9,8 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Regular extends Zombies
 {
     private final static int REG_HEALTH = 100;
-    private final static int REG_SPEED = 2;
+    private final static double REG_SPEED = 2;
     private final static int REG_DAMAGE = 1;
+    
+    private GreenfootImage leftImage;
+    private GreenfootImage rightImage;
     
     public void act()
     {
@@ -23,9 +26,14 @@ public class Regular extends Zombies
         speed = REG_SPEED;
         damage = REG_DAMAGE;
         
-        GreenfootImage img = new GreenfootImage("Zombie.png");
-        setImage(img);
+        enableStaticRotation();
         
+        leftImage = new GreenfootImage("Zombie.png");
+        
+        rightImage = new GreenfootImage("Zombie.png");
+        rightImage.mirrorHorizontally();
+        
+        setImage(leftImage);
     }
     
     protected void attack() {
@@ -40,5 +48,13 @@ public class Regular extends Zombies
             attack();
             attackCooldown = 30; 
         }
+    }
+    
+    protected GreenfootImage getLeftImage() {
+        return leftImage;
+    }
+    
+    protected GreenfootImage getRightImage() {
+        return rightImage;
     }
 }

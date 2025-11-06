@@ -8,13 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Special extends Zombies
 {
-    /**
-     * Act - do whatever the Special wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage leftImage;
+    private GreenfootImage rightImage;
+    
     public void act()
     {
         
+    }
+    
+    public Special() {
+        enableStaticRotation();
     }
     
     protected void attack() {
@@ -23,5 +26,13 @@ public class Special extends Zombies
     
     protected void checkHitSurvivor() {
         
+    }
+    
+    protected GreenfootImage getLeftImage() {
+        return leftImage;
+    }
+    
+    protected GreenfootImage getRightImage() {
+        return rightImage;
     }
 }
