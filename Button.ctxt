@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ \r\n\ @author\ Paul\ \r\n
+comment1.params=text\ height\ width\ color\ borderWidth\ borderColor
+comment1.target=Button(java.lang.String,\ int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

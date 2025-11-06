@@ -9,15 +9,15 @@ import java.util.List;
 public abstract class Survivors extends Actor
 {
     protected final int startHP = 100;
-    protected int hp;
     protected final int DETECTION = 100;
+    protected int hp;
     protected boolean melee = false;
     protected boolean gun = false;
     protected boolean armor = false;
     protected boolean bandages = false;
     public void act()
     {
-        getUserItems();
+        //getUserItems();
     }
     public void getUserItems(){
         StartWorld world = (StartWorld) getWorld();
@@ -49,7 +49,5 @@ public abstract class Survivors extends Actor
         setRotation(escapeAngle);
         move(speed);
     }
-    public void takeDamage(int damage){
-        hp = hp - damage;
-    }
+    public abstract void takeDamage(int damage);
 }

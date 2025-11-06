@@ -8,12 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SurvivorThree extends Survivors
 {
-    /**
-     * Act - do whatever the SurvivorThree wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int speed = 2;
+    private int hp;
+    public SurvivorThree (){
+        hp = super.startHP * 2;
+    }
     public void act()
     {
         // Add your action code here.
+    }
+    public void takeDamage(int damage){
+        hp = hp - damage;
     }
 }

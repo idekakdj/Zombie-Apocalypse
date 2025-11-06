@@ -1,28 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class SurvivorOne here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * 
+ * @author Paul 
  */
 public class SurvivorOne extends Survivors
 {
-    private final int SPEED = 3;
     private int hp;
     private int speed = 4;
     public SurvivorOne(){
         hp = super.startHP;
-        
+        setImage(getImage());
     }
     public void act()
     {
         super.act();
-        List<Zombies> nearbyZombies = this.getObjectsInRange(super.DETECTION, Zombies.class);
-        for(Zombies z : nearbyZombies){
+        List<Zombie> nearbyZombies = this.getObjectsInRange(super.DETECTION, Zombie.class);
+        for(Zombie z : nearbyZombies){
             int x = z.getX();
             int y = z.getY();
-            super.moveAway(getAngleTowards(z),SPEED);
+            super.moveAway(getAngleTowards(z),speed);
         }
+    }
+    public void takeDamage(int damage){
+        hp = hp - damage;
     }
 }
