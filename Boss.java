@@ -26,7 +26,11 @@ public class Boss extends Zombie
     }
 
     
-    public void attack() {
+    protected void attack() {
+        
+    }
+    
+    protected void checkHitSurvivor() {
         
     }
 }

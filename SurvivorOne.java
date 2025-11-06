@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class SurvivorOne here.
  * 
@@ -8,12 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SurvivorOne extends Survivors
 {
-    /**
-     * Act - do whatever the SurvivorOne wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private final int SPEED = 3;
+    private int hp;
+    private int speed = 4;
+    public SurvivorOne(){
+        hp = super.startHP;
+        
+    }
     public void act()
     {
-        // Add your action code here.
+        super.act();
+        List<Zombies> nearbyZombies = this.getObjectsInRange(super.DETECTION, Zombies.class);
+        for(Zombies z : nearbyZombies){
+            int x = z.getX();
+            int y = z.getY();
+            super.moveAway(getAngleTowards(z),SPEED);
+        }
     }
 }

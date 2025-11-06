@@ -1,8 +1,14 @@
 #BlueJ class context
 comment0.target=Survivors
-comment0.text=\n\ Write\ a\ description\ of\ class\ Survivors\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Super\ class\ for\ survivors\r\n\ \r\n\ @author\ Paul\ with\ assistance\ from\ Claude\ \r\n\ \r\n
 comment1.params=
 comment1.target=void\ act()
-comment2.params=damage
-comment2.target=void\ takeDamage(int)
-numComments=3
+comment2.params=
+comment2.target=void\ getUserItems()
+comment3.params=target
+comment3.target=int\ getAngleTowards(greenfoot.Actor)
+comment4.params=angleApproaching\ speed
+comment4.target=void\ moveAway(int,\ int)
+comment5.params=damage
+comment5.target=void\ takeDamage(int)
+numComments=6
