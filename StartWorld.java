@@ -9,6 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class StartWorld extends World
 {
     private int numSurvivors;
+    boolean MELEE;
+    boolean GUN;
+    boolean ARMOR;
+    boolean BANDAGES;
     /**
      * Constructor for objects of class StartWorld.
      * 

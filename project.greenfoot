@@ -2,10 +2,10 @@
 class.GameWorld.image=gameworld.png
 class.SurvivorOne.image=survivorone.png
 dependency1.from=GameWorld
-dependency1.to=Regular
+dependency1.to=SurvivorOne
 dependency1.type=UsesDependency
 dependency2.from=GameWorld
-dependency2.to=SurvivorOne
+dependency2.to=Regular
 dependency2.type=UsesDependency
 dependency3.from=Regular
 dependency3.to=Survivors

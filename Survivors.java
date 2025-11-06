@@ -4,21 +4,28 @@ import java.util.List;
  * Super class for survivors
  * 
  * @author Paul with assistance from Claude 
- * @version (a version number or a date)
+ * 
  */
 public abstract class Survivors extends Actor
 {
     protected final int startHP = 100;
     protected int hp;
-    private final int DETECTION = 100;
+    protected final int DETECTION = 100;
+    protected boolean melee = false;
+    protected boolean gun = false;
+    protected boolean armor = false;
+    protected boolean bandages = false;
     public void act()
     {
-        hp = startHP;
-        List<Zombies> nearbyZombies = this.getObjectsInRange(DETECTION, Zombies.class);
-        for(Zombies z : nearbyZombies){
-            int x = z.getX();
-            int y = z.getY();
-            moveAway(getAngleTowards(z));
+        getUserItems();
+    }
+    public void getUserItems(){
+        StartWorld world = (StartWorld) getWorld();
+        if (world != null){
+            melee = world.MELEE;
+            gun = world.GUN;
+            armor = world.ARMOR;
+            bandages = world.BANDAGES; 
         }
     }
     //From Claude
@@ -37,10 +44,10 @@ public abstract class Survivors extends Actor
         
         return angleInDegrees;
     }
-    public void moveAway(int angleApproaching){
+    public void moveAway(int angleApproaching, int speed){
         int escapeAngle = (angleApproaching + 180) % 360;
         setRotation(escapeAngle);
-        move(3);
+        move(speed);
     }
     public void takeDamage(int damage){
         hp = hp - damage;
