@@ -38,16 +38,16 @@ public class GameWorld extends World
         int edge = Greenfoot.getRandomNumber(4);
         int x, y;
         
-        if (edge == 0) {  // Top
+        if (edge == 0) {  
             x = Greenfoot.getRandomNumber(getWidth());
             y = 0;
-        } else if (edge == 1) {  // Right
+        } else if (edge == 1) {
             x = getWidth() - 1;
             y = Greenfoot.getRandomNumber(getHeight());
-        } else if (edge == 2) {  // Bottom
+        } else if (edge == 2) { 
             x = Greenfoot.getRandomNumber(getWidth());
             y = getHeight() - 1;
-        } else {  // Left
+        } else { 
             x = 0;
             y = Greenfoot.getRandomNumber(getHeight());
         }
