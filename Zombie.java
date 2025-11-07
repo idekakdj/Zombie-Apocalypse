@@ -14,12 +14,10 @@ public abstract class Zombie extends SuperSmoothMover
     protected int attackCooldown;
     
     // Jayden added code superstatbar:
-    
     protected void updateHpBar()
     {
         
     }
-    
     
     protected abstract void attack();
     
