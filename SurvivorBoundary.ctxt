@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=SurvivorBoundary
+comment0.text=\r\n\ Invisible\ boundaries\ for\ survivors.\r\n\ \r\n\ @author\ Paul\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2

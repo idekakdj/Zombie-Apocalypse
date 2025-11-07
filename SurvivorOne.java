@@ -9,9 +9,10 @@ public class SurvivorOne extends Survivors
 {
     private int hp;
     private int speed = 4;
+    GreenfootImage p1 = new GreenfootImage("survivorone.png");
     public SurvivorOne(){
         hp = super.startHP;
-        setImage(getImage());
+        setImage(p1);
     }
     public void act()
     {
