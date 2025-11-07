@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Boss extends Zombies
+public class Boss extends Zombie
 {
     private final static int BOSS_HEALTH = 250;
     private final static double BOSS_SPEED = 0.5;
