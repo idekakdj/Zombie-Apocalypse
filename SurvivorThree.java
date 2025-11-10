@@ -9,13 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class SurvivorThree extends Survivors
 {
     private int speed = 2;
-    private int hp;
+    private int hp = 150;
+
     public SurvivorThree (){
         hp = super.startHP * 2;
+        this.setImage("jayden.png");
+
     }
     public void act()
     {
-        // Add your action code here.
+        
     }
     public void takeDamage(int damage){
         hp = hp - damage;
