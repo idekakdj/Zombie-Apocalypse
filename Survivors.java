@@ -17,11 +17,8 @@ public abstract class Survivors extends Actor
     protected boolean bandages = false;
     public void act()
     {
-<<<<<<< Updated upstream
         //getUserItems();
-=======
-        // getUserItems();
->>>>>>> Stashed changes
+
     }
     
     public void getUserItems(){
