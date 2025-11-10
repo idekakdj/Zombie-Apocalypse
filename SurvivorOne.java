@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * 
  * 
- * @author Paul 
+ * @author Paul assisted by Claude
  */
 public class SurvivorOne extends Survivors
 {
@@ -17,13 +17,9 @@ public class SurvivorOne extends Survivors
     public void act()
     {
         super.act();
-        List<Zombie> nearbyZombies = this.getObjectsInRange(super.DETECTION, Zombie.class);
-        for(Zombie z : nearbyZombies){
-            int x = z.getX();
-            int y = z.getY();
-            super.moveAway(getAngleTowards(z),speed);
-        }
+        
     }
+    
     public void takeDamage(int damage){
         hp = hp - damage;
     }

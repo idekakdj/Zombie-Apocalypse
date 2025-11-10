@@ -10,14 +10,15 @@ public class GameWorld extends World
 {
     /**
      * Constructor for objects of class MyWorld.
-     * 
+     * Spawns survivor in middle of world and zombies on edges.
      */
     SurvivorBoundary boundary;
+    GreenfootImage world = new GreenfootImage("gameworld");
     public GameWorld()
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
         super(1024, 700, 1); 
-        
+        setBackground(world);
         prepare();
         
     }
