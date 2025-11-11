@@ -11,6 +11,7 @@ public abstract class Survivors extends Actor
     protected final int startHP = 100;
     protected final int DETECTION = 100;
     protected int hp;
+    protected int speed = 4;
     protected boolean melee = false;
     protected boolean gun = false;
     protected boolean armor = false;
@@ -18,9 +19,46 @@ public abstract class Survivors extends Actor
     public void act()
     {
         //getUserItems();
-
+        fleeFromNearbyZombies();
+    }
+    //Algorithm designed by Claude
+    protected void fleeFromNearbyZombies() {
+        GameWorld world = (GameWorld)getWorld();
+        if (world == null) return;
+        
+        List<Zombie> nearbyZombies = getObjectsInRange(DETECTION, Zombie.class);
+        
+        if (!nearbyZombies.isEmpty()) {
+            Zombie closestZombie = nearbyZombies.get(0);
+            int awayAngle = getAngleTowards(closestZombie) + 180;
+            
+            // Try moving away first
+            if (tryMove(awayAngle, speed, world)) {
+                return;
+            }
+            // Try left perpendicular
+            else if (tryMove(awayAngle + 90, speed, world)) {
+                return;
+            }
+            // Try right perpendicular  
+            else if (tryMove(awayAngle - 90, speed, world)) {
+                return;
+            }
+        }
     }
     
+    // Helper method to try moving in a direction from Claude
+    protected boolean tryMove(int angle, int distance, GameWorld world) {
+        int newX = (int)(getX() + distance * Math.cos(Math.toRadians(angle)));
+        int newY = (int)(getY() + distance * Math.sin(Math.toRadians(angle)));
+        
+        if (world.isValidPosition(newX, newY)) {
+            setLocation(newX, newY);
+            setRotation(angle);
+            return true;
+        }
+        return false;
+    }
     public void getUserItems(){
         StartWorld world = (StartWorld) getWorld();
         if (world != null){

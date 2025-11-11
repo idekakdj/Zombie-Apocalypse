@@ -9,9 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class SurvivorTwo extends Survivors
 {
     private int speed = 6;
-    private int hp;
+    private int hp = 75;
     public SurvivorTwo (){
         hp = super.startHP/2;
+        this.setImage("chapman.png");
     }
     public void act()
     {
