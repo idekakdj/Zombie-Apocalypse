@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Zombies here.
@@ -53,17 +54,22 @@ public abstract class Zombie extends SuperSmoothMover
     }
     
     protected void moveZombie() {  
-        int x = getWorld().getWidth() / 2;
-        int y = getWorld().getHeight() / 2;
+        ArrayList<Survivors> survivors = (ArrayList<Survivors>)getWorld().getObjects(Survivors.class);
         
-        turnTowards(x, y);
-        
-        if (getX() < x) {
-            setImage(getLeftImage()); 
-        } else {
-            setImage(getRightImage()); 
+        if (!survivors.isEmpty()) {
+            Survivors survivor = survivors.get(0);
+            int x = survivor.getX();
+            int y = survivor.getY();
+            
+            turnTowards(x, y);
+            
+            if (getX() < x) {
+                setImage(getLeftImage()); 
+            } else {
+                setImage(getRightImage()); 
+            }
+            
+            move(speed);
         }
-        
-        move(speed);
     }
 }
