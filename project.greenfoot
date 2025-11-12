@@ -28,11 +28,19 @@ dependency8.type=UsesDependency
 dependency9.from=Survivors
 dependency9.to=StartWorld
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=735
 editor.fx.0.width=1130
 editor.fx.0.x=313
 editor.fx.0.y=39
 height=865
+=======
+editor.fx.0.height=686
+editor.fx.0.width=1294
+editor.fx.0.x=-7
+editor.fx.0.y=-7
+height=884
+>>>>>>> 396a77500f0fa11968dc0f51e97d46eb42198348
 package.numDependencies=9
 package.numTargets=18
 project.charset=UTF-8
@@ -176,7 +184,11 @@ target9.width=120
 target9.x=0
 target9.y=0
 version=3.1.0
+<<<<<<< HEAD
 width=1453
+=======
+width=1306
+>>>>>>> 396a77500f0fa11968dc0f51e97d46eb42198348
 world.lastInstantiated=GameWorld
 xPosition=0
 yPosition=0
