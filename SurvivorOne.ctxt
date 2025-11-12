@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #BlueJ class context
 comment0.target=SurvivorOne
 comment0.text=\r\n\ \r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n
@@ -8,3 +9,13 @@ comment2.target=void\ act()
 comment3.params=damage
 comment3.target=void\ takeDamage(int)
 numComments=4
+=======
+#BlueJ class context
+comment0.target=SurvivorOne
+comment0.text=\n\ Write\ a\ description\ of\ class\ SurvivorOne\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=SurvivorOne()
+comment2.params=
+comment2.target=void\ act()
+numComments=3
+>>>>>>> Stashed changes

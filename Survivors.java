@@ -19,6 +19,7 @@ public abstract class Survivors extends Actor
     public void act()
     {
         //getUserItems();
+<<<<<<< Updated upstream
         fleeFromNearbyZombies();
     }
     //Algorithm designed by Claude
@@ -58,6 +59,8 @@ public abstract class Survivors extends Actor
             return true;
         }
         return false;
+=======
+>>>>>>> Stashed changes
     }
     public void getUserItems(){
         StartWorld world = (StartWorld) getWorld();
