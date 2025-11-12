@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.target=Button
-comment0.text=\r\n\ \r\n\ @author\ Paul\ \r\n
-comment1.params=text\ height\ width\ color\ borderWidth\ borderColor
-comment1.target=Button(java.lang.String,\ int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color)
+comment0.text=\r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n\ \r\n\ Takes\ in\ paramaters\ to\ customize\ your\ button\ almost\ completely\r\n\ You\ can\ input\ the\ text\ you\ want\ for\ this,\ the\ height\ and\ width\ of\ the\ button\ (borders\ will\ subtract\ from\ \r\n\ total\ area\ instead\ of\ adding\ more\ area),\ font\ size\ can\ be\ customized\ (make\ sure\ its\ not\ larger\ than\ the\ button)\r\n\ also\ takes\ a\ paramater\ for\ a\ button\ id\ to\ reference\ later\ and\ store\ values\ when\ specific\ buttons\ get\ clicked.\r\n\ \r\n
+comment1.params=text\ height\ width\ color\ borderWidth\ borderColor\ fontSize\ id
+comment1.target=Button(java.lang.String,\ int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color,\ int,\ java.lang.String)
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=
+comment3.target=java.lang.String\ getButtonID()
+comment4.params=
+comment4.target=boolean\ wasClicked()
+numComments=5

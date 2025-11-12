@@ -28,10 +28,10 @@ public class Boss extends Zombie
         
         enableStaticRotation();
         
-        leftImage = new GreenfootImage("Zombie.png");
+        leftImage = new GreenfootImage("Big Zombie.png");
         leftImage.scale(100, 160);
         
-        rightImage = new GreenfootImage("Zombie.png");
+        rightImage = new GreenfootImage("Big Zombie.png");
         rightImage.mirrorHorizontally();
         rightImage.scale(100, 160);
         

@@ -10,9 +10,11 @@ public class SurvivorTwo extends Survivors
 {
     private int speed = 6;
     private int hp = 75;
+    GreenfootImage p2 = new GreenfootImage("chapman.png");
     public SurvivorTwo (){
         hp = super.startHP/2;
-        this.setImage("chapman.png");
+        p2.scale(75,75);
+        this.setImage(p2);
     }
     public void act()
     {
