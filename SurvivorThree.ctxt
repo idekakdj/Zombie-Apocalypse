@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=SurvivorThree
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SurvivorThree\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ SurvivorThree\ -\ Tank\ survivor\ with\ high\ HP\n\ \n\ @author\ Paul\n\ @version\ 1.0\n
 comment1.params=
 comment1.target=SurvivorThree()
-comment2.params=
-comment2.target=void\ act()
-comment3.params=damage
-comment3.target=void\ takeDamage(int)
-numComments=4
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=damage
+comment4.target=void\ takeDamage(int)
+numComments=5
