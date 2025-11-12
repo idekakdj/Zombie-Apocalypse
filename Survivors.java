@@ -16,6 +16,8 @@ public abstract class Survivors extends Actor
     protected boolean gun = false;
     protected boolean armor = false;
     protected boolean bandages = false;
+    protected boolean hasBat = false; // ensures bat is only spawned once
+
     
     public void act()
     {
@@ -64,4 +66,16 @@ public abstract class Survivors extends Actor
     public int getMaxHP() {
         return startHP;
     }
+    
+     protected void spawnBat() {
+        if (hasBat) return; // make sure we only spawn it once
+
+        World w = getWorld();
+        if (w != null) {
+            Bat bat = new Bat(10, 100, 30, this);
+            w.addObject(bat, getX(), getY());
+            hasBat = true;
+        }
+    }
+
 }

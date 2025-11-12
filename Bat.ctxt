@@ -1,12 +1,18 @@
 #BlueJ class context
 comment0.target=Bat
-comment0.text=\n\ A\ simple\ melee\ weapon\:\ the\ Bat.\n
-comment1.params=damage\ coolDown\ range
-comment1.target=Bat(int,\ int,\ int)
+comment0.text=\n\ A\ simple\ automatic\ melee\ weapon\:\ the\ Bat.\n\ Swings\ automatically\ on\ a\ timer,\ no\ player\ input.\n
+comment1.params=damage\ coolDown\ range\ owner
+comment1.target=Bat(int,\ int,\ int,\ Survivors)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ playSound()
+comment3.target=void\ followOwner()
 comment4.params=
-comment4.target=void\ attack()
-numComments=5
+comment4.target=void\ startSwing()
+comment5.params=
+comment5.target=void\ performSwing()
+comment6.params=
+comment6.target=void\ playSound()
+comment7.params=
+comment7.target=void\ attack()
+numComments=8

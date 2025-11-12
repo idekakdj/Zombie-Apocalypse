@@ -42,7 +42,15 @@ public class SurvivorOne extends Survivors
     
     public void takeDamage(int damage){
         hp -= damage;
-        if (hp < 0) hp = 0;
+        if (hp <= 80 && !hasBat) {
+            spawnBat();
+            hasBat = true; // prevents multiple bats
+        }
+        if (hp < 0){
+            hp = 0;  
+                        Greenfoot.stop(); // Stops the scenario execution
+
+        }
         hpBar.update(hp);
     }
 }
