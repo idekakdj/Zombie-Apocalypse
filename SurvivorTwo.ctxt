@@ -1,7 +1,12 @@
 #BlueJ class context
 comment0.target=SurvivorTwo
-comment0.text=\n\ Write\ a\ description\ of\ class\ SurvivorTwo\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ SurvivorTwo\ -\ Fast\ survivor\ with\ lower\ HP\n\ \n\ @author\ Paul\n\ @version\ 1.0\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ SurvivorTwo\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=2
+comment1.target=SurvivorTwo()
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=damage
+comment4.target=void\ takeDamage(int)
+numComments=5

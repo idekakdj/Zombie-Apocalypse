@@ -1,28 +1,48 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
+ * SurvivorOne - Balanced survivor
  * 
- * 
- * @author Paul assisted by Claude
+ * @author Paul 
+ * @version 1.0
  */
 public class SurvivorOne extends Survivors
 {
-    private int hp;
     private int speed = 4;
-    GreenfootImage p1 = new GreenfootImage("chiu.png");
+    private GreenfootImage p1 = new GreenfootImage("survivorone.png");
+    private SuperStatBar hpBar;
+    
     public SurvivorOne(){
-        hp = super.startHP;
-        p1.scale(75,75);
+        startHP = 100;
+        hp = startHP;
         setImage(p1);
-        
+        // Create HP bar that stays at fixed position (null = don't follow)
+        hpBar = new SuperStatBar(startHP, hp, null, 300, 40, 0, Color.GREEN, Color.RED, false, Color.YELLOW, 1);
     }
+    
+    @Override
+    protected void addedToWorld(World w) {
+        // Add HP bar at top center of world
+        w.addObject(hpBar, w.getWidth() / 2, 30);
+        hpBar.update(hp);
+    }
+    
     public void act()
     {
         super.act();
         
+        // Update HP bar
+        hpBar.update(hp);
+
+        List<Zombie> nearbyZombies = this.getObjectsInRange(DETECTION, Zombie.class);
+        for(Zombie z : nearbyZombies){
+            moveAway(getAngleTowards(z), speed);
+        }
     }
     
     public void takeDamage(int damage){
-        hp = hp - damage;
+        hp -= damage;
+        if (hp < 0) hp = 0;
+        hpBar.update(hp);
     }
 }

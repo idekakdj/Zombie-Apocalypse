@@ -1,21 +1,12 @@
-<<<<<<< Updated upstream
 #BlueJ class context
 comment0.target=SurvivorOne
-comment0.text=\r\n\ \r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n
+comment0.text=\n\ SurvivorOne\ -\ Balanced\ survivor\n\ \n\ @author\ Paul\ \n\ @version\ 1.0\n
 comment1.params=
 comment1.target=SurvivorOne()
-comment2.params=
-comment2.target=void\ act()
-comment3.params=damage
-comment3.target=void\ takeDamage(int)
-numComments=4
-=======
-#BlueJ class context
-comment0.target=SurvivorOne
-comment0.text=\n\ Write\ a\ description\ of\ class\ SurvivorOne\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=SurvivorOne()
-comment2.params=
-comment2.target=void\ act()
-numComments=3
->>>>>>> Stashed changes
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=damage
+comment4.target=void\ takeDamage(int)
+numComments=5
