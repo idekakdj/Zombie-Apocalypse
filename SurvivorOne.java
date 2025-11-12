@@ -9,10 +9,12 @@ public class SurvivorOne extends Survivors
 {
     private int hp;
     private int speed = 4;
-    GreenfootImage p1 = new GreenfootImage("survivorone.png");
+    GreenfootImage p1 = new GreenfootImage("chiu.png");
     public SurvivorOne(){
         hp = super.startHP;
+        p1.scale(75,75);
         setImage(p1);
+        
     }
     public void act()
     {
