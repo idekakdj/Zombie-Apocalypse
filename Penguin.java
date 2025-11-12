@@ -6,26 +6,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Special extends Zombie
+public class Penguin extends Zombie
 {
-    private final static int SPEC_HEALTH = 50;
-    private final static double SPEC_SPEED = 4;
-    private final static int SPEC_DAMAGE = 1;
+    private final static int PENG_HEALTH = 50;
+    private final static double PENG_SPEED = 4;
+    private final static int PENG_DAMAGE = 1;
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
     
-    public Special() {
-        health = SPEC_HEALTH;
-        speed = SPEC_SPEED;
-        damage = SPEC_DAMAGE;
+    public Penguin() {
+        health = PENG_HEALTH;
+        speed = PENG_SPEED;
+        damage = PENG_DAMAGE;
         
         enableStaticRotation();
         
         leftImage = new GreenfootImage("Penguin.png");
+        leftImage.scale(56, 61);
         
         rightImage = new GreenfootImage("Penguin.png");
         rightImage.mirrorHorizontally();
+        rightImage.scale(56, 61);
         
         setImage(leftImage);
     }
