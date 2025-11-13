@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * SurvivorThree - Tank survivor with high HP
+ * SurvivorThree - Tank survivor with high HP, named Paul
  * 
  * @author Paul
- * @version 1.0
+ * 
  */
 public class SurvivorThree extends Survivors
 {
@@ -29,20 +29,21 @@ public class SurvivorThree extends Survivors
     
     public void act()
     {
+        if(hp <= 0){
+            Greenfoot.setWorld(new EndScreen());
+            return;
+        }
         super.act();
-        
         // Update HP bar
         hpBar.update(hp);
-
-        List<Zombie> nearbyZombies = this.getObjectsInRange(DETECTION, Zombie.class);
-        for(Zombie z : nearbyZombies){
-            moveAway(getAngleTowards(z), speed);
-        }
+        moveIntelligently(speed);
     }
     
     public void takeDamage(int damage){
         hp -= damage;
-        if (hp < 0) hp = 0;
+        if (hp < 0){
+            hp = 0;
+        }
         hpBar.update(hp);
     }
 }

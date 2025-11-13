@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SurvivorOne
-comment0.text=\r\n\ SurvivorOne\ -\ Balanced\ survivor\r\n\ \r\n\ @author\ Paul\ \r\n\ @version\ 1.0\r\n
+comment0.text=\r\n\ The\ survivor\ named\ Cayden,\ is\ the\ default\ for\ speed\ and\ hp\ values.\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n
 comment1.params=
 comment1.target=SurvivorOne()
 comment2.params=w

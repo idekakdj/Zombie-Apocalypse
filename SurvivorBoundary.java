@@ -3,17 +3,20 @@ import java.awt.Rectangle;
 /**
  * Invisible boundaries for survivors.
  * 
- * @author Paul 
+ * @author Paul assisted by Claude
  */
+
+
 public class SurvivorBoundary extends Actor
 {
     Rectangle bounds;
     Color transparent = new Color (0,0,0,0);
-    public SurvivorBoundary(int x, int y, int width, int height){
-        bounds = new Rectangle(x, y, width, height);
+    
+    public SurvivorBoundary(int centerX, int centerY, int width, int height){
+        bounds = new Rectangle(centerX - width/2, centerY - height/2, width, height);
         setImage(new GreenfootImage(1,1));
     }
-    //To be called to check if survivor is within bounds
+    
     public boolean contains(int x, int y){
         return bounds.contains(x, y);
     }

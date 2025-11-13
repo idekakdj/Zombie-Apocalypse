@@ -1,6 +1,6 @@
 import greenfoot.*;
 /*
- * Author Paul assisted by Claude
+ * Author Paul assisted by Claude (toggleable feature and drawing the checkmark)
  * 
  * Takes in paramaters to fully customize the button
  * text is the button text, height and width are the button dimensions,
@@ -184,7 +184,7 @@ public class Button extends Actor
             return;
         }
         //The button on the end screen that returns to the start
-        if(buttonID.equals("returntostart")){
+        if(buttonID.equals("backtostart")){
             Greenfoot.setWorld(new StartWorld());
             return;
         }

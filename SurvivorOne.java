@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * SurvivorOne - Balanced survivor
+ * The survivor named Cayden, is the default for speed and hp values.
  * 
  * @author Paul 
- * @version 1.0
+ * 
  */
 public class SurvivorOne extends Survivors
 {
@@ -30,32 +30,31 @@ public class SurvivorOne extends Survivors
     
     public void act()
     {
-        super.act();
-        
-        // Update HP bar
-        hpBar.update(hp);
-
-        List<Zombie> nearbyZombies = this.getObjectsInRange(DETECTION, Zombie.class);
-        for(Zombie z : nearbyZombies){
-            moveAway(getAngleTowards(z), speed);
-        }
         if(hp <= 0){
             Greenfoot.setWorld(new EndScreen());
             return;
         }
+        
+        super.act();
+        
+        // Update HP bar
+        hpBar.update(hp);
+        
+        
+        moveIntelligently(speed);
     }
     
     public void takeDamage(int damage){
         hp -= damage;
+        if (hp < 0){
+            hp = 0;  
+        }
+        
         if (hp <= 80 && !hasBat) {
             spawnBat();
             hasBat = true; // prevents multiple bats
         }
-        if (hp < 0){
-            hp = 0;  
-                        Greenfoot.stop(); // Stops the scenario execution
-
-        }
+        
         hpBar.update(hp);
     }
 }
