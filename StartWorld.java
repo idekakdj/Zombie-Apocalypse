@@ -4,15 +4,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class StartWorld here.
  * 
  * @author Paul
- * @version (a version number or a date)
+ * 
  */
 public class StartWorld extends World
 {
-    private int numSurvivors;
-    boolean MELEE;
-    boolean GUN;
-    boolean ARMOR;
-    boolean BANDAGES;
+    
     GreenfootImage world = new GreenfootImage("startworld.png");
     /**
      * Constructor for objects of class StartWorld.
@@ -22,5 +18,11 @@ public class StartWorld extends World
     {    
         super(1024, 700, 1); 
         setBackground(world);
+        prepare();
+    }
+    private void prepare(){
+        Button chooseworld = new Button("Start", 100, 400, Color.GREEN, 5, Color.BLACK, 70,Color.WHITE,"choose",false);
+        addObject(chooseworld, getWidth()/2, (getHeight()/4) * 3);
+        
     }
 }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameWorld
-comment0.text=\n\ Is\ the\ main\ game\ world\ thats\ starts\ by\ spawning\ suvivovr\ in\ the\ middle\ and\ called\ zombie\ constructors\ to\ \n\ spawn\ zombies\ on\ edges\ of\ the\ screen\ and\ move\ them\ towards\ the\ survivor.\n\ \n\ @author\ Paul\ and\ Cayden\ \n
+comment0.text=\r\n\ Is\ the\ main\ game\ world\ thats\ starts\ by\ spawning\ suvivovr\ in\ the\ middle\ and\ called\ zombie\ constructors\ to\ \r\n\ spawn\ zombies\ on\ edges\ of\ the\ screen\ and\ move\ them\ towards\ the\ survivor.\r\n\ \r\n\ @author\ Paul\ and\ Cayden\ \r\n
 comment1.params=
 comment1.target=GameWorld()
 comment2.params=
