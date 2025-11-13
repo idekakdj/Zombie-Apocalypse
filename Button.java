@@ -10,39 +10,91 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * also takes a paramater for a button id to reference later and store values when specific buttons get clicked.
  * 
  */
+
+
 public class Button extends Actor
 {
-    boolean wasClicked = false;
+    private String text;
     private String buttonID;
-    public Button(String text,int height,int width,Color color,int borderWidth, Color borderColor,int fontSize, String id){
+    private int width, height;
+    private Color color; 
+    private Color borderColor;
+    private int borderWidth;
+    private int fontSize;
+    private Color fontColor;
+    GreenfootSound click = new GreenfootSound("mouseclick.mp3");
+    public Button(String text, int height, int width, Color color, int borderWidth, Color borderColor, int fontSize, Color fontColor,String id){
+        this.text = text;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.borderWidth = borderWidth;
+        this.borderColor = borderColor;
         this.buttonID = id;
-        GreenfootImage button = new GreenfootImage(width,height);
-        if(borderWidth > 0 ){
-            button.setColor(borderColor);
-            button.fill();
-            
-            button.setColor(color);
-            button.fillRect(borderWidth, borderWidth, width - (borderWidth * 2), height - (borderWidth * 2));
-        } else {
-            button.setColor(color);
-            button.fill();
-        }
-        button.setColor(Color.WHITE); 
-        button.setFont(new Font("Arial", fontSize));  
-        button.drawString(text, width/2 - text.length() * 5, height/2 + 7); 
+        this.fontSize = fontSize;
+        this.fontColor = fontColor;
+        createButtonImage();
+    }
+    
+      private void createButtonImage() {
+        GreenfootImage button = new GreenfootImage(width, height);
+        
+        button.setColor(borderColor);
+        button.fillRect(0, 0, width, height);
+        
+        button.setColor(color);
+        button.fillRect(borderWidth, borderWidth, width - (borderWidth * 2), height - (borderWidth * 2));
+        
+        Font font = new Font("Arial", true, false, fontSize);
+        GreenfootImage textImage = new GreenfootImage(text, fontSize, fontColor, new Color(0, 0, 0, 0));
+        
+        int x = (width - textImage.getWidth()) / 2;
+        int y = (height - textImage.getHeight()) / 2;
+        
+        button.drawImage(textImage, x, y);
         
         setImage(button);
     }
+
     public void act()
     {
         if(Greenfoot.mouseClicked(this)){
-            wasClicked = true;
+            handleClick();
+            click.play();
         }
     }
     public String getButtonID(){
         return buttonID;
     }
-    public boolean wasClicked(){
-        return wasClicked;
-    }
+    public void handleClick(){
+        if(buttonID.equals("choose")){
+            Greenfoot.setWorld(new ChooseWorld());
+            return;
+        }
+        if(buttonID.equals("simulation")){
+            Greenfoot.setWorld(new GameWorld());
+            return;
+        }
+        World currentWorld = getWorld();
+        if(currentWorld instanceof ChooseWorld){
+            ChooseWorld world = (ChooseWorld) currentWorld;
+            if (buttonID.equals("survivorone")){
+                world.updateBoolean(1);
+            } else if (buttonID.equals("survivortwo")){
+                world.updateBoolean(2);
+            } else if (buttonID.equals("survivorthree")){
+                world.updateBoolean(3);
+            } else if (buttonID.equals("gun")){
+                world.updateBoolean(4);
+            } else if (buttonID.equals("melee")){
+                world.updateBoolean(5);
+            } else if (buttonID.equals("bandages")){
+                world.updateBoolean(6);
+            } else if (buttonID.equals("shield")){
+                world.updateBoolean(7);
+            } else if (buttonID.equals("wall")){
+                world.updateBoolean(8);
+            }
+        }
+    }   
 }

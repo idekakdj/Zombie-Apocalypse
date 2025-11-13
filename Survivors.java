@@ -60,11 +60,11 @@ public abstract class Survivors extends Actor
         return false;
     }
     public void getUserItems(){
-        StartWorld world = (StartWorld) getWorld();
+        ChooseWorld world = (ChooseWorld) getWorld();
         if (world != null){
             melee = world.MELEE;
             gun = world.GUN;
-            armor = world.ARMOR;
+            armor = world.SHIELD;
             bandages = world.BANDAGES; 
         }
     }
