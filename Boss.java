@@ -41,6 +41,32 @@ public class Boss extends Zombie
     public void act()
     {
         super.act();
+        
+        if (Greenfoot.isKeyDown("k")) {
+            health = 0;
+        }
+    }
+    
+    protected void killZombie() {
+        World world = getWorld();
+        int x = getX();
+        int y = getY();
+        
+        int[] xOffsets = {-40, 0, 40};  // Left, center, right
+        int[] yOffsets = {-30, 30, 0};  // Top, bottom, center
+        
+        if (world != null) {
+            world.addObject(new Explosion(), x, y);
+        }
+        
+        for(int i = 0; i < 3; i++) {
+            int spawnX = x + xOffsets[i];
+            int spawnY = y + yOffsets[i];
+            
+            world.addObject(new Penguin(), spawnX, spawnY);
+        }
+        
+        world.removeObject(this);
     }
 
     protected void attack() {
