@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameWorld
-comment0.text=\r\n\ Is\ the\ main\ game\ world\ thats\ starts\ by\ spawning\ suvivovr\ in\ the\ middle\ and\ called\ zombie\ constructors\ to\ \r\n\ spawn\ zombies\ on\ edges\ of\ the\ screen\ and\ move\ them\ towards\ the\ survivor.\r\n\ \r\n\ @author\ Paul\ and\ Cayden\ \r\n
+comment0.text=\n\ Is\ the\ main\ game\ world\ thats\ starts\ by\ spawning\ suvivovr\ in\ the\ middle\ and\ called\ zombie\ constructors\ to\ \n\ spawn\ zombies\ on\ edges\ of\ the\ screen\ and\ move\ them\ towards\ the\ survivor.\n\ \n\ @author\ Paul\ and\ Cayden\ \n
 comment1.params=
 comment1.target=GameWorld()
 comment2.params=
@@ -10,7 +10,9 @@ comment3.target=boolean\ isValidPosition(int,\ int)
 comment4.params=
 comment4.target=void\ spawnRegular()
 comment5.params=
-comment5.target=void\ spawnBoss()
+comment5.target=void\ spawnGiant()
 comment6.params=
-comment6.target=void\ spawnSpecial()
-numComments=7
+comment6.target=void\ spawnPenguin()
+comment7.params=
+comment7.target=void\ spawnBoss()
+numComments=8

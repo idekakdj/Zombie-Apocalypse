@@ -30,8 +30,9 @@ public class GameWorld extends World
         SurvivorOne s1 = new SurvivorOne();
         addObject(s1, getWidth()/2, getHeight()/2);
         spawnRegular();
+        spawnGiant();
+        spawnPenguin();
         spawnBoss();
-        spawnSpecial();
     }
     
     public boolean isValidPosition(int x, int y){
@@ -65,8 +66,8 @@ public class GameWorld extends World
         addObject(zombie, x, y);
     }
     
-    private void spawnBoss() {
-        Boss zombie = new Boss();
+    private void spawnGiant() {
+        Giant zombie = new Giant();
         
         // Randomly choose which edge (0=top, 1=right, 2=bottom, 3=left)
         int edge = Greenfoot.getRandomNumber(4);
@@ -89,8 +90,32 @@ public class GameWorld extends World
         addObject(zombie, x, y);
     }
     
-    private void spawnSpecial() {
-        Special zombie = new Special();
+    private void spawnPenguin() {
+        Penguin zombie = new Penguin();
+        
+        // Randomly choose which edge (0=top, 1=right, 2=bottom, 3=left)
+        int edge = Greenfoot.getRandomNumber(4);
+        int x, y;
+        
+        if (edge == 0) {  
+            x = Greenfoot.getRandomNumber(getWidth());
+            y = 0;
+        } else if (edge == 1) {
+            x = getWidth() - 1;
+            y = Greenfoot.getRandomNumber(getHeight());
+        } else if (edge == 2) { 
+            x = Greenfoot.getRandomNumber(getWidth());
+            y = getHeight() - 1;
+        } else { 
+            x = 0;
+            y = Greenfoot.getRandomNumber(getHeight());
+        }
+        
+        addObject(zombie, x, y);
+    }
+    
+    private void spawnBoss() {
+        Boss zombie = new Boss();
         
         // Randomly choose which edge (0=top, 1=right, 2=bottom, 3=left)
         int edge = Greenfoot.getRandomNumber(4);

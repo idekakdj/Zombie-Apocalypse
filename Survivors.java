@@ -8,57 +8,22 @@ import java.util.List;
  */
 public abstract class Survivors extends Actor
 {
-    protected final int startHP = 100;
-    protected final int DETECTION = 100;
+    protected int startHP;
     protected int hp;
-    protected int speed = 4;
+
+    protected final int DETECTION = 100;
     protected boolean melee = false;
     protected boolean gun = false;
     protected boolean armor = false;
     protected boolean bandages = false;
+    protected boolean hasBat = false; // ensures bat is only spawned once
+
+    
     public void act()
     {
         //getUserItems();
-        fleeFromNearbyZombies();
-    }
-    //Algorithm designed by Claude
-    protected void fleeFromNearbyZombies() {
-        GameWorld world = (GameWorld)getWorld();
-        if (world == null) return;
-        
-        List<Zombie> nearbyZombies = getObjectsInRange(DETECTION, Zombie.class);
-        
-        if (!nearbyZombies.isEmpty()) {
-            Zombie closestZombie = nearbyZombies.get(0);
-            int awayAngle = getAngleTowards(closestZombie) + 180;
-            
-            // Try moving away first
-            if (tryMove(awayAngle, speed, world)) {
-                return;
-            }
-            // Try left perpendicular
-            else if (tryMove(awayAngle + 90, speed, world)) {
-                return;
-            }
-            // Try right perpendicular  
-            else if (tryMove(awayAngle - 90, speed, world)) {
-                return;
-            }
-        }
     }
     
-    // Helper method to try moving in a direction from Claude
-    protected boolean tryMove(int angle, int distance, GameWorld world) {
-        int newX = (int)(getX() + distance * Math.cos(Math.toRadians(angle)));
-        int newY = (int)(getY() + distance * Math.sin(Math.toRadians(angle)));
-        
-        if (world.isValidPosition(newX, newY)) {
-            setLocation(newX, newY);
-            setRotation(angle);
-            return true;
-        }
-        return false;
-    }
     public void getUserItems(){
         ChooseWorld world = (ChooseWorld) getWorld();
         if (world != null){
@@ -68,6 +33,7 @@ public abstract class Survivors extends Actor
             bandages = world.BANDAGES; 
         }
     }
+    
     //From Claude
     public int getAngleTowards(Actor target)
     {
@@ -84,10 +50,32 @@ public abstract class Survivors extends Actor
         
         return angleInDegrees;
     }
+    
     public void moveAway(int angleApproaching, int speed){
         int escapeAngle = (angleApproaching + 180) % 360;
         setRotation(escapeAngle);
         move(speed);
     }
+    
     public abstract void takeDamage(int damage);
+    
+    public int getHP() {
+        return hp;
+    }
+    
+    public int getMaxHP() {
+        return startHP;
+    }
+    
+     protected void spawnBat() {
+        if (hasBat) return; // make sure we only spawn it once
+
+        World w = getWorld();
+        if (w != null) {
+            Bat bat = new Bat(10, 100, 30, this);
+            w.addObject(bat, getX(), getY());
+            hasBat = true;
+        }
+    }
+
 }

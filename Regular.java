@@ -29,9 +29,11 @@ public class Regular extends Zombie
         enableStaticRotation();
         
         leftImage = new GreenfootImage("Zombie.png");
+        leftImage.scale(70, 90);
         
         rightImage = new GreenfootImage("Zombie.png");
         rightImage.mirrorHorizontally();
+        rightImage.scale(70, 90);
         
         setImage(leftImage);
     }

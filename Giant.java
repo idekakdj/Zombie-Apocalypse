@@ -1,39 +1,39 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boss here.
+ * Write a description of class Giant here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Boss extends Zombie
+public class Giant extends Zombie
 {
-    private final static int BOSS_HEALTH = 250;
-    private final static double BOSS_SPEED = 0.5;
-    private final static int BOSS_DAMAGE = 10;
+    private final static int GIANT_HEALTH = 250;
+    private final static double GIANT_SPEED = 0.5;
+    private final static int GIANT_DAMAGE = 10;
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
 
     private SuperStatBar hpBar;
 
-    public Boss()
+    public Giant()
     {
-        // fill in stats in brackets to give attributes to Boss
+        // fill in stats in brackets to give attributes to Giant
         hpBar = new SuperStatBar(); 
        
-        health = BOSS_HEALTH;
-        speed = BOSS_SPEED;
-        damage = BOSS_DAMAGE;
+        health = GIANT_HEALTH;
+        speed = GIANT_SPEED;
+        damage = GIANT_DAMAGE;
         
         enableStaticRotation();
         
-        leftImage = new GreenfootImage("Big Boss Boy.png");
-        leftImage.scale(230, 230);
+        leftImage = new GreenfootImage("Big Zombie.png");
+        leftImage.scale(80, 140);
         
-        rightImage = new GreenfootImage("Big Boss Boy.png");
+        rightImage = new GreenfootImage("Big Zombie.png");
         rightImage.mirrorHorizontally();
-        rightImage.scale(230, 230);
+        rightImage.scale(80, 140);
         
         setImage(leftImage);
     }
