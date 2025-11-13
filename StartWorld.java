@@ -25,4 +25,7 @@ public class StartWorld extends World
         addObject(chooseworld, getWidth()/2, (getHeight()/4) * 3);
         
     }
+    public void act(){
+        
+    }
 }

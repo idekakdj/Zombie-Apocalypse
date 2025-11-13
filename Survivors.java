@@ -22,6 +22,7 @@ public abstract class Survivors extends Actor
     public void act()
     {
         //getUserItems();
+        
     }
     
     public void getUserItems(){

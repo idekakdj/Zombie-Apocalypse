@@ -27,7 +27,9 @@ public class Button extends Actor
     private GreenfootImage normalImage;
     private GreenfootImage selectedImage;
     GreenfootSound click = new GreenfootSound("mouseclick.mp3");
-    
+    GreenfootImage chiu = new GreenfootImage("chiu.png");
+    GreenfootImage jayden = new GreenfootImage("jayden.png");
+    GreenfootImage paul = new GreenfootImage("chapman.png");
     public Button(String text, int height, int width, Color color, int borderWidth, Color borderColor, int fontSize, Color fontColor, String id, boolean toggleable){
         this.text = text;
         this.width = width;
@@ -145,11 +147,19 @@ public class Button extends Actor
     
     public void handleClick(){
         if(buttonID.equals("choose")){
-            Greenfoot.setWorld(new ChooseWorld());
+            World world = getWorld();
+            getWorld().getBackground().drawImage(chiu, getWorld().getWidth()/3, getWorld().getHeight()/2);
+            getWorld().getBackground().drawImage(jayden, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            getWorld().getBackground().drawImage(paul, (getWorld().getWidth()/3) * 2, getWorld().getHeight()/2);
+            getWorld().removeObject(this);
             return;
         }
         if(buttonID.equals("simulation")){
             Greenfoot.setWorld(new GameWorld());
+            return;
+        }
+        if(buttonID.equals("returntostart")){
+            Greenfoot.setWorld(new StartWorld());
             return;
         }
         World currentWorld = getWorld();

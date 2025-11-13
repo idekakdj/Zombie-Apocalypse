@@ -9,12 +9,13 @@ import java.util.List;
 public class SurvivorOne extends Survivors
 {
     private int speed = 4;
-    private GreenfootImage p1 = new GreenfootImage("survivorone.png");
+    private GreenfootImage p1 = new GreenfootImage("chiu.png");
     private SuperStatBar hpBar;
     
     public SurvivorOne(){
         startHP = 100;
         hp = startHP;
+        p1.scale(75,75);
         setImage(p1);
         // Create HP bar that stays at fixed position (null = don't follow)
         hpBar = new SuperStatBar(startHP, hp, null, 300, 40, 0, Color.GREEN, Color.RED, false, Color.YELLOW, 1);
@@ -37,6 +38,10 @@ public class SurvivorOne extends Survivors
         List<Zombie> nearbyZombies = this.getObjectsInRange(DETECTION, Zombie.class);
         for(Zombie z : nearbyZombies){
             moveAway(getAngleTowards(z), speed);
+        }
+        if(hp <= 0){
+            Greenfoot.setWorld(new EndScreen());
+            return;
         }
     }
     
