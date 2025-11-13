@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndScreen here.
+ * Triggers when survivor dies and has a button to link back to the StartWorld
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Paul
  */
 public class EndScreen extends World
 {

@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Button
-comment0.text=\r\n\ Author\ Paul\ assisted\ by\ Claude\r\n\ \r\n\ Takes\ in\ paramaters\ to\ fully\ customize\ the\ button\r\n\ text\ is\ the\ button\ text,\ height\ and\ width\ are\ the\ button\ dimensions,\r\n\ color\ is\ the\ button\ color,\ border\ width\ determines\ the\ border\ (subtracted\r\n\ from\ the\ main\ dimensions\ not\ added),\ borderColor\ will\ fill\ the\ border,\r\n\ fontSize\ and\ fontColor\ adjust\ the\ text\ on\ the\ button,\ id\ is\ an\ identification\r\n\ that\ can\ be\ called\ elsewhere\ to\ trigger\ an\ event\ and\ toggleable\ determines\r\n\ if\ you\ want\ the\ button\ to\ have\ a\ checkmark\ when\ clicked\ or\ not\ (true\ to\ have\ \r\n\ this\ feature\ and\ false\ to\ not)\ used\ to\ show\ selections\ from\ the\ user.\r\n\ \r\n
+comment0.text=\r\n\ Author\ Paul\ assisted\ by\ Claude\r\n\ \r\n\ Takes\ in\ paramaters\ to\ fully\ customize\ the\ button\r\n\ text\ is\ the\ button\ text,\ height\ and\ width\ are\ the\ button\ dimensions,\r\n\ color\ is\ the\ button\ color,\ border\ width\ determines\ the\ border\ (subtracted\r\n\ from\ the\ main\ dimensions\ not\ added),\ borderColor\ will\ fill\ the\ border,\r\n\ fontSize\ and\ fontColor\ adjust\ the\ text\ on\ the\ button,\ id\ is\ an\ identification\r\n\ that\ can\ be\ called\ elsewhere\ to\ trigger\ an\ event\ and\ toggleable\ determines\r\n\ if\ you\ want\ the\ button\ to\ have\ a\ checkmark\ when\ clicked\ or\ not\ (true\ to\ have\ \r\n\ this\ feature\ and\ false\ to\ not)\ used\ to\ show\ selections\ from\ the\ user.\r\n\ \r\n\ \r\n\ To\ use\ for\ anything\ other\ than\ the\ original\ Zombie\ Apocolypse\ game\ alter\ the\ handleClick()\ method\r\n
 comment1.params=text\ height\ width\ color\ borderWidth\ borderColor\ fontSize\ fontColor\ id\ toggleable
 comment1.target=Button(java.lang.String,\ int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color,\ java.lang.String,\ boolean)
+comment10.params=
+comment10.target=void\ handleClick()
 comment2.params=
 comment2.target=greenfoot.GreenfootImage\ createNormalImage()
 comment3.params=
@@ -18,5 +20,5 @@ comment7.target=java.lang.String\ getButtonID()
 comment8.params=
 comment8.target=boolean\ isSelected()
 comment9.params=
-comment9.target=void\ handleClick()
-numComments=10
+comment9.target=void\ drawSurvivors()
+numComments=11
