@@ -17,17 +17,20 @@ public abstract class Survivors extends SuperSmoothMover
     protected boolean bandages = false;
     protected boolean wall = false;
     protected boolean hasBat = false; // ensures bat is only spawned once
-    
+    protected boolean hasShield = false;
     
     private static final int ANGLE_SAMPLES = 36; 
-    private static final int LOOK_AHEAD_DISTANCE = 50; 
+    private static final int LOOK_AHEAD_DISTANCE = 100; 
     
     public void act()
     {
         getUserItems();
         if (melee && !hasBat) {
             spawnBat();
-            hasBat = true; // prevents multiple bats
+            
+        } 
+        if (shield && !hasShield){
+            spawnShield();
         }
     }
     
@@ -82,7 +85,7 @@ public abstract class Survivors extends SuperSmoothMover
             move(speed);
         }
     }
-    
+    //From Claude
     // Calculates the safest direction considering all zombies and boundaries
     private int findSafestDirection(List<Zombie> zombies, GameWorld world, int speed) {
         double bestScore = Double.NEGATIVE_INFINITY;
@@ -147,13 +150,22 @@ public abstract class Survivors extends SuperSmoothMover
         return startHP;
     }
     
-     protected void spawnBat() {
+    protected void spawnBat() {
         if (hasBat) return; // make sure we only spawn it once
         World w = getWorld();
         if (w != null) {
             Bat bat = new Bat(10, 100, 30, this);
             w.addObject(bat, getX(), getY());
             hasBat = true;
+        }
+    }
+    protected void spawnShield() {
+        if (hasShield) return; 
+        World w = getWorld();
+        if (w != null) {
+            Shield shield = new Shield(this);
+            w.addObject(shield, getX(), getY() );
+            hasShield = true;
         }
     }
 }

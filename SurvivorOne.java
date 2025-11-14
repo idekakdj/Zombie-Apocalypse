@@ -47,7 +47,11 @@ public class SurvivorOne extends Survivors
     }
     
     public void takeDamage(int damage){
-        hp -= damage;
+        if(super.shield){
+            hp -= (damage/2);
+        } else {
+            hp -= damage;
+        }
         if (hp < 0){
             hp = 0;  
         }

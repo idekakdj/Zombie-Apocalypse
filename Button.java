@@ -240,7 +240,7 @@ public class Button extends Actor
                 world.updateBoolean(5, isSelected);
             } else if (buttonID.equals("bandages")){
                 world.updateBoolean(6, isSelected);
-            } else if (buttonID.equals("armor")){
+            } else if (buttonID.equals("shield")){
                 world.updateBoolean(7, isSelected);
             } else if (buttonID.equals("wall")){
                 world.updateBoolean(8, isSelected);
