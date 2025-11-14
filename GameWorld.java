@@ -26,7 +26,7 @@ public class GameWorld extends World
     
     private void prepare() {
         //spawn survivor's movement boundary
-        SurvivorBoundary boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 500, 700);
+        boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
         //spawn survivors in middle
         SurvivorOne s1 = new SurvivorOne();
         addObject(s1, getWidth()/2, getHeight()/2);

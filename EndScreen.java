@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndScreen here.
+ * Triggers when survivor dies and has a button to link back to the StartWorld
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Paul
  */
 public class EndScreen extends World
 {
@@ -15,7 +14,12 @@ public class EndScreen extends World
      */
     public EndScreen()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 700, 1); 
+        setBackground("diedworld.png");
+        prepareButtons();
+    }
+    private void prepareButtons(){
+        Button returnToStart = new Button ("Back to Start", 80, 300, Color.WHITE, 5, Color.BLACK, 40, Color.BLACK,"backtostart",false);
+        addObject(returnToStart, getWidth()/2, 655);
     }
 }

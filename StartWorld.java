@@ -21,8 +21,11 @@ public class StartWorld extends World
         prepare();
     }
     private void prepare(){
-        Button chooseworld = new Button("Start", 100, 400, Color.GREEN, 5, Color.BLACK, 70,Color.WHITE,"choose",false);
+        Button chooseworld = new Button("Start", 100, 400, Color.GREEN, 5, Color.BLACK, 70,Color.WHITE,"start",false);
         addObject(chooseworld, getWidth()/2, (getHeight()/4) * 3);
+        
+    }
+    public void act(){
         
     }
 }
