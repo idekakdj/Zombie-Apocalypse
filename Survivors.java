@@ -13,8 +13,9 @@ public abstract class Survivors extends Actor
     protected final int DETECTION = 100;
     protected boolean melee = false;
     protected boolean gun = false;
-    protected boolean armor = false;
+    protected boolean shield = false;
     protected boolean bandages = false;
+    protected boolean wall = false;
     protected boolean hasBat = false; // ensures bat is only spawned once
     
     
@@ -23,17 +24,19 @@ public abstract class Survivors extends Actor
     
     public void act()
     {
-        //getUserItems();
+        getUserItems();
     }
     
     public void getUserItems(){
-        ChooseWorld world = (ChooseWorld) getWorld();
-        if (world != null){
-            melee = world.MELEE;
-            gun = world.GUN;
-            armor = world.SHIELD;
-            bandages = world.BANDAGES; 
-        }
+    World w = getWorld();
+    if (w instanceof GameWorld) {
+        GameWorld world = (GameWorld) w;
+        melee = world.melee;
+        gun = world.gun;
+        shield = world.shield;
+        bandages = world.bandages;
+        wall = world.wall;
+    }
     }
     
     //From Claude

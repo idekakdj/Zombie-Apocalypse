@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=GameWorld
 comment0.text=\r\n\ Is\ the\ main\ game\ world\ thats\ starts\ by\ spawning\ suvivovr\ in\ the\ middle\ and\ called\ zombie\ constructors\ to\ \r\n\ spawn\ zombies\ on\ edges\ of\ the\ screen\ and\ move\ them\ towards\ the\ survivor.\r\n\ \r\n\ @author\ Paul\ and\ Cayden\ \r\n
-comment1.params=
-comment1.target=GameWorld()
+comment1.params=s1\ s2\ s3\ melee\ gun\ shield\ bandages\ wall
+comment1.target=GameWorld(boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=x\ y

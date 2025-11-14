@@ -14,21 +14,46 @@ public class GameWorld extends World
      */
     SurvivorBoundary boundary;
     GreenfootImage world = new GreenfootImage("gameworld.png");
-    public GameWorld()
+    public boolean s1 = false;
+    public boolean s2 = false;
+    public boolean s3 = false;
+    public boolean melee = false;
+    public boolean gun = false;
+    public boolean shield = false;
+    public boolean bandages = false;
+    public boolean wall = false;
+    public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
-        super(1024, 700, 1); 
+        super(1024, 700, 1);
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+        this.melee = melee;
+        this.gun = gun;
+        this.shield = shield;
+        this.bandages = bandages;
+        this.wall = wall;
         setBackground(world);
         prepare();
         
     }
     
     private void prepare() {
+        
         //spawn survivor's movement boundary
         boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
         //spawn survivors in middle
-        SurvivorOne s1 = new SurvivorOne();
-        addObject(s1, getWidth()/2, getHeight()/2);
+        if(s1){
+            SurvivorOne s1 = new SurvivorOne();
+            addObject(s1, getWidth()/2, getHeight()/2);
+        } else if(s2){
+            SurvivorTwo s2 = new SurvivorTwo();
+            addObject(s2, getWidth()/2, getHeight()/2);
+        } else if( s3){
+            SurvivorThree s3 = new SurvivorThree();
+            addObject(s3, getWidth()/2, getHeight()/2);
+        }
         spawnRegular();
         spawnGiant();
         spawnPenguin();

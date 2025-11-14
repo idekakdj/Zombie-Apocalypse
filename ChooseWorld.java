@@ -51,6 +51,9 @@ public class ChooseWorld extends World
         Button wall = new Button("Choose Wall", 50,150, Color.GRAY, 5, Color.BLACK, 20, Color.WHITE,"wall",true);
         addObject(wall, ((getWidth()/3) * 2) + 45, 550 );
     }
+    public void startSimulation(){
+        Greenfoot.setWorld(new GameWorld(SURVIVOR_ONE,SURVIVOR_TWO, SURVIVOR_THREE, MELEE, GUN, SHIELD, BANDAGES, WALL));
+    }
     /*Buttons are number 1-9 on the choose world starting top left with Survivor One and going row by row like this.
      * 1, 2, 3
      * 4, 5, 6
