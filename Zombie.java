@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Zombies here.
  * 
- * @author (your name) 
+ * @author Cayden 
  * @version (a version number or a date)
  */
 public abstract class Zombie extends SuperSmoothMover

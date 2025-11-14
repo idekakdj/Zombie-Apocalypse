@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * @author (your name) 
+ * @author Cayden
  * @version (a version number or a date)
  */
 public class Explosion extends Effect
