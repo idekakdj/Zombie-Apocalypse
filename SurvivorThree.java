@@ -13,6 +13,7 @@ public class SurvivorThree extends Survivors
     private SuperStatBar hpBar;
     
     public SurvivorThree(){
+        enableStaticRotation();
         startHP = 200;
         hp = startHP;
         setImage(p3);

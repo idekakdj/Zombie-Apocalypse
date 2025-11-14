@@ -13,6 +13,7 @@ public class SurvivorOne extends Survivors
     private SuperStatBar hpBar;
     
     public SurvivorOne(){
+        enableStaticRotation();
         startHP = 100;
         hp = startHP;
         p1.scale(75,75);

@@ -13,6 +13,7 @@ public class SurvivorTwo extends Survivors
     private SuperStatBar hpBar;
     
     public SurvivorTwo(){
+        enableStaticRotation();
         startHP = 50;
         hp = startHP;
         setImage(p2);
