@@ -180,7 +180,11 @@ public class Button extends Actor
         }
         // The button in ChooseWorld that leads to the GameWorld
         if(buttonID.equals("simulation")){
-            Greenfoot.setWorld(new GameWorld());
+            World currentWorld = getWorld();
+            if(currentWorld instanceof ChooseWorld){
+                ChooseWorld chooseWorld = (ChooseWorld) currentWorld;
+                chooseWorld.startSimulation();
+            }
             return;
         }
         //The button on the end screen that returns to the start

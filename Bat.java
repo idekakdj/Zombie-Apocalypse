@@ -31,7 +31,7 @@ public class Bat extends Melee
         }
 
         // Start swing automatically when cooldown finishes
-        if (!isSwinging && coolDownTimer == 0) {
+        if (!isSwinging && coolDownTimer == 0 && isTouching(Zombie.class)) {
             startSwing();
         }
 

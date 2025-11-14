@@ -9,7 +9,7 @@ import java.util.List;
 public class SurvivorThree extends Survivors
 {
     private int speed = 2;
-    private GreenfootImage p3 = new GreenfootImage("survivorthree.png");
+    private GreenfootImage p3 = new GreenfootImage("chapman.png");
     private SuperStatBar hpBar;
     
     public SurvivorThree(){
