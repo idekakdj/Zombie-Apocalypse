@@ -26,6 +26,8 @@ public class GameWorld extends World
     public boolean nighttime;
     private final int DAY_COOLDOWN = 600;
     private final int NIGHT_COOLDOWN = 1200;
+    private int wavesCounter;
+    private int cooldown;
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
@@ -42,7 +44,9 @@ public class GameWorld extends World
         prepare();
         
     }
-    
+    public void act(){
+        dayNightCycle();
+    }
     private void prepare() {
         
         //spawn survivor's movement boundary
@@ -58,12 +62,56 @@ public class GameWorld extends World
             SurvivorThree s3 = new SurvivorThree();
             addObject(s3, getWidth()/2, getHeight()/2);
         }
-        spawnRegular();
-        spawnGiant();
-        spawnPenguin();
-        spawnBoss();
+        wavesCounter = 0;
     }
-    
+    //Counter for day and night. Spawns zombie waves at night.
+    private void dayNightCycle()
+    {
+        cooldown--;
+        
+        if (cooldown <= 0) {
+            if (daytime) {
+                daytime = false;
+                nighttime = true;
+                cooldown = NIGHT_COOLDOWN;
+                waves();  
+            } else {
+                nighttime = false;
+                daytime = true;
+                cooldown = DAY_COOLDOWN;
+            }
+        }
+    }
+    //Progressively harder waves up to 5.
+    public void waves(){
+        wavesCounter++;
+        if (wavesCounter == 1){
+            for(int i = 0; i < 5; i++){
+                spawnRegular();
+            }
+            spawnGiant();
+        } else if(wavesCounter == 2){
+            for(int i = 0; i < 8;i++){
+                spawnRegular();
+            }
+            spawnGiant();
+        } else if (wavesCounter == 3 ){
+            for(int i = 0;i < 6; i++){
+                spawnGiant();
+            }
+        } else if( wavesCounter == 4){
+            for (int i = 0; i < 12 ; i++){
+                spawnPenguin();
+            }
+        } else if ( wavesCounter == 5){
+            for (int i = 0; i < 4; i++){
+                spawnGiant();
+                spawnRegular();
+                spawnPenguin();
+            }
+            spawnBoss();
+        }
+    }
     public boolean isValidPosition(int x, int y){
         if (boundary == null){
             return true;
