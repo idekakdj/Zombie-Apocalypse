@@ -22,6 +22,10 @@ public class GameWorld extends World
     public boolean shield = false;
     public boolean bandages = false;
     public boolean wall = false;
+    public boolean daytime;
+    public boolean nighttime;
+    private final int DAY_COOLDOWN = 600;
+    private final int NIGHT_COOLDOWN = 1200;
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.

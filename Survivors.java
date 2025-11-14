@@ -149,7 +149,9 @@ public abstract class Survivors extends SuperSmoothMover
     public int getMaxHP() {
         return startHP;
     }
-    
+    public void heal(){
+        hp += 25;
+    }
     protected void spawnBat() {
         if (hasBat) return; // make sure we only spawn it once
         World w = getWorld();

@@ -9,11 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bandages extends Actor
 {
     private Survivors owner;
+    
     public Bandages(Survivors owner){
         this.owner = owner;
     }
     public void act()
     {
+       
+        owner.heal();
         
     }
 }
