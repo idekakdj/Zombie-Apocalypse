@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * A simple automatic melee weapon: the Bat.
  * Swings automatically on a timer, no player input.
+ * 
+ * Author Jayden assisted by Paul
  */
 public class Bat extends Melee
 {
@@ -12,14 +14,17 @@ public class Bat extends Melee
     private int rotationSpeed = 10;  // degrees per frame
     private int coolDownTimer = 0;   // frame counter
     private int startRotation = 0;
-    private int offsetX = 25;        // position offset from survivor
+    private int offsetX = 30;        // position offset from survivor
     private int offsetY = 0;
+    GreenfootImage bat = new GreenfootImage("baseballbat.png");
 
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         super(damage, coolDown, range);
         this.owner = owner;
         startRotation = 0;
+        bat.scale(30,50);
+        setImage(bat);
     }
 
     public void act()

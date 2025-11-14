@@ -19,10 +19,7 @@ public class SurvivorOne extends Survivors
         setImage(p1);
         // Create HP bar that stays at fixed position (null = don't follow)
         hpBar = new SuperStatBar(startHP, hp, null, 300, 40, 0, Color.GREEN, Color.RED, false, Color.YELLOW, 1);
-        if (super.melee && !hasBat) {
-            spawnBat();
-            hasBat = true; // prevents multiple bats
-        }
+        
     }
     
     @Override

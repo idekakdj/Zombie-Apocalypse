@@ -25,6 +25,10 @@ public abstract class Survivors extends Actor
     public void act()
     {
         getUserItems();
+        if (melee && !hasBat) {
+            spawnBat();
+            hasBat = true; // prevents multiple bats
+        }
     }
     
     public void getUserItems(){
