@@ -61,11 +61,11 @@ public class ChooseWorld extends World
      */
     public void updateBoolean(int buttonNum, boolean value){
         if(buttonNum == 1){
-            SURVIVOR_ONE = value;
+            SURVIVOR_THREE = value;
         } else if (buttonNum == 2){
             SURVIVOR_TWO = value;
         } else if (buttonNum == 3){
-            SURVIVOR_THREE = value;
+            SURVIVOR_ONE = value;
         } else if (buttonNum == 4){
             GUN = value;
         } else if (buttonNum == 5){
