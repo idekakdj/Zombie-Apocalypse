@@ -6,7 +6,7 @@ import java.util.List;
  * @author Paul with assistance from Claude 
  * 
  */
-public abstract class Survivors extends Actor
+public abstract class Survivors extends SuperSmoothMover
 {
     protected int startHP;
     protected int hp;

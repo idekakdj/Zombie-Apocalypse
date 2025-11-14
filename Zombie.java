@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-
 /**
  * Write a description of class Zombies here.
  * 
@@ -30,6 +29,35 @@ public abstract class Zombie extends SuperSmoothMover
     
     public void act()
     {
+        // Test code: Press SPACE to kill zombies in order (Penguin -> Regular -> Giant -> Boss)
+        if ("space".equals(Greenfoot.getKey())) {
+            World world = getWorld();
+            if (world != null) {
+                Penguin penguin = (Penguin) world.getObjects(Penguin.class).stream().findFirst().orElse(null);
+                if (penguin != null) {
+                    penguin.health = 0;
+                }
+                else {
+                    Regular regular = (Regular) world.getObjects(Regular.class).stream().findFirst().orElse(null);
+                    if (regular != null) {
+                        regular.health = 0;
+                    }
+                    else {
+                        Giant giant = (Giant) world.getObjects(Giant.class).stream().findFirst().orElse(null);
+                        if (giant != null) {
+                            giant.health = 0;
+                        }
+                        else {
+                            Boss boss = (Boss) world.getObjects(Boss.class).stream().findFirst().orElse(null);
+                            if (boss != null) {
+                                boss.health = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         if (!isDead()) {
             moveZombie();
             checkHitSurvivor(); 
