@@ -14,6 +14,7 @@ public class GameWorld extends World
      */
     SurvivorBoundary boundary;
     GreenfootImage world = new GreenfootImage("gameworld.png");
+    
     public GameWorld()
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
