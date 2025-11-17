@@ -13,6 +13,7 @@ public class GameWorld extends World
      * Spawns survivor in middle of world and zombies on edges.
      */
     SurvivorBoundary boundary;
+    ScoreTracker scoretracker;
     GreenfootImage world = new GreenfootImage("gameworld.png");
     public boolean s1 = false;
     public boolean s2 = false;
@@ -26,7 +27,7 @@ public class GameWorld extends World
     public boolean nighttime;
     private final int DAY_COOLDOWN = 600;
     private final int NIGHT_COOLDOWN = 1200;
-    private int wavesCounter;
+    public int wavesCounter;
     private int cooldown;
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
@@ -51,6 +52,8 @@ public class GameWorld extends World
         
         //spawn survivor's movement boundary
         boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
+        scoretracker = new ScoreTracker(300, 40, Color.BLUE, 3, Color.BLACK);
+        addObject(scoretracker,(getWidth()/3) * 2, 30);
         //spawn survivors in middle
         if(s1){
             SurvivorOne s1 = new SurvivorOne();

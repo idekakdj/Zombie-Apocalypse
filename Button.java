@@ -12,7 +12,8 @@ import greenfoot.*;
  * this feature and false to not) used to show selections from the user.
  * 
  * 
- * To use for anything other than the original Zombie Apocolypse game alter the handleClick() method
+ * To use for anything other than the original Zombie Apocolypse game alter the 
+ * handleClick() method, delete GreenfootImages and add your own click sound.
  */
 public class Button extends Actor
 {

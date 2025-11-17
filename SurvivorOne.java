@@ -26,7 +26,7 @@ public class SurvivorOne extends Survivors
     @Override
     protected void addedToWorld(World w) {
         // Add HP bar at top center of world
-        w.addObject(hpBar, w.getWidth() / 2, 30);
+        w.addObject(hpBar, w.getWidth() / 3, 30);
         hpBar.update(hp);
     }
     

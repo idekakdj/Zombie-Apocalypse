@@ -27,9 +27,7 @@ public abstract class Survivors extends SuperSmoothMover
         getUserItems();
         if (melee && !hasBat) {
             spawnBat();
-            
-        } 
-        if (shield && !hasShield){
+        } else if (shield && !hasShield){
             spawnShield();
         }
     }
