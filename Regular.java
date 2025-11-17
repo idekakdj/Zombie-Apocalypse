@@ -23,6 +23,8 @@ public class Regular extends Zombie
     
     public Regular() {
         health = REG_HEALTH;
+        maxHealth = REG_HEALTH;
+
         speed = REG_SPEED;
         damage = REG_DAMAGE;
         
@@ -34,6 +36,9 @@ public class Regular extends Zombie
         rightImage = new GreenfootImage("Zombie.png");
         rightImage.mirrorHorizontally();
         rightImage.scale(70, 90);
+        
+                hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
+
         
         setImage(leftImage);
     }

@@ -23,6 +23,10 @@ public class Giant extends Zombie
         hpBar = new SuperStatBar(); 
        
         health = GIANT_HEALTH;
+        maxHealth = GIANT_HEALTH;  
+ 
+    hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
+
         speed = GIANT_SPEED;
         damage = GIANT_DAMAGE;
         

@@ -1,79 +1,63 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
- * A simple automatic melee weapon: the Bat.
- * Swings automatically on a timer, no player input.
+ * Very simple Bat weapon.
+ * Automatically damages any nearby zombies at a set cooldown rate.
+ * No user input, no animation — just simple logic.
  */
 public class Bat extends Melee
 {
-    private Survivors owner;     // Survivor this bat follows
-    private boolean isSwinging = false;
-    private int swingAngle = 0;
-    private int rotationSpeed = 10;  // degrees per frame
-    private int coolDownTimer = 0;   // frame counter
-    private int startRotation = 0;
-    private int offsetX = 25;        // position offset from survivor
-    private int offsetY = 0;
+    private Survivors owner;      // Survivor holding this bat
+    private int attackCooldown;   // cooldown timer
 
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         super(damage, coolDown, range);
         this.owner = owner;
-        startRotation = 0;
+        attackCooldown = 0;
     }
 
     public void act()
     {
         followOwner();
-
-        if (coolDownTimer > 0) {
-            coolDownTimer--;
-        }
-
-        // Start swing automatically when cooldown finishes
-        if (!isSwinging && coolDownTimer == 0) {
-            startSwing();
-        }
-
-        if (isSwinging) {
-            performSwing();
+        if (attackCooldown > 0) attackCooldown--;
+        else {
+            attackNearbyZombies();
+            attackCooldown = coolDown;  // reset timer
         }
     }
 
+    /** Keeps the bat beside the survivor */
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {
-            setLocation(owner.getX() + offsetX, owner.getY() + offsetY);
+            setLocation(owner.getX() + 20, owner.getY());  // small offset to side
         }
     }
 
-    private void startSwing()
+    /** Damages zombies that touch or are close to the bat */
+    private void attackNearbyZombies()
     {
-        isSwinging = true;
-        swingAngle = -90;
-        coolDownTimer = coolDown;
-        playSound();
-    }
+        // Find all zombies within the bat's range
+        List<Zombie> zombies = getObjectsInRange(range, Zombie.class);
 
-    private void performSwing()
-    {
-        setRotation(startRotation + swingAngle);
-        swingAngle += rotationSpeed;
-
-        if (swingAngle >= 90) {
-            isSwinging = false;
-            setRotation(startRotation);
+        for (Zombie z : zombies) {
+            z.takeDamage(damage);
+            if (z.isDead()) {
+                z.killZombie();
+            }
         }
     }
-
+    
     public void playSound()
     {
-        // Optional: add sound file if desired
-        // Greenfoot.playSound("bat_hit.wav");
+        
     }
-
+    
     public void attack()
     {
-        // (Optional) automatic hit detection, not needed if visual only
+        
     }
 }
+

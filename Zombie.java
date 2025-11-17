@@ -11,13 +11,34 @@ public abstract class Zombie extends SuperSmoothMover
 {
     protected int damage;
     protected int health;
+    protected int maxHealth;
     protected double speed;
     protected int attackCooldown;
+    protected SuperStatBar hpBar; // Each zombie will have its own HP bar
+
+    /**
+     * Method automatically called by Greenfoot when zombie is added to world
+     * This ensures the HP bar gets added to the world
+     */
+    @Override
+    protected void addedToWorld(World w)
+    {
+        if (hpBar != null)
+        {
+            w.addObject(hpBar, getX(), getY() - 40);
+            hpBar.update(health);
+        }
+    }
     
-    // Jayden added code superstatbar:
+    // Updated method to keep HP bar positioned above zombie
     protected void updateHpBar()
     {
-        
+        if (hpBar != null && getWorld() != null)
+        {
+            hpBar.update(health);
+            // Keep it floating above the zombie's head
+            hpBar.setLocation(getX(), getY() - 40);
+        }
     }
     
     protected abstract void attack();
@@ -33,6 +54,7 @@ public abstract class Zombie extends SuperSmoothMover
         if (!isDead()) {
             moveZombie();
             checkHitSurvivor(); 
+            updateHpBar(); // Update HP bar every act
             if (attackCooldown > 0) {
                 attackCooldown--;
             }
@@ -43,6 +65,7 @@ public abstract class Zombie extends SuperSmoothMover
     
     protected void takeDamage(int dmg) {
         health -= dmg;
+        updateHpBar(); // Update immediately when taking damage
     }
     
     protected boolean isDead() {
@@ -50,7 +73,13 @@ public abstract class Zombie extends SuperSmoothMover
     }
     
     protected void killZombie() {
-        getWorld().removeObject(this);
+       // Remove HP bar first, then zombie
+        if (hpBar != null && getWorld() != null) {
+            getWorld().removeObject(hpBar);
+        }
+        if (getWorld() != null) {
+            getWorld().removeObject(this);
+        }
     }
     
     protected void moveZombie() {  

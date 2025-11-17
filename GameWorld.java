@@ -19,6 +19,8 @@ public class GameWorld extends World
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
         super(1024, 700, 1); 
         setBackground(world);
+        // CRITICAL: Set paint order so HP bars appear on top
+        setPaintOrder(SuperStatBar.class, Survivors.class, Zombie.class);
         prepare();
         
     }
@@ -91,7 +93,7 @@ public class GameWorld extends World
     }
     
     private void spawnPenguin() {
-        Penguin zombie = new Penguin();
+       Penguin zombie = new Penguin();
         
         // Randomly choose which edge (0=top, 1=right, 2=bottom, 3=left)
         int edge = Greenfoot.getRandomNumber(4);
@@ -111,7 +113,7 @@ public class GameWorld extends World
             y = Greenfoot.getRandomNumber(getHeight());
         }
         
-        addObject(zombie, x, y);
+       addObject(zombie, x, y);
     }
     
     private void spawnBoss() {

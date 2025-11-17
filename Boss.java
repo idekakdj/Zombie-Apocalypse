@@ -23,6 +23,7 @@ public class Boss extends Zombie
         hpBar = new SuperStatBar(); 
        
         health = BOSS_HEALTH;
+        maxHealth = BOSS_HEALTH;
         speed = BOSS_SPEED;
         damage = BOSS_DAMAGE;
         
@@ -34,6 +35,9 @@ public class Boss extends Zombie
         rightImage = new GreenfootImage("Big Boss Boy.png");
         rightImage.mirrorHorizontally();
         rightImage.scale(230, 230);
+        
+            hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
+
         
         setImage(leftImage);
     }

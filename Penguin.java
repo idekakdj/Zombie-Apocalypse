@@ -6,7 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Penguin extends Zombie
+/**
+ 
+ */public class Penguin extends Zombie
 {
     private final static int PENG_HEALTH = 50;
     private final static double PENG_SPEED = 4;
