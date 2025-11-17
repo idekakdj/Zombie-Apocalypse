@@ -10,7 +10,7 @@ public class Regular extends Zombie
 {
     private final static int REG_HEALTH = 100;
     private final static double REG_SPEED = 2;
-    private final static int REG_DAMAGE = 1;
+    private final static int REG_DAMAGE = 2;
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
