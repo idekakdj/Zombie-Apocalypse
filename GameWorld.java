@@ -29,6 +29,9 @@ public class GameWorld extends World
     private final int NIGHT_COOLDOWN = 1200;
     public int wavesCounter;
     private int cooldown;
+    
+    private int actCount;
+    
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
@@ -43,15 +46,22 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, Survivors.class, Zombie.class);
+        setPaintOrder(SuperStatBar.class, Nighttime.class, Survivors.class, Zombie.class);
         prepare();
         
+        actCount = 0;
+        // Initialize to daytime at start
+        daytime = true;
+        nighttime = false;
+        cooldown = DAY_COOLDOWN;
     }
-    public void act(){
+    
+    public void act() {
+        actCount++;
         dayNightCycle();
     }
+
     private void prepare() {
-        
         //spawn survivor's movement boundary
         boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
         scoretracker = new ScoreTracker(300, 40, Color.BLUE, 3, Color.BLACK);
@@ -69,6 +79,7 @@ public class GameWorld extends World
         }
         wavesCounter = 0;
     }
+    
     //Counter for day and night. Spawns zombie waves at night.
     private void dayNightCycle()
     {
@@ -76,17 +87,25 @@ public class GameWorld extends World
         
         if (cooldown <= 0) {
             if (daytime) {
+                // Switch to nighttime
                 daytime = false;
                 nighttime = true;
                 cooldown = NIGHT_COOLDOWN;
+                
+                // Spawn nighttime visual effect
+                addObject(new Nighttime(), 512, 400);
+                
+                // Spawn zombie waves
                 waves();  
             } else {
+                // Switch to daytime
                 nighttime = false;
                 daytime = true;
                 cooldown = DAY_COOLDOWN;
             }
         }
     }
+    
     //Progressively harder waves up to 5.
     public void waves(){
         wavesCounter++;
@@ -117,6 +136,7 @@ public class GameWorld extends World
             spawnBoss();
         }
     }
+    
     public boolean isValidPosition(int x, int y){
         if (boundary == null){
             return true;

@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Giant extends Zombie
 {
-    private final static int GIANT_HEALTH = 250;
+    private final static int GIANT_HEALTH = 150;
     private final static double GIANT_SPEED = 1;
-    private final static int GIANT_DAMAGE = 10;
+    private final static int GIANT_DAMAGE = 5;
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
