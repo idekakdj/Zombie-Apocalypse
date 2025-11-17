@@ -10,12 +10,13 @@ public class Bat extends Melee
 {
     private Survivors owner;      // Survivor holding this bat
     private int attackCooldown;   // cooldown timer
-
+    GreenfootImage bat = new GreenfootImage("baseballbat.png");
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         super(damage, coolDown, range);
         this.owner = owner;
         attackCooldown = 0;
+        setImage(bat);
     }
 
     public void act()
