@@ -9,11 +9,16 @@ public class Bat extends Melee
     private int spinTimer = 0;   // how long to spin
     private int spinSpeed = 25;  // degrees per frame
 
+    private Survivors owner;      // Survivor holding this bat
+    private int attackCooldown;   // cooldown timer
+    GreenfootImage bat = new GreenfootImage("baseballbat.png");
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         super(damage, coolDown, range);
         this.owner = owner;
         this.attackCooldown = 0;
+        attackCooldown = 0;
+        setImage(bat);
     }
 
     public void act()
