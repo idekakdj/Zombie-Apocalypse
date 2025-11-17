@@ -46,8 +46,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, Nighttime.class, Survivors.class, Zombie.class);
-        setPaintOrder(SuperStatBar.class, Melee.class, Shield.class, Bandages.class, Survivors.class, Zombie.class);
+        setPaintOrder(SuperStatBar.class, Nighttime.class, Melee.class, Shield.class, Bandages.class, Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
