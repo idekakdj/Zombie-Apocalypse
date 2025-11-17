@@ -1,61 +1,69 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.List;
 
-/**
- * Very simple Bat weapon.
- * Automatically damages any nearby zombies at a set cooldown rate.
- * No user input, no animation — just simple logic.
- */
 public class Bat extends Melee
 {
-    private Survivors owner;      // Survivor holding this bat
-    private int attackCooldown;   // cooldown timer
+    private Survivors owner;
+    private int attackCooldown;
+
+    private int spinTimer = 0;   // how long to spin
+    private int spinSpeed = 25;  // degrees per frame
 
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         super(damage, coolDown, range);
         this.owner = owner;
-        attackCooldown = 0;
+        this.attackCooldown = 0;
     }
 
     public void act()
     {
         followOwner();
-        if (attackCooldown > 0) attackCooldown--;
+
+        // Handle spin animation every frame
+        if (spinTimer > 0) {
+            spinTimer--;
+            turn(spinSpeed);
+        }
+
+        if (attackCooldown > 0) {
+            attackCooldown--;
+        } 
         else {
             attackNearbyZombies();
-            attackCooldown = coolDown;  // reset timer
+            attackCooldown = coolDown;  // reset cooldown
         }
     }
+    
+    public void attack()
+    {
+        
+    }
 
-    /** Keeps the bat beside the survivor */
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {
-            setLocation(owner.getX() + 20, owner.getY());  // small offset to side
+            setLocation(owner.getX() + 20, owner.getY());
         }
     }
 
-    /** Damages zombies that touch or are close to the bat */
     private void attackNearbyZombies()
     {
-        // Find all zombies within the bat's range
         List<Zombie> zombies = getObjectsInRange(range, Zombie.class);
 
-        for (Zombie z : zombies) {
-            z.takeDamage(damage);
-            if (z.isDead()) {
-                z.killZombie();
+        if (!zombies.isEmpty()) {
+            // Deal damage
+            for (Zombie z : zombies) {
+                z.takeDamage(damage);
+                if (z.isDead()) z.killZombie();
             }
+
+            // Start spin animation
+            spinTimer = 10;   // spin for 10 frames (adjust if you want)
         }
     }
     
     public void playSound()
-    {
-        
-    }
-    
-    public void attack()
     {
         
     }
