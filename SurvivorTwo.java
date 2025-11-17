@@ -1,18 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * SurvivorTwo - Fast survivor with lower HP
+ * SurvivorTwo - Fast survivor with lower HP, named Jayden
  * 
  * @author Paul
- * @version 1.0
+ * 
  */
 public class SurvivorTwo extends Survivors
 {
     private int speed = 6;
-    private GreenfootImage p2 = new GreenfootImage("survivortwo.png");
+    private GreenfootImage p2 = new GreenfootImage("jayden.png");
     private SuperStatBar hpBar;
     
     public SurvivorTwo(){
+        enableStaticRotation();
         startHP = 50;
         hp = startHP;
         setImage(p2);
@@ -23,26 +24,33 @@ public class SurvivorTwo extends Survivors
     @Override
     protected void addedToWorld(World w) {
         // Add HP bar at top center of world
-        w.addObject(hpBar, w.getWidth() / 2, 30);
+        w.addObject(hpBar, w.getWidth() / 3, 30);
         hpBar.update(hp);
     }
     
     public void act()
     {
+        if(hp <= 0){
+            Greenfoot.setWorld(new EndScreen());
+            return;
+        }
         super.act();
         
         // Update HP bar
         hpBar.update(hp);
 
-        List<Zombie> nearbyZombies = this.getObjectsInRange(DETECTION, Zombie.class);
-        for(Zombie z : nearbyZombies){
-            moveAway(getAngleTowards(z), speed);
-        }
+        moveIntelligently(speed);
     }
     
     public void takeDamage(int damage){
-        hp -= damage;
-        if (hp < 0) hp = 0;
+        if(super.shield){
+            hp -= (damage/2);
+        } else {
+            hp -= damage;
+        }
+        if (hp < 0){
+            hp = 0;
+        } 
         hpBar.update(hp);
     }
 }

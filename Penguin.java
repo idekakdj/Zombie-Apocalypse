@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Special here.
  * 
- * @author (your name) 
+ * @author Cayden
  * @version (a version number or a date)
  */
 /**

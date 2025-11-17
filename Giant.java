@@ -3,13 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Giant here.
  * 
- * @author (your name) 
+ * @author Cayden
  * @version (a version number or a date)
  */
 public class Giant extends Zombie
 {
     private final static int GIANT_HEALTH = 250;
-    private final static double GIANT_SPEED = 0.5;
+    private final static double GIANT_SPEED = 1;
     private final static int GIANT_DAMAGE = 10;
     
     private GreenfootImage leftImage;
