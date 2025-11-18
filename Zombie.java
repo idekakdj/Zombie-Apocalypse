@@ -7,7 +7,10 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public abstract class Zombie extends SuperSmoothMover
+
 {
+     protected int startHP;
+    protected int hp;
     protected int damage;
     protected int health;
     protected int maxHealth;
@@ -19,17 +22,9 @@ public abstract class Zombie extends SuperSmoothMover
      * Method automatically called by Greenfoot when zombie is added to world
      * This ensures the HP bar gets added to the world
      */
-    @Override
-    protected void addedToWorld(World w)
-    {
-        if (hpBar != null)
-        {
-            w.addObject(hpBar, getX(), getY() - 40);
-            hpBar.update(health);
-        }
-    }
     
     // Updated method to keep HP bar positioned above zombie
+    
     protected void updateHpBar()
     {
         if (hpBar != null && getWorld() != null)
@@ -50,35 +45,7 @@ public abstract class Zombie extends SuperSmoothMover
     
     public void act()
     {
-        // Test code: Press SPACE to kill zombies in order (Penguin -> Regular -> Giant -> Boss)
-        if ("space".equals(Greenfoot.getKey())) {
-            World world = getWorld();
-            if (world != null) {
-                Penguin penguin = (Penguin) world.getObjects(Penguin.class).stream().findFirst().orElse(null);
-                if (penguin != null) {
-                    penguin.health = 0;
-                }
-                else {
-                    Regular regular = (Regular) world.getObjects(Regular.class).stream().findFirst().orElse(null);
-                    if (regular != null) {
-                        regular.health = 0;
-                    }
-                    else {
-                        Giant giant = (Giant) world.getObjects(Giant.class).stream().findFirst().orElse(null);
-                        if (giant != null) {
-                            giant.health = 0;
-                        }
-                        else {
-                            Boss boss = (Boss) world.getObjects(Boss.class).stream().findFirst().orElse(null);
-                            if (boss != null) {
-                                boss.health = 0;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
+                
         if (!isDead()) {
             moveZombie();
             checkHitSurvivor(); 
@@ -91,9 +58,11 @@ public abstract class Zombie extends SuperSmoothMover
         }
     }
     
-    protected void takeDamage(int dmg) {
+    public void takeDamage(int dmg) {
         health -= dmg;
-        updateHpBar(); // Update immediately when taking damage
+        if (hpBar != null) {
+            hpBar.update(health);
+        }
     }
     
     protected boolean isDead() {
