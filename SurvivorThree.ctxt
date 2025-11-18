@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SurvivorThree
-comment0.text=\r\n\ SurvivorThree\ -\ Tank\ survivor\ with\ high\ HP,\ named\ Paul\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
+comment0.text=\n\ SurvivorThree\ -\ Tank\ survivor\ with\ high\ HP,\ named\ Paul\n\ \n\ @author\ Paul\n\ \n
 comment1.params=
 comment1.target=SurvivorThree()
 comment2.params=w

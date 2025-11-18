@@ -19,6 +19,8 @@ public abstract class Melee extends Weapon
     public Melee(int damage, int coolDown, int range)
     {
         this.range = range;
+        this.coolDown = coolDown;
+        this.damage = damage;
     }
     
     public void act()

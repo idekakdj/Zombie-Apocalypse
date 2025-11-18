@@ -1,18 +1,15 @@
 #BlueJ class context
 comment0.target=Bat
-comment0.text=\r\n\ Very\ simple\ Bat\ weapon.\r\n\ Automatically\ damages\ any\ nearby\ zombies\ at\ a\ set\ cooldown\ rate.\r\n\ No\ user\ input,\ no\ animation\ \u2014\ just\ simple\ logic.\r\n\ \r\n\ @author\ Jayden\ \r\n
 comment1.params=damage\ coolDown\ range\ owner
 comment1.target=Bat(int,\ int,\ int,\ Survivors)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ followOwner()
-comment3.text=Keeps\ the\ bat\ beside\ the\ survivor
+comment3.target=void\ attack()
 comment4.params=
-comment4.target=void\ attackNearbyZombies()
-comment4.text=Damages\ zombies\ that\ touch\ or\ are\ close\ to\ the\ bat
+comment4.target=void\ followOwner()
 comment5.params=
-comment5.target=void\ playSound()
+comment5.target=void\ attackNearbyZombies()
 comment6.params=
-comment6.target=void\ attack()
+comment6.target=void\ playSound()
 numComments=7
