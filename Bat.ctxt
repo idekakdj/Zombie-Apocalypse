@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Bat
-comment0.text=\r\n\ Very\ simple\ Bat\ weapon.\r\n\ Automatically\ damages\ any\ nearby\ zombies\ at\ a\ set\ cooldown\ rate.\r\n\ No\ user\ input,\ no\ animation\ \u2014\ just\ simple\ logic.\r\n
+comment0.text=\r\n\ Very\ simple\ Bat\ weapon.\r\n\ Automatically\ damages\ any\ nearby\ zombies\ at\ a\ set\ cooldown\ rate.\r\n\ No\ user\ input,\ no\ animation\ \u2014\ just\ simple\ logic.\r\n\ \r\n\ @author\ Jayden\ \r\n
 comment1.params=damage\ coolDown\ range\ owner
 comment1.target=Bat(int,\ int,\ int,\ Survivors)
 comment2.params=

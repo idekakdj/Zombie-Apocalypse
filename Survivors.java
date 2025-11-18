@@ -18,6 +18,7 @@ public abstract class Survivors extends SuperSmoothMover
     protected boolean wall = false;
     protected boolean hasBat = false; // ensures bat is only spawned once
     protected boolean hasShield = false;
+    protected boolean hasBandages = false;
     
     private static final int ANGLE_SAMPLES = 36; 
     private static final int LOOK_AHEAD_DISTANCE = 100; 
@@ -29,6 +30,8 @@ public abstract class Survivors extends SuperSmoothMover
             spawnBat();
         } else if (shield && !hasShield){
             spawnShield();
+        } else if(bandages && !hasBandages){
+            
         }
     }
     
@@ -166,6 +169,15 @@ public abstract class Survivors extends SuperSmoothMover
             Shield shield = new Shield(this);
             w.addObject(shield, getX(), getY() );
             hasShield = true;
+        }
+    }
+    protected void spawnBandages(){
+        if (hasBandages) return;
+        World w = getWorld();
+        if (w != null) {
+            Bandages bandages = new Bandages(this);
+            w.addObject(bandages, getX(), getY() );
+            hasBandages = true;
         }
     }
 }

@@ -5,6 +5,8 @@ import java.util.List;
  * Very simple Bat weapon.
  * Automatically damages any nearby zombies at a set cooldown rate.
  * No user input, no animation — just simple logic.
+ * 
+ * @author Jayden 
  */
 public class Bat extends Melee
 {

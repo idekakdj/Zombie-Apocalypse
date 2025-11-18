@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SuperSmoothMover
-comment0.text=\n\ A\ precise-coordinate\ Actor\ with\ sub-pixel\ accuracy.\n\ Keeps\ left/right\ movement\ perfectly\ symmetric\ using\n\ "round\ away\ from\ zero"\ logic\ for\ double\u2192int\ conversion.\n\ \n\ V2\ \n
+comment0.text=\r\n\ A\ precise-coordinate\ Actor\ with\ sub-pixel\ accuracy.\r\n\ Keeps\ left/right\ movement\ perfectly\ symmetric\ using\r\n\ "round\ away\ from\ zero"\ logic\ for\ double\u2192int\ conversion.\r\n\ \r\n\ V2\ \r\n
 comment1.params=
 comment1.target=SuperSmoothMover()
 comment10.params=angle
@@ -11,7 +11,7 @@ comment12.params=x\ y
 comment12.target=void\ turnTowards(int,\ int)
 comment13.params=tx\ ty\ n
 comment13.target=void\ moveTowards(int,\ int,\ double)
-comment13.text=\n\ Moves\ this\ Actor\ 'n'\ pixels\ toward\ a\ target\ location\ (tx,\ ty).\n\ If\ the\ distance\ is\ less\ than\ n,\ it\ moves\ directly\ to\ the\ target.\n
+comment13.text=\r\n\ Moves\ this\ Actor\ 'n'\ pixels\ toward\ a\ target\ location\ (tx,\ ty).\r\n\ If\ the\ distance\ is\ less\ than\ n,\ it\ moves\ directly\ to\ the\ target.\r\n
 comment14.params=a
 comment14.target=void\ turnTowards(greenfoot.Actor)
 comment15.params=

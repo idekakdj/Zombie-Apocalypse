@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Is the main game world thats starts by spawning suvivovr in the middle and called zombie constructors to 
  * spawn zombies on edges of the screen and move them towards the survivor.
  * 
- * @author Paul and Cayden 
+ * @author Paul assisted by Cayden 
  */
 public class GameWorld extends World
 {
@@ -91,7 +91,9 @@ public class GameWorld extends World
                 daytime = false;
                 nighttime = true;
                 cooldown = NIGHT_COOLDOWN;
-                
+                if(bandages){
+                    
+                }
                 // Spawn nighttime visual effect
                 addObject(new Nighttime(), 512, 400);
                 
@@ -102,6 +104,9 @@ public class GameWorld extends World
                 nighttime = false;
                 daytime = true;
                 cooldown = DAY_COOLDOWN;
+                if(bandages){
+                    
+                }
             }
         }
     }
