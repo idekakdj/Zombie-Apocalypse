@@ -16,6 +16,7 @@ public class SurvivorThree extends Survivors
         enableStaticRotation();
         startHP = 200;
         hp = startHP;
+        p3.scale(85,85);
         setImage(p3);
         // Create HP bar that stays at fixed position (null = don't follow)
         hpBar = new SuperStatBar(startHP, hp, null, 300, 40, 0, Color.ORANGE, Color.BLACK, false, Color.YELLOW, 1);
