@@ -1,11 +1,9 @@
 #BlueJ class context
 comment0.target=StartWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ StartWorld\ here.\n\ \n\ @author\ Paul\n\ \n
+comment0.text=\n\ ZOMBIE\ APOCALYPSE\ SIMULATION\:\n\ \n\ In\ this\ dystopian\ world\ there\ are\ few\ survivors\ who\ have\ yet\ to\ become\ zombies\n\ from\ the\ radiation\ in\ the\ world.\ The\ survivors\ Paul,\ Jayden\ and\ Cayden\ must\ choose\n\ items\ to\ help\ them\ survive\ as\ long\ as\ possible.\n\ \n\ The\ items\ affect\ the\ length\ of\ the\ simulation\ as\ you\ are\ allowed\ one\ weapon\ \n\ and\ two\ support\ items.\ Some\ combinations\ are\ a\ lot\ better\ than\ others.\ \n\ \n\ Features\:\n\ -\ Each\ survivor\ has\ different\ hp\ and\ speed\ values\ that\ also\ affect\ success\ in\ the\n\ simulation.\ They\ have\ their\ own\ hp\ bars\ at\ the\ top\ left\ of\ the\ screen.\n\ \n\ -\ Weapons\ will\ upgrade\ after\ a\ certain\ score\ milestone\ and\ help\ with\ later\ waves.\n\ \n\ -\ The\ game\ ends\ if\ the\ survivor\ dies\ or\ survives\ past\ wave\ 5\ and\ there\ are\ two\ ending\n\ screens\ and\ dialogue\ if\ the\ survivor\ wins.\n\ \n\ -\ There\ is\ dialogue\ at\ the\ start\ to\ explain\ a\ brief\ story\ and\ instructions\ for\n\ the\ simulation.\n\ \n\ -\ Has\ a\ fully\ reusable\ Button\ class\ that\ can\ be\ imported\ to\ other\ projects\ and\ is\ \n\ used\ to\ move\ worlds\ and\ select\ all\ items\ to\ be\ used.\n\ \n\ \n\ \n\ @author\ Paul\n\ \n
 comment1.params=
 comment1.target=StartWorld()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ StartWorld.\n\ \n
 comment2.params=
 comment2.target=void\ prepare()
-comment3.params=
-comment3.target=void\ act()
-numComments=4
+numComments=3

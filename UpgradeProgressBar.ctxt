@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UpgradeProgressBar
-comment0.text=\r\n\ \r\n\ @author\ Paul\r\n\ \r\n\ \r\n\ Takes\ in\ parameters\ to\ be\ reusable\ and\ make\ different\ upgrade\ progress\ bars.\r\n\ width\ is\ the\ width\ of\ the\ bar\r\n\ height\ is\ the\ height\ of\ the\ bar\r\n\ color\ is\ the\ main\ portion\ of\ the\ bar's\ color\r\n\ borderWidth\ is\ how\ many\ px\ you\ want\ your\ border\ (\ won't\ draw\ if\ \=\ 0)\r\n\ borderColor\ sets\ the\ border\ color\r\n\ text\ is\ the\ text\ on\ the\ progress\ bar\r\n
+comment0.text=\n\ \n\ @author\ Paul\n\ \n\ \n\ Takes\ in\ parameters\ to\ be\ reusable\ and\ make\ different\ upgrade\ progress\ bars.\n\ width\ is\ the\ width\ of\ the\ bar\n\ height\ is\ the\ height\ of\ the\ bar\n\ color\ is\ the\ main\ portion\ of\ the\ bar's\ color\n\ borderWidth\ is\ how\ many\ px\ you\ want\ your\ border\ (\ won't\ draw\ if\ \=\ 0)\n\ borderColor\ sets\ the\ border\ color\n\ text\ is\ the\ text\ on\ the\ progress\ bar\n
 comment1.params=width\ height\ color\ borderWidth\ borderColor\ text
 comment1.target=UpgradeProgressBar(int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color,\ java.lang.String)
 comment2.params=

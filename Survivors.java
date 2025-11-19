@@ -157,7 +157,7 @@ public abstract class Survivors extends SuperSmoothMover
         if (hasBat) return; // make sure we only spawn it once
         World w = getWorld();
         if (w != null) {
-            Bat bat = new Bat(10, 100, 30, this);
+            Bat bat = new Bat(50, 50, 30, this);
             w.addObject(bat, getX(), getY());
             hasBat = true;
         }

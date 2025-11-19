@@ -1,8 +1,14 @@
 #BlueJ class context
 comment0.target=Bandages
-comment0.text=\n\ Write\ a\ description\ of\ class\ Bandages\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ @author\ Paul\n\ \n\ \n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses.\n\ \n
 comment1.params=owner
 comment1.target=Bandages(Survivors)
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=
+comment3.target=void\ hide()
+comment4.params=
+comment4.target=void\ show()
+comment5.params=
+comment5.target=void\ followOwner()
+numComments=6
