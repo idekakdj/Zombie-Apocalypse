@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ChooseWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ ChooseWorld\ here.\n\ \n\ @author\ Paul\ \n\ \n\ The\ world\ to\ choose\ your\ survivor\ and\ items\ for\ the\ simulation.\n\ You\ can\ pick\ on\ survivor\ and\ three\ items.\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ChooseWorld\ here.\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n\ The\ world\ to\ choose\ your\ survivor\ and\ items\ for\ the\ simulation.\r\n\ You\ can\ pick\ on\ survivor\ and\ three\ items.\r\n
 comment1.params=
 comment1.target=ChooseWorld()
 comment2.params=
@@ -9,5 +9,5 @@ comment3.params=
 comment3.target=void\ startSimulation()
 comment4.params=buttonNum\ value
 comment4.target=void\ updateBoolean(int,\ boolean)
-comment4.text=Buttons\ are\ number\ 1-9\ on\ the\ choose\ world\ starting\ top\ left\ with\ Survivor\ One\ and\ going\ row\ by\ row\ like\ this.\n\ 1,\ 2,\ 3\n\ 4,\ 5,\ 6\n\ 7,\ 8,\ 9\n
+comment4.text=Buttons\ are\ number\ 1-9\ on\ the\ choose\ world\ starting\ top\ left\ with\ Survivor\ One\ and\ going\ row\ by\ row\ like\ this.\r\n\ 1,\ 2,\ 3\r\n\ 4,\ 5,\ 6\r\n\ 7,\ 8,\ 9\r\n
 numComments=5

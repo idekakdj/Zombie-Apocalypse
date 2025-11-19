@@ -22,18 +22,28 @@ public class Bandages extends Actor
     }
     public void act()
     {
+        updateDaytimeStatus();
         World world = getWorld();
         followOwner();
+        
         if(daytime){
             show();
             usageTime--;
-            useCounter--;
-            if(usageTime == 0 && useCounter != 0){
-            owner.heal();            
+            if(usageTime == 0 && useCounter > 0){
+                owner.heal();
+                useCounter--;
+                usageTime = 100; 
             } 
+        } else {
+            hide();
         }
-        
-        usageTime = 100;
+    }
+    private void updateDaytimeStatus() {
+        World world = getWorld();
+        if (world != null && world instanceof GameWorld) {
+            GameWorld gameWorld = (GameWorld) world;
+            this.daytime = gameWorld.daytime;
+        }
     }
     public void hide(){
         setImage(new GreenfootImage(1,1));

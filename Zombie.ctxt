@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Zombie
-comment0.text=\n\ Write\ a\ description\ of\ class\ Zombies\ here.\n\ \n\ @author\ Cayden\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Zombies\ here.\r\n\ \r\n\ @author\ Cayden\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ updateHpBar()
-comment1.text=\n\ Method\ automatically\ called\ by\ Greenfoot\ when\ zombie\ is\ added\ to\ world\n\ This\ ensures\ the\ HP\ bar\ gets\ added\ to\ the\ world\n
+comment1.text=\r\n\ Method\ automatically\ called\ by\ Greenfoot\ when\ zombie\ is\ added\ to\ world\r\n\ This\ ensures\ the\ HP\ bar\ gets\ added\ to\ the\ world\r\n
 comment10.params=
 comment10.target=void\ moveZombie()
 comment2.params=
