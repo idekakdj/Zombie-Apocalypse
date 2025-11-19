@@ -31,7 +31,7 @@ public abstract class Survivors extends SuperSmoothMover
         } else if (shield && !hasShield){
             spawnShield();
         } else if(bandages && !hasBandages){
-            
+            spawnBandages();
         }
     }
     
