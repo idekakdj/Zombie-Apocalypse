@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 
     
-    public class ScoreTracker extends Actor
+public class ScoreTracker extends Actor
 {
     private int score = 0;
     private int waveNum = 0;

@@ -166,10 +166,15 @@ public class Button extends Actor
         if(buttonID.equals("start")){
             World world = getWorld();
             drawSurvivors();
+            
             Button continueButton = new Button ("Continue", 80, 200, Color.GRAY, 5, Color.BLACK, 40, Color.WHITE,"continue",false);
+            continueButton.clickCounter = 0; 
             world.addObject(continueButton, 920, 600);
+            
             Button backButton = new Button("Back", 80,200, Color.GRAY, 5, Color.BLACK, 40, Color.WHITE,"back",false);
+            backButton.clickCounter = 0; 
             world.addObject(backButton, 104, 600);
+            
             left.scale(700,700);
             world.getBackground().drawImage(left, 320 , -100);
             world.getBackground().setColor(Color.BLACK);
@@ -199,6 +204,10 @@ public class Button extends Actor
         if(buttonID.equals("continue")){
             World world = getWorld();
             clickCounter++;
+            Button backButton = findBackButton(world);
+            if (backButton != null) {
+                backButton.clickCounter = this.clickCounter;
+            }
             if(clickCounter == 1){
                 world.setBackground("startworld.png");
                 drawSurvivors();
@@ -230,7 +239,22 @@ public class Button extends Actor
         if (buttonID.equals("back")){
             World world = getWorld();
             clickCounter--;
-            if(clickCounter == 1){
+            Button continueButton = findContinueButton(world);
+            if (continueButton != null) {
+                continueButton.clickCounter = this.clickCounter;
+            }
+            if(clickCounter == 0){
+                world.setBackground("startworld.png");
+                drawSurvivors();
+                left.scale(700,700);
+                world.getBackground().drawImage(left, 320 , -100);
+                world.getBackground().setColor(Color.BLACK);
+                world.getBackground().setFont(new Font("Arial", 24));
+                world.getBackground().drawString("In this reality after World War Three", 530, 180);
+                world.getBackground().drawString("the nuclear radiation caused two thirds", 530, 230);
+                world.getBackground().drawString("of humanity to turn into zombies,", 530, 280);
+                world.getBackground().drawString("leaving the rest of us to survive...", 530, 330);
+            } else if (clickCounter == 1){
                 world.setBackground("startworld.png");
                 drawSurvivors();
                 middle.scale(700,700);
@@ -241,7 +265,7 @@ public class Button extends Actor
                 world.getBackground().drawString("with a mismatch of random items that", (world.getWidth()/2) - 200, 160);
                 world.getBackground().drawString("may or may not be of use against the", (world.getWidth()/2) - 200, 210);
                 world.getBackground().drawString("swarms of zombies every night...", (world.getWidth()/2) - 200, 260);
-            } else if (clickCounter == 2){
+            } else if(clickCounter == 2){
                 world.setBackground("startworld.png");
                 drawSurvivors();
                 right.scale(700,700);
@@ -252,18 +276,10 @@ public class Button extends Actor
                 world.getBackground().drawString("one weapon and two support items to", (world.getWidth()/2) - 365, 230);
                 world.getBackground().drawString("try and survive as long as possible.", (world.getWidth()/2) - 365, 280);
                 world.getBackground().drawString("Good luck. Death is guaranteed...", (world.getWidth()/2) - 365, 330);
-            } else if(clickCounter == 0){
-                left.scale(700,700);
-                world.getBackground().drawImage(left, 320 , -100);
-                world.getBackground().setColor(Color.BLACK);
-                world.getBackground().setFont(new Font("Arial", 24));
-                world.getBackground().drawString("In this reality after World War Three", 530, 180);
-                world.getBackground().drawString("the nuclear radiation caused two thirds", 530, 230);
-                world.getBackground().drawString("of humanity to turn into zombies,", 530, 280);
-                world.getBackground().drawString("leaving the rest of us to survive...",530,330);
             } else if (clickCounter == -1){
                 Greenfoot.setWorld(new StartWorld());
             }
+            return;
         }
         World currentWorld = getWorld();
         // the buttons on ChooseWorld that allow you to pick a survivor and items. has toggleable set to true to show you selected something
@@ -287,5 +303,22 @@ public class Button extends Actor
                 world.updateBoolean(8, isSelected);
             }
         }
+    }
+    private Button findContinueButton(World world) {
+        for (Button button : world.getObjects(Button.class)) {
+            if (button.getButtonID().equals("continue")) {
+                return button;
+            }
+        }
+        return null;
+    }
+    
+    private Button findBackButton(World world) {
+        for (Button button : world.getObjects(Button.class)) {
+            if (button.getButtonID().equals("back")) {
+                return button;
+            }
+        }
+        return null;
     }
 }

@@ -46,7 +46,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Melee.class, Shield.class, Bandages.class, Survivors.class, Zombie.class);
+        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Bandages.class,Melee.class, Shield.class, Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
@@ -79,6 +79,11 @@ public class GameWorld extends World
             SurvivorThree s3 = new SurvivorThree();
             addObject(s3, getWidth()/2, getHeight()/2);
         }
+        
+        if(wall) {
+            drawWalls();   
+        }
+        
         wavesCounter = 0;
     }
     
@@ -245,5 +250,51 @@ public class GameWorld extends World
         }
         
         addObject(zombie, x, y);
+    }
+    
+    private void drawWalls() {
+        int width = 400;
+        int height = 300;
+        
+        // Use world dimensions, not image dimensions
+        int worldWidth = getWidth();
+        int worldHeight = getHeight();
+        
+        // Calculate center position
+        int centerX = worldWidth / 2;
+        int centerY = worldHeight / 2;
+        
+        // Calculate rectangle boundaries
+        int left = centerX - width / 2;
+        int right = centerX + width / 2;
+        int top = centerY - height / 2;
+        int bottom = centerY + height / 2;
+        
+        // Get wall image size to determine spacing
+        Wall tempWall = new Wall();
+        int wallSize = tempWall.getImage().getWidth();
+        
+        // Use smaller spacing to ensure no gaps
+        int spacing = wallSize / 2;  // Place walls much closer together
+        
+        // Draw top wall
+        for (int x = left; x <= right; x += spacing) {
+            addObject(new Wall(), x, top);
+        }
+        
+        // Draw bottom wall
+        for (int x = left; x <= right; x += spacing) {
+            addObject(new Wall(), x, bottom);
+        }
+        
+        // Draw left wall - include full height
+        for (int y = top; y <= bottom; y += spacing) {
+            addObject(new Wall(), left, y);
+        }
+        
+        // Draw right wall - include full height
+        for (int y = top; y <= bottom; y += spacing) {
+            addObject(new Wall(), right, y);
+        }
     }
 }
