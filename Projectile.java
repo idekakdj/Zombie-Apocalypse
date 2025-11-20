@@ -1,31 +1,35 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Projectile here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Projectile extends Actor
 {
-    /**
-     * Act - do whatever the Projectile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int speed = 7;    // straight-line speed
+    private int damage;
+
+    public Projectile(int damage)
+    {
+        this.damage = damage;
+
+        GreenfootImage img = new GreenfootImage("bullet.png");
+        img.scale(10, 10);
+        setImage(img);
+    }
+
     public void act()
     {
-        // Add your action code here.
-        move (5);
-        Zombie z = (Zombie) getOneIntersectingObject(Zombie.class);
+        // Move straight right (change to move(…) if you want direction)
+        setLocation(getX() + speed, getY());
+
+        Regular z = (Regular)getOneIntersectingObject(Regular.class);
         if (z != null)
         {
-            z.takeDamage(10);    // reduce zombie's health
-            if (z.isDead()) {
-                z.killZombie();      // remove dead zombie
-            }
-                        getWorld().removeObject(this); // remove the projectile after hitting
-
-        
+            z.takeDamage(damage);
+            getWorld().removeObject(this);
+            return;
         }
-}
+
+        if (isAtEdge())
+        {
+            getWorld().removeObject(this);
+        }
+    }
 }

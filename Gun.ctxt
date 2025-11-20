@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Gun
-comment0.text=\n\ Write\ a\ description\ of\ class\ Gun\ here.\n\ \n\ @author\ Jayden\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=damage\ maxAmmo\ fireRate
-comment1.target=Gun(int,\ int,\ int)
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Gun\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.params=damage\ fireRate\ owner
+comment1.target=Gun(int,\ int,\ Survivors)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ attack()
+comment3.target=void\ shootStraight()
 comment4.params=
-comment4.target=void\ playSound()
-numComments=5
+comment4.target=void\ attack()
+comment5.params=
+comment5.target=void\ playSound()
+numComments=6
