@@ -11,7 +11,9 @@ public class SurvivorThree extends Survivors
     private int speed = 2;
     private GreenfootImage p3 = new GreenfootImage("chapman.png");
     private SuperStatBar hpBar;
-    
+    public SuperStatBar getHPBar(){
+        return hpBar;
+    }    
     public SurvivorThree(){
         enableStaticRotation();
         startHP = 200;

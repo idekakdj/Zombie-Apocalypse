@@ -24,19 +24,19 @@ public abstract class Weapon extends Actor
    
     public Weapon()
     {
-        //
+        
        
     }
     
     public void act()
     {
-        // Add your action code here.
+        
     }
     
   
     
     public abstract void attack();
     
-    public abstract void playSound();
+
     
 }

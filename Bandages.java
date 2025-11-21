@@ -13,7 +13,7 @@ public class Bandages extends Actor
     private int usageTime = 100;
     private int useCounter;
     GreenfootImage bandages = new GreenfootImage("bandages.png");
-    private final int offsetX = 20;
+    private final int offsetY = -40;
     private boolean daytime;
     public Bandages(Survivors owner){
         this.owner = owner;
@@ -31,6 +31,13 @@ public class Bandages extends Actor
             usageTime--;
             if(usageTime == 0 && useCounter > 0){
                 owner.heal();
+                if (owner instanceof SurvivorOne) {
+                    ((SurvivorOne) owner).getHPBar().update(owner.getHP());
+                } else if (owner instanceof SurvivorTwo) {
+                    ((SurvivorTwo) owner).getHPBar().update(owner.getHP());
+                } else if (owner instanceof SurvivorThree) {
+                    ((SurvivorThree) owner).getHPBar().update(owner.getHP());
+                }
                 useCounter--;
                 usageTime = 100; 
             } 
@@ -54,7 +61,7 @@ public class Bandages extends Actor
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {
-            setLocation(owner.getX() - offsetX, owner.getY());
+            setLocation(owner.getX(), owner.getY() - offsetY);
         }
     }
 }

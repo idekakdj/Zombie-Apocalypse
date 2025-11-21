@@ -33,7 +33,7 @@ public class Gun extends Weapon
         }
 
         // Look for zombies in a radius
-        List<Regular> zombies = getObjectsInRange(250, Regular.class);
+        List<Regular> zombies = getObjectsInRange(500, Regular.class);
 
         // If zombies are near, fire straight
         if (!zombies.isEmpty())
@@ -45,10 +45,10 @@ public class Gun extends Weapon
 
     private void shootStraight()
     {
-        Projectile p = new Projectile(damage);
+        //Projectile p = new Projectile(damage);
 
         // Spawn in front of gun (adjust as needed)
-        getWorld().addObject(p, getX() + 20, getY());
+        //getWorld().addObject(p, getX() + 20, getY());
 
         // No targeting needed ― projectile manages its own movement
     }
@@ -58,8 +58,5 @@ public class Gun extends Weapon
         
     }
     
-    public void playSound()
-    {
-        
-    }
+    
 }
