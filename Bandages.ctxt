@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Bandages
-comment0.text=\r\n\ @author\ Paul\r\n\ \r\n\ \r\n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses.\r\n\ \r\n
+comment0.text=\r\n\ @author\ Paul\r\n\ \r\n\ \r\n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses\ and\ can\ only\ be\ used\r\n\ once\ at\ a\ time\ during\ the\ day.\r\n\ \r\n
 comment1.params=owner
 comment1.target=Bandages(Survivors)
 comment2.params=

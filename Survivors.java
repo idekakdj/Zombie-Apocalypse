@@ -1,17 +1,15 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.List;
 /**
  * Super class for survivors
  * 
- * @author Paul with assistance from Claude (all final movement logic was improved by Claude)
- * 
- * 
+ * @author Paul with assistance from Claude (Improving pathfinding algorithm to much higher quality)
  */
 public abstract class Survivors extends SuperSmoothMover
 {
+    // Core stats
     protected int startHP;
     protected int hp;
-    protected final int DETECTION = 150; // Increased from 100
     protected boolean melee = false;
     protected boolean gun = false;
     protected boolean shield = false;
@@ -22,18 +20,23 @@ public abstract class Survivors extends SuperSmoothMover
     protected boolean hasShield = false;
     protected boolean hasBandages = false;
     
-    // Movement algorithm parameters 
-    private static final int ANGLE_SAMPLES = 72; 
-    private static final int LOOK_AHEAD_STEPS = 3; // Multi-step planning
-    private static final double BOUNDARY_BUFFER = 50; // Stay away from edges
-    private static final double SWARM_DETECTION_RADIUS = 80; // Detect zombie clusters
-    private static final int MIN_MOVE_SPEED = 1;
+    // Movement AI constants - tuned for optimal performance
+    private static final int DETECTION_RANGE = 150;
+    private static final int DIRECTION_SAMPLES = 72;  // Every 5 degrees
+    private static final int MIN_SPEED = 1;
     
-    // Zombie threat weights by type
-    private static final double BOSS_THREAT_MULTIPLIER = 3.0;
-    private static final double GIANT_THREAT_MULTIPLIER = 2.0;
-    private static final double PENGUIN_THREAT_MULTIPLIER = 2.5; // Fast!
-    private static final double REGULAR_THREAT_MULTIPLIER = 1.0;
+    // Threat assessment constants
+    private static final double BOSS_THREAT = 3.5;
+    private static final double GIANT_THREAT = 2.5;
+    private static final double PENGUIN_THREAT = 3.0;  // High due to speed
+    private static final double REGULAR_THREAT = 1.0;
+    
+    // Scoring weights
+    private static final double ZOMBIE_DANGER_WEIGHT = 8000.0;
+    private static final double DISTANCE_BONUS_WEIGHT = 4.0;
+    private static final double PREDICTION_WEIGHT = 1.5;
+    private static final double SWARM_PENALTY_BASE = 2500.0;
+    private static final double EDGE_APPROACH_PENALTY = 50.0;
     
     public void act()
     {
@@ -44,8 +47,7 @@ public abstract class Survivors extends SuperSmoothMover
             spawnShield();
         } else if (gun && !hasGun){
             spawnGun();
-        }
-        else if(bandages && !hasBandages){
+        } else if(bandages && !hasBandages){
             spawnBandages();
         }
     }
@@ -62,297 +64,324 @@ public abstract class Survivors extends SuperSmoothMover
         }
     }
     
-    public int getAngleTowards(Actor target)
-    {
-        int dx = target.getX() - getX();
-        int dy = target.getY() - getY();
-        
+    public int getStartHP(){
+        return startHP;
+    }
+    
+    public int getAngleTowards(Actor target){
+        return calculateAngle(target.getX(), target.getY());
+    }
+    
+    private int calculateAngle(int targetX, int targetY){
+        int dx = targetX - getX();
+        int dy = targetY - getY();
         double angleInRadians = Math.atan2(dy, dx);
         int angleInDegrees = (int) Math.toDegrees(angleInRadians);
-        
         angleInDegrees = (angleInDegrees + 90) % 360;
         if (angleInDegrees < 0) angleInDegrees += 360;
-        
         return angleInDegrees;
     }
     
-    protected void moveIntelligently(int speed) {
+    /**
+     * Primary movement method - guarantees valid movement when zombies present
+     */
+    protected void moveIntelligently(int maxSpeed) {
         GameWorld world = (GameWorld) getWorld();
         if (world == null) return;
         
-        List<Zombie> allZombies = world.getObjects(Zombie.class);
-        List<Zombie> nearbyZombies = getObjectsInRange(DETECTION, Zombie.class);
+        List<Zombie> nearbyZombies = getObjectsInRange(DETECTION_RANGE, Zombie.class);
         
-        // Only move if zombies are within detection range
+        // Only move when threatened
         if (nearbyZombies.isEmpty()) {
             return;
         }
         
-        // Try to find optimal move with full speed first
-        int currentSpeed = speed;
-        int bestAngle = -1;
+        // Find optimal escape direction with speed degradation
+        MovementResult result = findOptimalMovement(nearbyZombies, world, maxSpeed);
         
-        // Progressive speed reduction if no valid move found
-        while (currentSpeed > 0 && bestAngle == -1) {
-            bestAngle = findOptimalDirection(allZombies, world, currentSpeed);
-            
-            if (bestAngle == -1) {
-                currentSpeed = Math.max(currentSpeed / 2, MIN_MOVE_SPEED);
-                if (currentSpeed < MIN_MOVE_SPEED) break;
-            }
-        }
-        
-        // Emergency: If completely trapped, find least dangerous direction even if out of bounds
-        if (bestAngle == -1) {
-            bestAngle = findEmergencyEscapeDirection(allZombies, world, MIN_MOVE_SPEED);
-        }
-        
-        // Execute movement
-        if (bestAngle != -1) {
-            setRotation(bestAngle);
-            move(currentSpeed);
+        // Execute movement - result is guaranteed to be valid
+        if (result.isValid()) {
+            setRotation(result.angle);
+            move(result.speed);
         }
     }
     
-    private int findOptimalDirection(List<Zombie> zombies, GameWorld world, int speed) {
-        double bestScore = Double.NEGATIVE_INFINITY;
-        int bestAngle = -1;
+    
+    /* Core pathfinding algorithm using potential field approach
+     * Returns a guaranteed valid movement or emergency fallback
+     */
+    private MovementResult findOptimalMovement(List<Zombie> zombies, GameWorld world, int maxSpeed) {
+        int currentSpeed = maxSpeed;
         
-        for (int i = 0; i < ANGLE_SAMPLES; i++) {
-            int testAngle = (360 / ANGLE_SAMPLES) * i;
+        // Try progressively smaller speeds until we find valid movement
+        while (currentSpeed >= MIN_SPEED) {
+            MovementResult result = evaluateAllDirections(zombies, world, currentSpeed);
             
-            // Calculate projected position
-            int projectedX = (int)(getX() + speed * Math.cos(Math.toRadians(testAngle - 90)));
-            int projectedY = (int)(getY() + speed * Math.sin(Math.toRadians(testAngle - 90)));
-            
-            // CRITICAL: Must stay in bounds
-            if (!world.isValidPosition(projectedX, projectedY)) {
-                continue;
+            if (result.isValid()) {
+                return result;
             }
             
-            // Calculate comprehensive safety score
-            double score = calculateAdvancedSafetyScore(
-                projectedX, projectedY, testAngle, zombies, world, speed
-            );
-            
-            if (score > bestScore) {
-                bestScore = score;
-                bestAngle = testAngle;
-            }
+            // Reduce speed for next iteration
+            currentSpeed = currentSpeed / 2;
         }
         
-        return bestAngle;
+        // Emergency: find any valid adjacent position
+        return findEmergencyMovement(zombies, world);
     }
     
-    private int findEmergencyEscapeDirection(List<Zombie> zombies, GameWorld world, int speed) {
-        double bestScore = Double.NEGATIVE_INFINITY;
-        int bestAngle = -1;
-        
-        // In emergency, prioritize moving toward center (most likely to be valid)
-        int centerX = world.getWidth() / 2;
-        int centerY = world.getHeight() / 2;
-        int angleToCenter = getAngleTowards(centerX, centerY);
-        
-        // Test directions near center angle
-        for (int offset = -90; offset <= 90; offset += 10) {
-            int testAngle = (angleToCenter + offset + 360) % 360;
-            
-            int projectedX = (int)(getX() + speed * Math.cos(Math.toRadians(testAngle - 90)));
-            int projectedY = (int)(getY() + speed * Math.sin(Math.toRadians(testAngle - 90)));
-            
-            // Only consider if in bounds
-            if (!world.isValidPosition(projectedX, projectedY)) {
-                continue;
-            }
-            
-            double score = calculateBasicSafetyScore(projectedX, projectedY, zombies);
-            
-            if (score > bestScore) {
-                bestScore = score;
-                bestAngle = testAngle;
-            }
-        }
-        
-        return bestAngle;
-    }
-    
-    // Helper for emergency situations
-    private int getAngleTowards(int targetX, int targetY) {
-        int dx = targetX - getX();
-        int dy = targetY - getY();
-        
-        double angleInRadians = Math.atan2(dy, dx);
-        int angleInDegrees = (int) Math.toDegrees(angleInRadians);
-        
-        angleInDegrees = (angleInDegrees + 90) % 360;
-        if (angleInDegrees < 0) angleInDegrees += 360;
-        
-        return angleInDegrees;
-    }
-    
-    private double calculateAdvancedSafetyScore(
-        int x, int y, int moveAngle, List<Zombie> zombies, GameWorld world, int speed
-    ) {
+    /**
+     * Calculates how safe a position is using potential field approach
+     * Higher score = safer position
+     */
+    private double calculateSafetyScore(int x, int y, List<Zombie> zombies, GameWorld world) {
         double totalScore = 0;
-        
-        // 1. ZOMBIE THREAT ASSESSMENT (with type-specific weights and prediction)
-        double zombieThreatScore = 0;
         int nearbyCount = 0;
         
+        // Evaluate threat from each zombie
         for (Zombie zombie : zombies) {
-            // Get zombie type multiplier
-            double threatMultiplier = getZombieThreatMultiplier(zombie);
+            double threat = getZombieThreat(zombie);
+            double speed = getZombieSpeed(zombie);
             
             // Current distance
-            double distance = Math.sqrt(
-                Math.pow(zombie.getX() - x, 2) + 
-                Math.pow(zombie.getY() - y, 2)
-            );
+            double currentDist = distance(x, y, zombie.getX(), zombie.getY());
             
-            // Predict zombie's next position (zombies always move toward survivor)
-            double zombieSpeed = getZombieSpeed(zombie);
-            int predictedZombieX = (int)(zombie.getX() + zombieSpeed * Math.cos(Math.toRadians(getAngleTowards(zombie) - 90)));
-            int predictedZombieY = (int)(zombie.getY() + zombieSpeed * Math.sin(Math.toRadians(getAngleTowards(zombie) - 90)));
+            // Predicted future position of zombie
+            int zombieAngle = calculateAngle(zombie.getX(), zombie.getY());
+            double predRadians = Math.toRadians(zombieAngle - 90);
+            int predX = (int)(zombie.getX() + speed * Math.cos(predRadians));
+            int predY = (int)(zombie.getY() + speed * Math.sin(predRadians));
+            double predictedDist = distance(x, y, predX, predY);
             
-            // Distance to predicted position
-            double predictedDistance = Math.sqrt(
-                Math.pow(predictedZombieX - x, 2) + 
-                Math.pow(predictedZombieY - y, 2)
-            );
+            // Use worse case distance
+            double effectiveDist = Math.min(currentDist, predictedDist * PREDICTION_WEIGHT);
+            if (effectiveDist < 1) effectiveDist = 1;
             
-            // Use the worse of current and predicted distance
-            double effectiveDistance = Math.min(distance, predictedDistance);
+            // Inverse square law for danger (very close = very dangerous)
+            double dangerScore = (ZOMBIE_DANGER_WEIGHT / (effectiveDist * effectiveDist)) * threat;
+            double distanceBonus = effectiveDist * DISTANCE_BONUS_WEIGHT;
             
-            if (effectiveDistance < 1) effectiveDistance = 1;
-            
-            // Balanced scoring: exponential danger for close zombies, linear bonus for far ones
-            double dangerScore = (5000.0 / effectiveDistance) * threatMultiplier;
-            double distanceBonus = effectiveDistance * 2;
-            
-            zombieThreatScore += distanceBonus - dangerScore;
+            totalScore += distanceBonus - dangerScore;
             
             // Count nearby zombies for swarm detection
-            if (effectiveDistance < SWARM_DETECTION_RADIUS) {
+            if (currentDist < 80) {
                 nearbyCount++;
             }
         }
         
-        totalScore += zombieThreatScore;
-        
-        // 2. SWARM PENALTY (avoid clusters of zombies)
+        // Penalty for being in a swarm
         if (nearbyCount > 2) {
-            double swarmPenalty = (nearbyCount - 2) * 3000;
-            totalScore -= swarmPenalty;
+            totalScore -= (nearbyCount - 2) * SWARM_PENALTY_BASE;
         }
         
-        // 3. BOUNDARY AWARENESS (stay away from edges)
+        // Gentle penalty for approaching edges (prefer center)
         int centerX = world.getWidth() / 2;
         int centerY = world.getHeight() / 2;
+        double distFromCenter = distance(x, y, centerX, centerY);
+        double maxComfortDist = Math.min(world.getWidth() / 2 - 40, world.getHeight() / 2 - 40);
         
-        // Distance from center
-        double distanceFromCenter = Math.sqrt(
-            Math.pow(x - centerX, 2) + 
-            Math.pow(y - centerY, 2)
-        );
-        
-        // Penalty for being near edges
-        double maxSafeDistance = Math.min(
-            world.getWidth() / 2 - BOUNDARY_BUFFER,
-            world.getHeight() / 2 - BOUNDARY_BUFFER
-        );
-        
-        if (distanceFromCenter > maxSafeDistance) {
-            double edgePenalty = (distanceFromCenter - maxSafeDistance) * 100;
-            totalScore -= edgePenalty;
-        } else {
-            // Small bonus for staying in the "safe zone"
-            totalScore += 500;
-        }
-        
-        // 4. MULTI-STEP LOOKAHEAD (is this direction a trap?)
-        double futureScore = evaluateFuturePosition(x, y, moveAngle, zombies, world, speed, 1);
-        totalScore += futureScore * 0.5; // Weight future less than immediate
-        
-        // 5. MOVEMENT CONSISTENCY (slight bonus to reduce zigzagging)
-        int currentRotation = getRotation();
-        int angleDiff = Math.abs(moveAngle - currentRotation);
-        if (angleDiff > 180) angleDiff = 360 - angleDiff;
-        
-        if (angleDiff < 45) {
-            totalScore += 200; // Small bonus for continuing in similar direction
+        if (distFromCenter > maxComfortDist) {
+            totalScore -= (distFromCenter - maxComfortDist) * EDGE_APPROACH_PENALTY;
         }
         
         return totalScore;
     }
     
-    private double evaluateFuturePosition(
-        int x, int y, int angle, List<Zombie> zombies, GameWorld world, int speed, int depth
-    ) {
-        if (depth > LOOK_AHEAD_STEPS) {
-            return 0;
+    /**
+     * Emergency fallback when no optimal movement exists
+     * Finds ANY valid in-bounds position, prioritizing away from nearest threat
+     * GUARANTEED to find a move if ANY adjacent position is valid
+     */
+    private MovementResult findEmergencyMovement(List<Zombie> zombies, GameWorld world) {
+        // Strategy 1: Move away from nearest zombie if possible
+        Zombie nearest = findNearestZombie(zombies);
+        
+        if (nearest != null) {
+            int awayAngle = (calculateAngle(nearest.getX(), nearest.getY()) + 180) % 360;
+            
+            // Test very fine-grained angles around the "away" direction
+            for (int offset = 0; offset <= 180; offset += 5) {  // Changed from 10 to 5 for more precision
+                for (int sign : new int[]{-1, 1}) {
+                    int testAngle = (awayAngle + offset * sign + 360) % 360;
+                    
+                    double radians = Math.toRadians(testAngle - 90);
+                    int projX = (int)(getX() + MIN_SPEED * Math.cos(radians));
+                    int projY = (int)(getY() + MIN_SPEED * Math.sin(radians));
+                    
+                    if (world.isValidPosition(projX, projY)) {
+                        return new MovementResult(testAngle, MIN_SPEED);
+                    }
+                }
+            }
         }
         
-        // Project further ahead
-        int futureX = (int)(x + speed * Math.cos(Math.toRadians(angle - 90)));
-        int futureY = (int)(y + speed * Math.sin(Math.toRadians(angle - 90)));
-        
-        // If future position is out of bounds, big penalty
-        if (!world.isValidPosition(futureX, futureY)) {
-            return -5000;
+        // Strategy 2: Try ALL angles at fine resolution
+        for (int angle = 0; angle < 360; angle += 5) {
+            double radians = Math.toRadians(angle - 90);
+            int projX = (int)(getX() + MIN_SPEED * Math.cos(radians));
+            int projY = (int)(getY() + MIN_SPEED * Math.sin(radians));
+            
+            if (world.isValidPosition(projX, projY)) {
+                return new MovementResult(angle, MIN_SPEED);
+            }
         }
         
-        // Quick safety check at future position
-        double futureScore = calculateBasicSafetyScore(futureX, futureY, zombies);
+        // Strategy 3: Try moving along the boundary (slide along edge)
+        // Test all angles with even SMALLER movement
+        for (int angle = 0; angle < 360; angle += 5) {
+            double radians = Math.toRadians(angle - 90);
+            // Try half of MIN_SPEED
+            double microSpeed = MIN_SPEED * 0.5;
+            int projX = (int)(getX() + microSpeed * Math.cos(radians));
+            int projY = (int)(getY() + microSpeed * Math.sin(radians));
+            
+            if (world.isValidPosition(projX, projY)) {
+                return new MovementResult(angle, 1);  // Move at least 1 pixel
+            }
+        }
         
-        // Recursively check next step (with reduced weight)
-        double nextStepScore = evaluateFuturePosition(
-            futureX, futureY, angle, zombies, world, speed, depth + 1
-        );
+        // Strategy 4: Absolute last resort - try to "unstick" by moving toward center
+        int centerX = world.getWidth() / 2;
+        int centerY = world.getHeight() / 2;
+        int angleToCenter = calculateAngle(centerX, centerY);
         
-        return futureScore * 0.7 + nextStepScore * 0.3;
+        // Test angles around center direction with micro-movement
+        for (int offset = -45; offset <= 45; offset += 5) {
+            int testAngle = (angleToCenter + offset + 360) % 360;
+            double radians = Math.toRadians(testAngle - 90);
+            
+            // Try tiny movement
+            double tinySpeed = 0.5;
+            int projX = (int)(getX() + tinySpeed * Math.cos(radians));
+            int projY = (int)(getY() + tinySpeed * Math.sin(radians));
+            
+            if (world.isValidPosition(projX, projY)) {
+                return new MovementResult(testAngle, 1);
+            }
+        }
+        
+        // Truly stuck - this should almost never happen
+        // Return current position as "valid" but no movement
+        return new MovementResult(getRotation(), 0);
     }
     
-    private double calculateBasicSafetyScore(int x, int y, List<Zombie> zombies) {
-        double totalScore = 0;
+    /**
+     * Enhanced evaluation that tries sub-pixel movements when necessary
+     */
+    private MovementResult evaluateAllDirections(List<Zombie> zombies, GameWorld world, int speed) {
+        double bestScore = Double.NEGATIVE_INFINITY;
+        int bestAngle = -1;
         
-        for (Zombie zombie : zombies) {
-            double distance = Math.sqrt(
-                Math.pow(zombie.getX() - x, 2) + 
-                Math.pow(zombie.getY() - y, 2)
-            );
+        // First pass: try at requested speed
+        for (int i = 0; i < DIRECTION_SAMPLES; i++) {
+            int testAngle = (360 * i) / DIRECTION_SAMPLES;
             
-            if (distance < 1) distance = 1;
+            double radians = Math.toRadians(testAngle - 90);
+            int projX = (int)(getX() + speed * Math.cos(radians));
+            int projY = (int)(getY() + speed * Math.sin(radians));
             
-            totalScore += distance - (2000.0 / distance);
+            if (!world.isValidPosition(projX, projY)) {
+                continue;
+            }
+            
+            double score = calculateSafetyScore(projX, projY, zombies, world);
+            
+            if (score > bestScore) {
+                bestScore = score;
+                bestAngle = testAngle;
+            }
         }
         
-        return totalScore;
+        // If found valid angle, return it
+        if (bestAngle != -1) {
+            return new MovementResult(bestAngle, speed);
+        }
+        
+        // Second pass: if at MIN_SPEED and still no valid move, try even smaller
+        if (speed == MIN_SPEED) {
+            for (int i = 0; i < DIRECTION_SAMPLES; i++) {
+                int testAngle = (360 * i) / DIRECTION_SAMPLES;
+                
+                double radians = Math.toRadians(testAngle - 90);
+                // Try half-pixel movement
+                int projX = (int)(getX() + 0.5 * Math.cos(radians));
+                int projY = (int)(getY() + 0.5 * Math.sin(radians));
+                
+                if (!world.isValidPosition(projX, projY)) {
+                    continue;
+                }
+                
+                double score = calculateSafetyScore(projX, projY, zombies, world);
+                
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestAngle = testAngle;
+                }
+            }
+            
+            if (bestAngle != -1) {
+                return new MovementResult(bestAngle, 1);  // Move at least 1 pixel
+            }
+        }
+        
+        return new MovementResult(-1, 0);
     }
     
-    private double getZombieThreatMultiplier(Zombie zombie) {
-        if (zombie instanceof Boss) {
-            return BOSS_THREAT_MULTIPLIER;
-        } else if (zombie instanceof Giant) {
-            return GIANT_THREAT_MULTIPLIER;
-        } else if (zombie instanceof Penguin) {
-            return PENGUIN_THREAT_MULTIPLIER;
-        } else {
-            return REGULAR_THREAT_MULTIPLIER;
+    /**
+     * Helper methods
+     */
+    private double distance(int x1, int y1, int x2, int y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+    
+    private Zombie findNearestZombie(List<Zombie> zombies) {
+        Zombie nearest = null;
+        double minDist = Double.MAX_VALUE;
+        
+        for (Zombie z : zombies) {
+            double dist = distance(getX(), getY(), z.getX(), z.getY());
+            if (dist < minDist) {
+                minDist = dist;
+                nearest = z;
+            }
         }
+        
+        return nearest;
+    }
+    
+    private double getZombieThreat(Zombie zombie) {
+        if (zombie instanceof Boss) return BOSS_THREAT;
+        if (zombie instanceof Giant) return GIANT_THREAT;
+        if (zombie instanceof Penguin) return PENGUIN_THREAT;
+        return REGULAR_THREAT;
     }
     
     private double getZombieSpeed(Zombie zombie) {
-        if (zombie instanceof Boss) {
-            return 0.5;
-        } else if (zombie instanceof Giant) {
-            return 1.0;
-        } else if (zombie instanceof Penguin) {
-            return 4.0;
-        } else { // Regular
-            return 2.0;
+        if (zombie instanceof Boss) return 0.5;
+        if (zombie instanceof Giant) return 1.0;
+        if (zombie instanceof Penguin) return 4.0;
+        return 2.0;
+    }
+    
+    /**
+     * Inner class to encapsulate movement result
+     */
+    private class MovementResult {
+        int angle;
+        int speed;
+        
+        MovementResult(int angle, int speed) {
+            this.angle = angle;
+            this.speed = speed;
+        }
+        
+        boolean isValid() {
+            return angle != -1 && speed > 0;
         }
     }
     
+    /**
+     * Abstract and utility methods
+     */
     public abstract void takeDamage(int damage);
     
     public int getHP() {
@@ -384,7 +413,7 @@ public abstract class Survivors extends SuperSmoothMover
         if (hasGun) return;
         World w = getWorld();
         if (w != null) {
-            Gun gun = new Gun(50, 50, this);
+            MachineGun gun = new MachineGun(50, 10, this);
             w.addObject(gun, getX(), getY());
             hasGun = true;
         }

@@ -35,7 +35,7 @@ public abstract class Weapon extends Actor
     
   
     
-    public abstract void attack();
+    //public abstract void attack();
     
 
     
