@@ -36,9 +36,10 @@ public abstract class Survivors extends SuperSmoothMover
         }
         else if(bandages && !hasBandages){
             
-        }
+        //getUserItems();
     }
-    
+}
+   
     public void getUserItems(){
     World w = getWorld();
     if (w instanceof GameWorld) {
