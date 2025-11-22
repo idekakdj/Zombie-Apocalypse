@@ -2,24 +2,28 @@ import greenfoot.*;
 
 public class Projectile extends Actor
 {
-    private int speed = 7;    // straight-line speed
+    private int speed = 7;
     private int damage;
 
-    public Projectile(int damage)
+    public Projectile(int damage, Zombie target)
     {
         this.damage = damage;
 
         GreenfootImage img = new GreenfootImage("bullet.png");
-        img.scale(10, 10);
+        img.scale(20, 20);
         setImage(img);
+
+        // Aim at target if available
+        if (target != null) {
+            turnTowards(target.getX(), target.getY());
+        }
     }
 
     public void act()
     {
-        // Move straight right (change to move(…) if you want direction)
-        setLocation(getX() + speed, getY());
+        move(speed);
 
-        Regular z = (Regular)getOneIntersectingObject(Regular.class);
+        Zombie z = (Zombie)getOneIntersectingObject(Zombie.class);
         if (z != null)
         {
             z.takeDamage(damage);
