@@ -11,7 +11,9 @@ public class SurvivorTwo extends Survivors
     private int speed = 6;
     private GreenfootImage p2 = new GreenfootImage("jayden.png");
     private SuperStatBar hpBar;
-    
+    public SuperStatBar getHPBar(){
+        return hpBar;
+    }
     public SurvivorTwo(){
         enableStaticRotation();
         startHP = 50;

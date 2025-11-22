@@ -12,6 +12,9 @@ public class SurvivorOne extends Survivors
     private GreenfootImage p1 = new GreenfootImage("chiu.png");
     private SuperStatBar hpBar;
     
+    public SuperStatBar getHPBar(){
+        return hpBar;
+    }
     public SurvivorOne(){
         enableStaticRotation();
         startHP = 100;
