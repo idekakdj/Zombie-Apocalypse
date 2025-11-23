@@ -28,7 +28,7 @@ public class Projectile extends Actor
         // Turn toward target and move
         turnTowards(target.getX(), target.getY());
         move(speed);
-        
+    
         // Check for collision with any zombie (not just Regular)
         Zombie z = (Zombie)getOneIntersectingObject(Zombie.class);
         if (z != null && z.getWorld() != null)
