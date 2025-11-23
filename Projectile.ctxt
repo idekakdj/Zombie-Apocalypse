@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Projectile
-comment0.text=\r\n\ @author\ Jayden\ assisted\ by\ Paul\r\n
 comment1.params=damage\ target
 comment1.target=Projectile(int,\ Zombie)
 comment2.params=

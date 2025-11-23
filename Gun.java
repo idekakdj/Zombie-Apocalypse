@@ -4,9 +4,10 @@ import java.util.List;
 public class Gun extends Weapon
 {
     private int damage;
-    private int fireRate;     // frames between shots
+    private int fireRate;
     private int shootCooldown;
     private Survivors owner;
+    private GreenfootSound shot = new GreenfootSound ("shot.mp3");
 
     public Gun(int damage, int fireRate, Survivors owner)
     {
@@ -22,41 +23,70 @@ public class Gun extends Weapon
     {
         if (owner == null || owner.getWorld() == null) return;
 
-        // Follow owner
+        // Position attached to survivor
         setLocation(owner.getX() + 20, owner.getY());
 
-        // Cooldown check
         if (shootCooldown > 0)
         {
             shootCooldown--;
             return;
         }
 
-        // Look for zombies in a radius
-        List<Regular> zombies = getObjectsInRange(500, Regular.class);
+        Zombie target = getClosestZombie();
 
-        // If zombies are near, fire straight
-        if (!zombies.isEmpty())
+        if (target != null)
         {
-            shootStraight();
+            shootAt(target);
             shootCooldown = fireRate;
         }
     }
 
-    private void shootStraight()
+    /** Returns the closest zombie in range, or null */
+    private Zombie getClosestZombie()
     {
-        //Projectile p = new Projectile(damage);
+        List<Zombie> zombies = getObjectsInRange(250, Zombie.class);
 
-        // Spawn in front of gun (adjust as needed)
-        //getWorld().addObject(p, getX() + 20, getY());
+        if (zombies.isEmpty()) return null;
 
-        // No targeting needed ― projectile manages its own movement
+        Zombie closest = zombies.get(0);
+        double bestDistance = distanceTo(closest);
+
+        for (Zombie z : zombies)
+        {
+            double d = distanceTo(z);
+            if (d < bestDistance)
+            {
+                bestDistance = d;
+                closest = z;
+            }
+        }
+
+        return closest;
+    }
+
+    private double distanceTo(Actor a)
+    {
+        int dx = a.getX() - getX();
+        int dy = a.getY() - getY();
+        return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    /** Fire a projectile that auto-aims at the chosen target */
+    private void shootAt(Zombie target)
+    {
+        Projectile p = new Projectile(damage, target);
+        getWorld().addObject(p, getX() + 20, getY());
+        playSound();
+    }
+    
+    public void playSound()
+    {
+              Greenfoot.playSound("shot.mp3");  
     }
     
     public void attack()
     {
         
     }
-    
-    
 }
+

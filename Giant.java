@@ -25,7 +25,7 @@ public class Giant extends Zombie
         health = GIANT_HEALTH;
         maxHealth = GIANT_HEALTH;  
  
-    hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
+    hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, -85, Color.GREEN, Color.RED, false, Color.ORANGE, 1);
 
         speed = GIANT_SPEED;
         damage = GIANT_DAMAGE;
@@ -41,10 +41,20 @@ public class Giant extends Zombie
         
         setImage(leftImage);
     }
+    public void addedToWorld(World w)
+    {
+        
+        if (hpBar != null)
+        {
+            w.addObject(hpBar, getX(), getY());
+            hpBar.update(health);
+        }
+    }
     
     public void act()
     {
         super.act();
+        hpBar.update(health);
     }
 
     protected void attack() {
