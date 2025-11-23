@@ -2,11 +2,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * @author Paul
- * 
- * 
+ *
+ *
  * Heals the user by 25hp when used. Has two uses and can only be used
  * once at a time during the day.
- * 
+ *
  */
 public class Bandages extends Actor
 {
@@ -36,7 +36,7 @@ public class Bandages extends Actor
         updateDaytimeStatus();
         World world = getWorld();
         followOwner();
-        
+       
         if(daytime && owner.getHP() < ownerStartHP && !used){
             show();
             usageTime--;
@@ -50,9 +50,9 @@ public class Bandages extends Actor
                     ((SurvivorThree) owner).getHPBar().update(owner.getHP());
                 }
                 useCounter--;
-                usageTime = 50; 
+                usageTime = 50;
                 used = true;
-            } 
+            }
         } else {
             hide();
         }
