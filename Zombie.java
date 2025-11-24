@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.List;
 /**
  * Write a description of class Zombies here.
  * 
@@ -96,29 +97,26 @@ public abstract class Zombie extends SuperSmoothMover
         }
     }
     
-    /**
-     * Notify the ScoreTracker that this zombie has been killed
-     */
     private void updateScoreTracker() {
-        if (getWorld() != null) {
-            java.util.List<ScoreTracker> trackers = getWorld().getObjects(ScoreTracker.class);
-            if (trackers != null && !trackers.isEmpty()) {
-                ScoreTracker tracker = trackers.get(0);
-                String type = getZombieType().toLowerCase();
-                if (type.equals("regular")) {
-                    tracker.numRegular++;
-                } else if (type.equals("penguin")) {
-                    tracker.numPenguin++;
-                } else if (type.equals("boss")) {
-                    tracker.numBoss++;
-                } else if (type.equals("giant")) {
-                    tracker.numGiant++;
-                } else if (type.equals("special")) {
-                    tracker.numSpecial++;
+            if (getWorld() != null) {
+                List<ScoreTracker> trackers = getWorld().getObjects(ScoreTracker.class);
+                if (trackers != null && !trackers.isEmpty()) {
+                    ScoreTracker tracker = trackers.get(0);
+                    String type = getZombieType();
+                    if (type.equals("Regular")) {
+                        tracker.numRegular++;
+                    } else if (type.equals("Penguin")) {
+                        tracker.numPenguin++;
+                    } else if (type.equals("Boss")) {
+                        tracker.numBoss++;
+                    } else if (type.equals("Giant")) {
+                        tracker.numGiant++;
+                    } else if (type.equals("Special")) {
+                        tracker.numSpecial++;
+                    }
+                    tracker.updateScore(); 
                 }
-                tracker.updateScore(); 
             }
-        }
     }
     
     protected void moveZombie() {  
@@ -129,15 +127,29 @@ public abstract class Zombie extends SuperSmoothMover
             int x = survivor.getX();
             int y = survivor.getY();
             
-            turnTowards(x, y);
+            // Calculate distance to survivor
+            double distance = Math.sqrt(Math.pow(x - getX(), 2) + Math.pow(y - getY(), 2));
             
-            if (getX() < x) {
-                setImage(getLeftImage()); 
+            // Only move if we're not close enough (stopping radius of 50 pixels)
+            if (distance > 50) {
+                turnTowards(x, y);
+                
+                if (getX() < x) {
+                    setImage(getLeftImage()); 
+                } else {
+                    setImage(getRightImage()); 
+                }
+                
+                move(speed);
             } else {
-                setImage(getRightImage()); 
+                // Still face the survivor even when stopped
+                turnTowards(x, y);
+                if (getX() < x) {
+                    setImage(getLeftImage()); 
+                } else {
+                    setImage(getRightImage()); 
+                }
             }
-            
-            move(speed);
         }
     }
 }

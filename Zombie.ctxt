@@ -8,7 +8,6 @@ comment10.params=
 comment10.target=void\ killZombie()
 comment11.params=
 comment11.target=void\ updateScoreTracker()
-comment11.text=\r\n\ Notify\ the\ ScoreTracker\ that\ this\ zombie\ has\ been\ killed\r\n
 comment12.params=
 comment12.target=void\ moveZombie()
 comment2.params=
