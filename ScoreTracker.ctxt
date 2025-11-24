@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ScoreTracker
-comment0.text=\n\ \n\ @author\ Paul\ assisted\ by\ Claude\n\ \n\ Keeps\ track\ of\ waves\ and\ score.\n\ Score\ is\ calculated\ on\ number\ of\ Zombies\ killed\ (you\ don't\ have\ to\ kill\ all\ the\ \n\ zombies\ to\ move\ to\ another\ wave\ just\ last\ until\ day)\n
+comment0.text=\r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n\ \r\n\ Keeps\ track\ of\ waves\ and\ score.\r\n\ Score\ is\ calculated\ on\ number\ of\ Zombies\ killed\ (you\ don't\ have\ to\ kill\ all\ the\ \r\n\ zombies\ to\ move\ to\ another\ wave\ just\ last\ until\ day)\r\n
 comment1.params=width\ height\ color\ borderWidth\ borderColor
 comment1.target=ScoreTracker(int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color)
 comment2.params=

@@ -24,11 +24,11 @@ public class Bandages extends Actor
         setImage(bandages);
         useCounter = 2;
         if (owner instanceof SurvivorOne) {
-            ownerStartHP = ((SurvivorOne) owner).getStartHP();
+            ownerStartHP = ((SurvivorOne) owner).getMaxHP();
         } else if (owner instanceof SurvivorTwo) {
-            ownerStartHP = ((SurvivorTwo) owner).getStartHP();
+            ownerStartHP = ((SurvivorTwo) owner).getMaxHP();
         } else if (owner instanceof SurvivorThree) {
-            ownerStartHP = ((SurvivorThree) owner).getStartHP();
+            ownerStartHP = ((SurvivorThree) owner).getMaxHP();
         }
     }
     public void act()

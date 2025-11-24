@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=Bandages
-comment0.text=\n\ @author\ Paul\n\ \n\ \n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses.\n\ \n
+comment0.text=\r\n\ @author\ Paul\r\n\ \r\n\ \r\n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses\ and\ can\ only\ be\ used\r\n\ once\ at\ a\ time\ during\ the\ day.\r\n\ \r\n
 comment1.params=owner
 comment1.target=Bandages(Survivors)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ hide()
+comment3.target=void\ updateDaytimeStatus()
 comment4.params=
-comment4.target=void\ show()
+comment4.target=void\ hide()
 comment5.params=
-comment5.target=void\ followOwner()
-numComments=6
+comment5.target=void\ show()
+comment6.params=
+comment6.target=void\ followOwner()
+numComments=7
