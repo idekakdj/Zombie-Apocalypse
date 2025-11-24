@@ -22,6 +22,7 @@ public class ScoreTracker extends Actor
     public int numRegular = 0;
     public int numPenguin = 0;
     public int numBoss = 0;
+    public int numGiant = 0;
     public int numSpecial = 0;
     
     public ScoreTracker(int width, int height, Color color, int borderWidth, Color borderColor){
@@ -61,7 +62,7 @@ public class ScoreTracker extends Actor
     public void updateScore(){
         if (getWorld() instanceof GameWorld){
             GameWorld world = (GameWorld) getWorld();
-            score = (numRegular * 10) + (numPenguin * 20) + (numSpecial * 20) + (numBoss * 100);
+            score = (numRegular * 10) + (numPenguin * 20) + (numSpecial * 20) + (numGiant * 50) + (numBoss * 100);
             createTrackerImage();
             rect.drawString("Wave: " + world.wavesCounter, this.width/5, 28);
             rect.drawString("Score: " + score, (this.width/5) * 3, 28);

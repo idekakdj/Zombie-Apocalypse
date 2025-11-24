@@ -39,19 +39,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
         super.act();
     }
     
-    protected void attack() {
-        
-    }
-    
-    protected void checkHitSurvivor() {
-        
-    }
-    
     protected GreenfootImage getLeftImage() {
         return leftImage;
     }
     
     protected GreenfootImage getRightImage() {
         return rightImage;
+    }
+    
+    protected String getZombieType() {
+        return "Penguin";
     }
 }

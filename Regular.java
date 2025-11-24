@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class Regular here.
  * 
@@ -16,18 +15,12 @@ public class Regular extends Zombie
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
     
-    public void act()
-    {
-        super.act();
-        hpBar.update(health);
-        
-    }
+    // Removed the act() method - parent class handles everything
     
     public Regular() {
         
         health = REG_HEALTH;
         maxHealth = REG_HEALTH;
-
         speed = REG_SPEED;
         damage = REG_DAMAGE;
         
@@ -40,33 +33,17 @@ public class Regular extends Zombie
         rightImage.mirrorHorizontally();
         rightImage.scale(70, 90);
         
-                hpBar = new SuperStatBar(maxHealth, health, this, 40, 8, -60, Color.GREEN, Color.RED, false, Color.ORANGE, 1);
-
+        hpBar = new SuperStatBar(maxHealth, health, this, 40, 8, -60, Color.GREEN, Color.RED, false, Color.ORANGE, 1);
         
         setImage(leftImage);
     }
+    
     public void addedToWorld(World w)
     {
-        
         if (hpBar != null)
         {
             w.addObject(hpBar, getX(), getY());
             hpBar.update(health);
-        }
-    }
-   
-    protected void attack() {
-        
-        Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
-        if (s != null) {
-            s.takeDamage(damage);  
-        }
-    }
-    
-    protected void checkHitSurvivor() {
-        if (isTouching(Survivors.class) && attackCooldown == 0) {
-            attack();
-            attackCooldown = 30; 
         }
     }
     
@@ -76,5 +53,9 @@ public class Regular extends Zombie
     
     protected GreenfootImage getRightImage() {
         return rightImage;
+    }
+    
+    protected String getZombieType() {
+        return "Regular";
     }
 }
