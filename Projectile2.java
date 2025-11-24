@@ -1,28 +1,35 @@
 import greenfoot.*;
 
-public class Projectile extends Actor
+public class Projectile2 extends SuperSmoothMover
 {
     private int speed = 7;
     private int damage;
+    private Zombie target;
 
-    public Projectile(int damage, Zombie target)
+    public Projectile2(int damage, Zombie target)
     {
         this.damage = damage;
+        this.target = target;
 
         GreenfootImage img = new GreenfootImage("bullet.png");
         img.scale(20, 20);
         setImage(img);
-
-        // Aim at target if available
-        if (target != null) {
-            turnTowards(target.getX(), target.getY());
-        }
     }
 
     public void act()
     {
-        move(speed);
+        // If target exists and is still in world → move toward it
+        if (target != null && target.getWorld() != null)
+        {
+            moveTowards(target.getX(), target.getY(), speed);
+        }
+        else
+        {
+            // If target died, move straight ahead in current direction
+            move(speed);
+        }
 
+        // Hit detection
         Zombie z = (Zombie)getOneIntersectingObject(Zombie.class);
         if (z != null)
         {
@@ -31,6 +38,7 @@ public class Projectile extends Actor
             return;
         }
 
+        // Remove if off screen
         if (isAtEdge())
         {
             getWorld().removeObject(this);

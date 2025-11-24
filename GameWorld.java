@@ -31,6 +31,8 @@ public class GameWorld extends World
     private int cooldown;
     
     private int actCount;
+        private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
+
     
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
@@ -54,6 +56,9 @@ public class GameWorld extends World
         daytime = true;
         nighttime = false;
         cooldown = DAY_COOLDOWN;
+        
+        bgm.playLoop();
+
     }
     
     public void act() {
@@ -252,6 +257,23 @@ public class GameWorld extends World
         addObject(zombie, x, y);
     }
     
+    // BGM setup
+
+public void started()
+{
+    if (bgm != null) {
+        bgm.setVolume(70);   // optional volume control
+        bgm.playLoop();     // loops forever
+    }
+}
+
+public void stopped()
+{
+    if (bgm != null) {
+        bgm.pause();
+    }
+}
+
     private void drawWalls() {
         int width = 400;
         int height = 300;

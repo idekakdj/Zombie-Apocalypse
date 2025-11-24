@@ -74,7 +74,7 @@ public class Gun extends Weapon
     /** Fire a projectile that auto-aims at the chosen target */
     private void shootAt(Zombie target)
     {
-        Projectile p = new Projectile(damage, target);
+        Projectile2 p = new Projectile2(damage, target);
         getWorld().addObject(p, getX() + 20, getY());
         playSound();
     }
