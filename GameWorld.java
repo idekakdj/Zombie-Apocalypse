@@ -46,7 +46,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Bandages.class,Melee.class, Shield.class, Survivors.class, Zombie.class);
+        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
@@ -66,7 +66,7 @@ public class GameWorld extends World
         boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
         scoretracker = new ScoreTracker(300, 40, Color.BLUE, 3, Color.BLACK);
         addObject(scoretracker,(getWidth()/3) * 2, 30);
-        UpgradeProgressBar upgradeBar = new UpgradeProgressBar(300, 50,Color.GREEN,Color.GRAY, 3, Color.BLACK, "Weapon Upgrade");
+        UpgradeProgressBar upgradeBar = new UpgradeProgressBar(300, 50,Color.GREEN,Color.GRAY, 3, Color.BLACK, "Weapon Upgrade",melee,gun);
         addObject(upgradeBar, getWidth()/2, 650);
         //spawn survivors in middle
         if(s1){

@@ -13,13 +13,14 @@ public class UpgradeProgressBar extends Actor
     private int borderWidth;
     private Color borderColor;
     private String text;
-    private int targetScore = 3000;
+    private int targetScore = 100;
     private int currentScore = 0;
     private boolean isComplete = false;
     private int glowCounter = 0;
     private GreenfootImage rect;
-    
-    public UpgradeProgressBar(int width, int height, Color fillColor, Color emptyColor, int borderWidth, Color borderColor, String text){
+    boolean melee;
+    boolean gun;
+    public UpgradeProgressBar(int width, int height, Color fillColor, Color emptyColor, int borderWidth, Color borderColor, String text, boolean melee, boolean gun){
         this.width = width;
         this.height = height;
         this.fillColor = fillColor;
@@ -27,6 +28,8 @@ public class UpgradeProgressBar extends Actor
         this.borderWidth = borderWidth;
         this.borderColor = borderColor;
         this.text = text;
+        this.melee = melee;
+        this.gun = gun;
         drawBar();
         setImage(rect);
     }
@@ -38,6 +41,19 @@ public class UpgradeProgressBar extends Actor
         if (isComplete) {
             glow();
         }
+        if(isComplete){
+            Survivors survivor = (Survivors)getWorld().getObjects(Survivors.class).get(0);
+            if(gun && survivor != null){
+                getWorld().removeObjects(getWorld().getObjects(Gun.class));
+                MachineGun mg = new MachineGun (50,10, survivor);
+                getWorld().addObject(mg, survivor.getX(), survivor.getY());
+            } else if(melee && survivor != null){
+                getWorld().removeObjects(getWorld().getObjects(Bat.class));
+                Sword sword = new Sword(100, 40, 60, survivor);
+                getWorld().addObject(sword, survivor.getX(), survivor.getY());
+            }
+            
+        }
     }
     
     private void updateProgress(){
@@ -46,8 +62,7 @@ public class UpgradeProgressBar extends Actor
             ScoreTracker tracker = world.getObjects(ScoreTracker.class).get(0);
             
             if (tracker != null) {
-                currentScore = tracker.numRegular * 10 + tracker.numPenguin * 20 + 
-                              tracker.numSpecial * 20 + tracker.numBoss * 100;
+                currentScore = tracker.numRegular * 10 + tracker.numPenguin * 20 + tracker.numSpecial * 20 + tracker.numBoss * 100 + tracker.numGiant * 50;
                 
                 if (currentScore >= targetScore && !isComplete) {
                     isComplete = true;

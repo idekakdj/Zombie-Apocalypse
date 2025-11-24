@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Upgrade to gun trigger when 3000 score is reached if gun is selected.
+ * Upgrade to gun trigger when certain score is reached if gun is selected.
  * 
  * @author Paul 
  */

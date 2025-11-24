@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Sword
+comment0.text=\r\n\ Upgrade\ to\ Bat\ triggers\ when\ user\ hits\ a\ certain\ score.\r\n\ \r\n\ @author\ Paul\r\n
+comment1.params=damage\ coolDown\ range\ owner
+comment1.target=Sword(int,\ int,\ int,\ Survivors)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ followOwner()
+comment4.params=
+comment4.target=void\ attackNearbyZombies()
+numComments=5

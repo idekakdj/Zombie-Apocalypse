@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MachineGun
-comment0.text=\r\n\ Upgrade\ to\ gun\ trigger\ when\ 3000\ score\ is\ reached\ if\ gun\ is\ selected.\r\n\ \r\n\ @author\ Paul\ \r\n
+comment0.text=\r\n\ Upgrade\ to\ gun\ trigger\ when\ certain\ score\ is\ reached\ if\ gun\ is\ selected.\r\n\ \r\n\ @author\ Paul\ \r\n
 comment1.params=damage\ fireRate\ owner
 comment1.target=MachineGun(int,\ int,\ Survivors)
 comment2.params=
