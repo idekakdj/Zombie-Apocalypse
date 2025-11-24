@@ -65,7 +65,7 @@ public class MachineGun extends Weapon
     
     public void attack(Zombie target){
         if (target != null && target.getWorld() != null) {
-            Projectile p = new Projectile(damage, target);
+            Projectile2 p = new Projectile2(damage, target);
             getWorld().addObject(p, getX() + 20, getY());
         }
     }
