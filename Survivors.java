@@ -51,6 +51,9 @@ public abstract class Survivors extends SuperSmoothMover
         wall = world.wall;
     }
     }
+    public int getStartHP(){
+        return startHP;
+    }
     
     //From Claude
     public int getAngleTowards(Actor target)
