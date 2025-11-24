@@ -1,18 +1,14 @@
 #BlueJ class context
 comment0.target=Regular
-comment0.text=\n\ Write\ a\ description\ of\ class\ Regular\ here.\n\ \n\ @author\ Cayden\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Regular\ here.\r\n\ \r\n\ @author\ Cayden\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
-comment2.params=
-comment2.target=Regular()
-comment3.params=w
-comment3.target=void\ addedToWorld(greenfoot.World)
+comment1.target=Regular()
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=greenfoot.GreenfootImage\ getLeftImage()
 comment4.params=
-comment4.target=void\ attack()
+comment4.target=greenfoot.GreenfootImage\ getRightImage()
 comment5.params=
-comment5.target=void\ checkHitSurvivor()
-comment6.params=
-comment6.target=greenfoot.GreenfootImage\ getLeftImage()
-comment7.params=
-comment7.target=greenfoot.GreenfootImage\ getRightImage()
-numComments=8
+comment5.target=java.lang.String\ getZombieType()
+numComments=6

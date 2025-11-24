@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Wall
-comment0.text=\n\ Wall\ class\ that\ creates\ a\ barrier.\ Can\ be\ damaged\ by\ zombies.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Wall\ class\ that\ creates\ a\ barrier.\ Can\ be\ damaged\ by\ zombies.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Wall()
 comment2.params=

@@ -56,20 +56,6 @@ public class Giant extends Zombie
         super.act();
         hpBar.update(health);
     }
-
-    protected void attack() {
-        Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
-        if (s != null) {
-            s.takeDamage(damage);  
-        }
-    }
-    
-    protected void checkHitSurvivor() {
-        if (isTouching(Survivors.class) && attackCooldown == 0) {
-            attack();
-            attackCooldown = 30; 
-        }
-    }
     
     protected GreenfootImage getLeftImage() {
         return leftImage;
@@ -77,5 +63,9 @@ public class Giant extends Zombie
     
     protected GreenfootImage getRightImage() {
         return rightImage;
+    }
+    
+    protected String getZombieType() {
+        return "Giant";
     }
 }

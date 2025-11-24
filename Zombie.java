@@ -7,9 +7,8 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public abstract class Zombie extends SuperSmoothMover
-
 {
-     protected int startHP;
+    protected int startHP;
     protected int hp;
     protected int damage;
     protected int health;
@@ -17,7 +16,7 @@ public abstract class Zombie extends SuperSmoothMover
     protected double speed;
     protected int attackCooldown;
     protected SuperStatBar hpBar; // Each zombie will have its own HP bar
-
+    
     /**
      * Method automatically called by Greenfoot when zombie is added to world
      * This ensures the HP bar gets added to the world
@@ -35,17 +34,32 @@ public abstract class Zombie extends SuperSmoothMover
         }
     }
     
-    protected abstract void attack();
+    protected void attack() {
+        Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
+        if (s != null) {
+            s.takeDamage(damage);  
+        }
+    }
     
-    protected abstract void checkHitSurvivor();
+    protected void checkHitSurvivor() {
+        if (isTouching(Survivors.class) && attackCooldown == 0) {
+            attack();
+            attackCooldown = 30; 
+        }
+    }
     
     protected abstract GreenfootImage getLeftImage();
     
     protected abstract GreenfootImage getRightImage();
     
+    /**
+     * Returns the zombie type for score tracking
+     * Override this in each zombie subclass
+     */
+    protected abstract String getZombieType();
+    
     public void act()
     {
-                
         if (!isDead()) {
             moveZombie();
             checkHitSurvivor(); 
@@ -70,12 +84,40 @@ public abstract class Zombie extends SuperSmoothMover
     }
     
     protected void killZombie() {
-       // Remove HP bar first, then zombie
+        // Update score before removing zombie
+        updateScoreTracker();
+        
+        // Remove HP bar first, then zombie
         if (hpBar != null && getWorld() != null) {
             getWorld().removeObject(hpBar);
         }
         if (getWorld() != null) {
             getWorld().removeObject(this);
+        }
+    }
+    
+    /**
+     * Notify the ScoreTracker that this zombie has been killed
+     */
+    private void updateScoreTracker() {
+        if (getWorld() != null) {
+            java.util.List<ScoreTracker> trackers = getWorld().getObjects(ScoreTracker.class);
+            if (trackers != null && !trackers.isEmpty()) {
+                ScoreTracker tracker = trackers.get(0);
+                String type = getZombieType().toLowerCase();
+                if (type.equals("regular")) {
+                    tracker.numRegular++;
+                } else if (type.equals("penguin")) {
+                    tracker.numPenguin++;
+                } else if (type.equals("boss")) {
+                    tracker.numBoss++;
+                } else if (type.equals("giant")) {
+                    tracker.numGiant++;
+                } else if (type.equals("special")) {
+                    tracker.numSpecial++;
+                }
+                tracker.updateScore(); 
+            }
         }
     }
     

@@ -39,7 +39,7 @@ public class Boss extends Zombie
         rightImage.mirrorHorizontally();
         rightImage.scale(230, 230);
         
-            hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
+        hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, 0, Color.GREEN, Color.RED, true);
 
         
         setImage(leftImage);
@@ -75,20 +75,6 @@ public class Boss extends Zombie
         
         world.removeObject(this);
     }
-
-    protected void attack() {
-        Survivors s = (Survivors) getOneIntersectingObject(Survivors.class);
-        if (s != null) {
-            s.takeDamage(damage);  
-        }
-    }
-    
-    protected void checkHitSurvivor() {
-        if (isTouching(Survivors.class) && attackCooldown == 0) {
-            attack();
-            attackCooldown = 30; 
-        }
-    }
     
     protected GreenfootImage getLeftImage() {
         return leftImage;
@@ -96,5 +82,9 @@ public class Boss extends Zombie
     
     protected GreenfootImage getRightImage() {
         return rightImage;
+    }
+    
+    protected String getZombieType() {
+        return "Boss";
     }
 }
