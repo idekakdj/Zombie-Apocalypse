@@ -31,14 +31,26 @@ public abstract class Survivors extends SuperSmoothMover
     private int repairCooldown = 0;
     private boolean returningToCenter = false;
     
+    // Track if we've already handled the transition from night to day
+    private boolean wasNighttime = false;
+    
     public void act()
     {
         getUserItems();
         
         GameWorld world = (GameWorld) getWorld();
+        if (world == null) return;
+        
+        // Check for night-to-day transition and kill all zombies with explosions
+        if (wasNighttime && world.daytime) {
+            killAllZombiesWithExplosions();
+            wasNighttime = false;
+        } else if (!world.daytime) {
+            wasNighttime = true;
+        }
         
         // During daytime, repair walls if wall upgrade is enabled
-        if (world != null && world.daytime && wall) {
+        if (world.daytime && wall) {
             repairWalls();
         } else {
             // During nighttime, use intelligent movement to avoid zombies
@@ -54,6 +66,22 @@ public abstract class Survivors extends SuperSmoothMover
             spawnGun();
         } else if(bandages && !hasBandages){
             spawnBandages();
+        }
+    }
+    
+    // Kill all zombies with explosion effects when day breaks
+    private void killAllZombiesWithExplosions() {
+        GameWorld world = (GameWorld) getWorld();
+        if (world == null) return;
+        
+        List<Zombie> zombies = world.getObjects(Zombie.class);
+        for (Zombie zombie : zombies) {
+            // Create explosion at zombie's location
+            Explosion explosion = new Explosion();
+            world.addObject(explosion, zombie.getX(), zombie.getY());
+            
+            // Remove the zombie
+            world.removeObject(zombie);
         }
     }
     
@@ -251,11 +279,6 @@ public abstract class Survivors extends SuperSmoothMover
         
         return false; // No walls to build
     }
-        else if(bandages && !hasBandages){
-            spawnBandages();
-        }
-    }
-
    
     public void getUserItems(){
         World w = getWorld();

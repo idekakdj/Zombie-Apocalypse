@@ -46,7 +46,7 @@ public abstract class Zombie extends SuperSmoothMover
     protected void checkHitSurvivor() {
         if (isTouching(Survivors.class) && attackCooldown == 0) {
             attack();
-            attackCooldown = 2; 
+            attackCooldown = 30; 
         }
     }
     
