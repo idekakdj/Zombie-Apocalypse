@@ -36,7 +36,7 @@ public class Sword extends Melee
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {
-            setLocation(owner.getX() + 20, owner.getY());
+            setLocation(owner.getX() + 25, owner.getY());
         }
     }
     private void attackNearbyZombies()
@@ -44,6 +44,9 @@ public class Sword extends Melee
         List<Zombie> zombies = getObjectsInRange(range, Zombie.class);
 
         if (!zombies.isEmpty()) {
+            //Slash animation
+            SwordSlash slash = new SwordSlash();
+            getWorld().addObject(slash, getX() + 30, getY());
             // Deal damage
             for (Zombie z : zombies) {
                 z.takeDamage(damage);

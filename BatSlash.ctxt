@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=BatSlash
+comment0.text=\r\n\ Bat\ slashing\ animation\ effect\r\n\ \r\n\ @author\ Abithan,\ altered\ by\ Paul\ and\ Claude\r\n\ \r\n
+comment1.params=
+comment1.target=BatSlash()
+comment1.text=\r\n\ Constructor\ -\ Simple\ version\ with\ default\ settings\r\n
+comment2.params=numFrames\ speed
+comment2.target=BatSlash(int,\ int)
+comment2.text=\r\n\ Constructor\ -\ Customizable\ version\r\n\ \r\n\ @param\ numFrames\ Number\ of\ animation\ frames\ (images)\r\n\ @param\ speed\ Acts\ between\ frame\ changes\ (lower\ \=\ faster)\r\n
+comment3.params=
+comment3.target=void\ animateSlash()
+comment3.text=\r\n\ Animate\ the\ sword\ slash\r\n
+comment4.params=
+comment4.target=void\ act()
+numComments=5

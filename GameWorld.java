@@ -31,8 +31,7 @@ public class GameWorld extends World
     private int cooldown;
     
     private int actCount;
-        private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
-
+    private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
     
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
@@ -48,7 +47,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(ScoreTracker.class, UpgradeProgressBar.class, SuperStatBar.class, Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,Survivors.class, Zombie.class);
+        setPaintOrder(ScoreTracker.class, UpgradeProgressBar.class, SuperStatBar.class, Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,BatSlash.class, SwordSlash.class, Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
@@ -99,9 +98,7 @@ public class GameWorld extends World
                 daytime = false;
                 nighttime = true;
                 cooldown = NIGHT_COOLDOWN;
-                if(bandages){
-                    
-                }
+                
                 // Spawn nighttime visual effect
                 addObject(new Nighttime(), 512, 400);
                 
@@ -112,9 +109,7 @@ public class GameWorld extends World
                 nighttime = false;
                 daytime = true;
                 cooldown = DAY_COOLDOWN;
-                if(bandages){
-                    
-                }
+                
             }
         }
     }
@@ -149,8 +144,8 @@ public class GameWorld extends World
                 spawnPenguin();
             }
             spawnBoss();
-        } else if (wavesCounter == 6){
-            Greenfoot.setWorld(new WinScreen());
+        } else if (wavesCounter == 5 && daytime){
+            Greenfoot.setWorld(new WinScreen(s1,s2,s3));
         }
     }
     

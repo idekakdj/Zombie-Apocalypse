@@ -23,6 +23,11 @@ public class Projectile extends Actor
         {
             turnTowards(target.getX(), target.getY());
             move(speed);
+        } else {
+            if(getWorld() != null){
+                getWorld().removeObject(this);
+            }
+            return;
         }
         
 
@@ -38,7 +43,10 @@ public class Projectile extends Actor
         // Remove if off screen
         if (isAtEdge())
         {
-            getWorld().removeObject(this);
+            if(getWorld() != null){
+                getWorld().removeObject(this);
+            }
+            return;
         }
     }
 }

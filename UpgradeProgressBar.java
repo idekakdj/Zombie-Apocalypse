@@ -46,12 +46,12 @@ public class UpgradeProgressBar extends Actor
             Survivors survivor = (Survivors)getWorld().getObjects(Survivors.class).get(0);
             if(gun && survivor != null && !hasUpgrade){
                 getWorld().removeObjects(getWorld().getObjects(Gun.class));
-                MachineGun mg = new MachineGun (50,20, survivor);
+                MachineGun mg = new MachineGun (50,15, survivor);
                 getWorld().addObject(mg, survivor.getX(), survivor.getY());
                 hasUpgrade = true;
             } else if(melee && survivor != null && !hasUpgrade){
                 getWorld().removeObjects(getWorld().getObjects(Bat.class));
-                Sword sword = new Sword(100, 40, 60, survivor);
+                Sword sword = new Sword(100, 50, 110, survivor);
                 getWorld().addObject(sword, survivor.getX(), survivor.getY());
                 hasUpgrade = true;
             }
