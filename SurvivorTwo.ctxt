@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SurvivorTwo
-comment0.text=\r\n\ SurvivorTwo\ -\ Fast\ survivor\ with\ lower\ HP,\ named\ Jayden\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
+comment0.text=\n\ SurvivorTwo\ -\ Fast\ survivor\ with\ lower\ HP,\ named\ Jayden\n\ \n\ @author\ Paul\n\ \n
 comment1.params=
 comment1.target=SuperStatBar\ getHPBar()
 comment2.params=

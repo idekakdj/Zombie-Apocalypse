@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Projectile2
+comment0.text=\n\ Author\ Jayden\ \n\ \n\ Projectile\ constructor\ takes\ in\ two\ parameters\n\ moveTowards\ method\ is\ inherited\ from\ the\ superclass\ SuperSmoothMover\n\ The\ actor\ (projectile)\ is\ moved\ the\ third\ parameter\ number\ of\ pixels\ (speed)\n\ to\ the\ target\ location\ (first\ two\ parameters\ x\ and\ y)\n\ \n\ \n\ To\ use\ for\ anything\ other\ than\ the\ original\ Zombie\ Apocolypse\ game\ alter\ the\ \n\ handleClick()\ method,\ delete\ GreenfootImages\ and\ add\ your\ own\ click\ sound.\n
 comment1.params=damage\ target
 comment1.target=Projectile2(int,\ Zombie)
 comment2.params=

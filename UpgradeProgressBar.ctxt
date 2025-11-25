@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UpgradeProgressBar
-comment0.text=\r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n\ \r\n
+comment0.text=\n\ \n\ @author\ Paul\ assisted\ by\ Claude\n\ \n
 comment1.params=width\ height\ fillColor\ emptyColor\ borderWidth\ borderColor\ text\ melee\ gun
 comment1.target=UpgradeProgressBar(int,\ int,\ greenfoot.Color,\ greenfoot.Color,\ int,\ greenfoot.Color,\ java.lang.String,\ boolean,\ boolean)
 comment2.params=

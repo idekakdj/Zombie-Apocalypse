@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.target=Zombie
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Zombies\ here.\r\n\ \r\n\ @author\ Cayden\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Zombies\ here.\n\ \n\ @author\ Cayden\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ updateHpBar()
-comment1.text=\r\n\ Method\ automatically\ called\ by\ Greenfoot\ when\ zombie\ is\ added\ to\ world\r\n\ This\ ensures\ the\ HP\ bar\ gets\ added\ to\ the\ world\r\n
+comment1.text=\n\ Method\ automatically\ called\ by\ Greenfoot\ when\ zombie\ is\ added\ to\ world\n\ This\ ensures\ the\ HP\ bar\ gets\ added\ to\ the\ world\n
 comment10.params=
 comment10.target=void\ killZombie()
 comment11.params=
 comment11.target=void\ updateScoreTracker()
-comment11.text=\r\n\ Notify\ the\ ScoreTracker\ that\ this\ zombie\ has\ been\ killed\r\n
+comment11.text=\n\ Notify\ the\ ScoreTracker\ that\ this\ zombie\ has\ been\ killed\n
 comment12.params=
 comment12.target=void\ moveZombie()
 comment2.params=
@@ -21,7 +21,7 @@ comment5.params=
 comment5.target=greenfoot.GreenfootImage\ getRightImage()
 comment6.params=
 comment6.target=java.lang.String\ getZombieType()
-comment6.text=\r\n\ Returns\ the\ zombie\ type\ for\ score\ tracking\r\n\ Override\ this\ in\ each\ zombie\ subclass\r\n
+comment6.text=\n\ Returns\ the\ zombie\ type\ for\ score\ tracking\n\ Override\ this\ in\ each\ zombie\ subclass\n
 comment7.params=
 comment7.target=void\ act()
 comment8.params=dmg

@@ -1,5 +1,16 @@
 import greenfoot.*;
-
+/*
+ * Author Jayden 
+ * 
+ * Projectile constructor takes in two parameters
+ * moveTowards method is inherited from the superclass SuperSmoothMover
+ * The actor (projectile) is moved the third parameter number of pixels (speed)
+ * to the target location (first two parameters x and y)
+ * 
+ * 
+ * To use for anything other than the original Zombie Apocolypse game alter the 
+ * handleClick() method, delete GreenfootImages and add your own click sound.
+ */
 public class Projectile2 extends SuperSmoothMover
 {
     private int speed = 7;
@@ -18,14 +29,12 @@ public class Projectile2 extends SuperSmoothMover
 
     public void act()
     {
-        // If target exists and is still in world → move toward it
         if (target != null && target.getWorld() != null)
         {
             moveTowards(target.getX(), target.getY(), speed);
         }
         else
         {
-            // If target died, move straight ahead in current direction
             move(speed);
         }
 
@@ -38,10 +47,11 @@ public class Projectile2 extends SuperSmoothMover
             return;
         }
 
-        // Remove if off screen
+        // Removes if projectile goes off screen
         if (isAtEdge())
         {
             getWorld().removeObject(this);
         }
     }
+    
 }
