@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=Explosion
-comment0.text=\n\ @author\ Cayden\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ @author\ Cayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Explosion()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ drawExplosion()
-comment3.text=\n\ Draws\ the\ green\ explosion\ circle\n
+comment3.text=\r\n\ Draws\ the\ green\ explosion\ circle\r\n
 numComments=4
