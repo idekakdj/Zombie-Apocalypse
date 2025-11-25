@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Write a description of class Zombies here.
  * 
@@ -15,7 +16,7 @@ public abstract class Zombie extends SuperSmoothMover
     protected int health;
     protected int maxHealth;
     protected double speed;
-    protected int attackCooldown;
+    protected int attackCooldown = 0;  // Initialize here to 0
     protected SuperStatBar hpBar; // Each zombie will have its own HP bar
     
     /**
@@ -62,14 +63,26 @@ public abstract class Zombie extends SuperSmoothMover
     public void act()
     {
         if (!isDead()) {
-            moveZombie();
-            checkHitSurvivor(); 
-            updateHpBar(); // Update HP bar every act
+            moveZombie();  // This now handles wall collision AND attacking
+            checkHitSurvivor();
+            updateHpBar();
             if (attackCooldown > 0) {
                 attackCooldown--;
             }
         } else {
             killZombie();
+        }
+    }
+    
+    protected void checkHitWall() {
+        // Check if touching a wall or very close to one
+        List<Wall> walls = getObjectsInRange(20, Wall.class);
+        if (!walls.isEmpty()) {
+            Wall wall = walls.get(0);
+            if (attackCooldown == 0) {
+                wall.takeDamage(damage);
+                attackCooldown = 5;
+            }
         }
     }
     
@@ -140,7 +153,24 @@ public abstract class Zombie extends SuperSmoothMover
                     setImage(getRightImage()); 
                 }
                 
+                // Store current position before moving
+                int oldX = getX();
+                int oldY = getY();
+                
                 move(speed);
+                
+                // Check if we hit a wall after moving
+                if (isTouching(Wall.class)) {
+                    // Attack the wall BEFORE moving back
+                    Wall wall = (Wall) getOneIntersectingObject(Wall.class);
+                    if (wall != null && attackCooldown == 0) {
+                        wall.takeDamage(damage);
+                        attackCooldown = 5;
+                    }
+                    
+                    // Now move back to previous position
+                    setLocation(oldX, oldY);
+                }
             } else {
                 // Still face the survivor even when stopped
                 turnTowards(x, y);
