@@ -13,13 +13,14 @@ public class UpgradeProgressBar extends Actor
     private int borderWidth;
     private Color borderColor;
     private String text;
-    private int targetScore = 100;
+    private int targetScore = 500;
     private int currentScore = 0;
     private boolean isComplete = false;
     private int glowCounter = 0;
     private GreenfootImage rect;
     boolean melee;
     boolean gun;
+    boolean hasUpgrade;
     public UpgradeProgressBar(int width, int height, Color fillColor, Color emptyColor, int borderWidth, Color borderColor, String text, boolean melee, boolean gun){
         this.width = width;
         this.height = height;
@@ -43,14 +44,16 @@ public class UpgradeProgressBar extends Actor
         }
         if(isComplete){
             Survivors survivor = (Survivors)getWorld().getObjects(Survivors.class).get(0);
-            if(gun && survivor != null){
+            if(gun && survivor != null && !hasUpgrade){
                 getWorld().removeObjects(getWorld().getObjects(Gun.class));
-                MachineGun mg = new MachineGun (50,10, survivor);
+                MachineGun mg = new MachineGun (50,20, survivor);
                 getWorld().addObject(mg, survivor.getX(), survivor.getY());
-            } else if(melee && survivor != null){
+                hasUpgrade = true;
+            } else if(melee && survivor != null && !hasUpgrade){
                 getWorld().removeObjects(getWorld().getObjects(Bat.class));
                 Sword sword = new Sword(100, 40, 60, survivor);
                 getWorld().addObject(sword, survivor.getX(), survivor.getY());
+                hasUpgrade = true;
             }
             
         }
@@ -104,7 +107,7 @@ public class UpgradeProgressBar extends Actor
             rect.fillRect(0, 0, progressWidth, height);
         }
         
-        rect.setColor(Color.WHITE);
+        rect.setColor(Color.BLACK);
         rect.setFont(new Font("Arial", 16));
         
         GreenfootImage textImg = new GreenfootImage(text + ": " + currentScore + "/" + targetScore, 16, Color.WHITE, new Color(0,0,0,0));

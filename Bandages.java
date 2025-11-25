@@ -37,7 +37,7 @@ public class Bandages extends Actor
         World world = getWorld();
         followOwner();
        
-        if(daytime && owner.getHP() < ownerStartHP && !used){
+        if(daytime && owner.getHP() < ownerStartHP && !used && useCounter > 0){
             show();
             usageTime--;
             if(usageTime == 0 && useCounter > 0 ){

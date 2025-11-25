@@ -143,14 +143,18 @@ public class GameWorld extends World
         } else if( wavesCounter == 4){
             for (int i = 0; i < 12 ; i++){
                 spawnPenguin();
+                spawnRegular();
             }
+            spawnGiant();
         } else if ( wavesCounter == 5){
-            for (int i = 0; i < 4; i++){
+            for (int i = 0; i < 5; i++){
                 spawnGiant();
                 spawnRegular();
                 spawnPenguin();
             }
             spawnBoss();
+        } else if (wavesCounter == 6){
+            Greenfoot.setWorld(new WinScreen());
         }
     }
     

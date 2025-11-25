@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Jayden
  * @version (a version number or a date)
  */
-public abstract class Melee extends Weapon
+public abstract class Melee extends Actor
 {
     protected int damage;
     protected int range;
