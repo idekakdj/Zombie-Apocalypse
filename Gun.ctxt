@@ -1,19 +1,8 @@
 #BlueJ class context
 comment0.target=Gun
+comment0.text=\r\n\ @author\ Jayden\r\n
 comment1.params=damage\ fireRate\ owner
 comment1.target=Gun(int,\ int,\ Survivors)
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=Zombie\ getClosestZombie()
-comment3.text=Returns\ the\ closest\ zombie\ in\ range,\ or\ null
-comment4.params=a
-comment4.target=double\ distanceTo(greenfoot.Actor)
-comment5.params=target
-comment5.target=void\ shootAt(Zombie)
-comment5.text=Fire\ a\ projectile\ that\ auto-aims\ at\ the\ chosen\ target
-comment6.params=
-comment6.target=void\ playSound()
-comment7.params=
-comment7.target=void\ attack()
-numComments=8
+numComments=3

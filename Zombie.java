@@ -1,9 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Write a description of class Zombies here.
+ * Superclass for all zombie types
  * 
- * @author Cayden 
+ * @author Cayden and hp bars by Jayden
  * @version (a version number or a date)
  */
 public abstract class Zombie extends SuperSmoothMover
@@ -14,7 +16,7 @@ public abstract class Zombie extends SuperSmoothMover
     protected int health;
     protected int maxHealth;
     protected double speed;
-    protected int attackCooldown;
+    protected int attackCooldown = 0;  // Initialize here to 0
     protected SuperStatBar hpBar; // Each zombie will have its own HP bar
     
     /**
@@ -52,23 +54,31 @@ public abstract class Zombie extends SuperSmoothMover
     
     protected abstract GreenfootImage getRightImage();
     
-    /**
-     * Returns the zombie type for score tracking
-     * Override this in each zombie subclass
-     */
     protected abstract String getZombieType();
     
     public void act()
     {
         if (!isDead()) {
-            moveZombie();
-            checkHitSurvivor(); 
-            updateHpBar(); // Update HP bar every act
+            moveZombie();  // This now handles wall collision AND attacking
+            checkHitSurvivor();
+            updateHpBar();
             if (attackCooldown > 0) {
                 attackCooldown--;
             }
         } else {
             killZombie();
+        }
+    }
+    
+    protected void checkHitWall() {
+        // Check if touching a wall or very close to one
+        List<Wall> walls = getObjectsInRange(20, Wall.class);
+        if (!walls.isEmpty()) {
+            Wall wall = walls.get(0);
+            if (attackCooldown == 0) {
+                wall.takeDamage(damage);
+                attackCooldown = 5;
+            }
         }
     }
     
@@ -96,29 +106,26 @@ public abstract class Zombie extends SuperSmoothMover
         }
     }
     
-    /**
-     * Notify the ScoreTracker that this zombie has been killed
-     */
     private void updateScoreTracker() {
-        if (getWorld() != null) {
-            java.util.List<ScoreTracker> trackers = getWorld().getObjects(ScoreTracker.class);
-            if (trackers != null && !trackers.isEmpty()) {
-                ScoreTracker tracker = trackers.get(0);
-                String type = getZombieType().toLowerCase();
-                if (type.equals("regular")) {
-                    tracker.numRegular++;
-                } else if (type.equals("penguin")) {
-                    tracker.numPenguin++;
-                } else if (type.equals("boss")) {
-                    tracker.numBoss++;
-                } else if (type.equals("giant")) {
-                    tracker.numGiant++;
-                } else if (type.equals("special")) {
-                    tracker.numSpecial++;
+            if (getWorld() != null) {
+                List<ScoreTracker> trackers = getWorld().getObjects(ScoreTracker.class);
+                if (trackers != null && !trackers.isEmpty()) {
+                    ScoreTracker tracker = trackers.get(0);
+                    String type = getZombieType();
+                    if (type.equals("Regular")) {
+                        tracker.numRegular++;
+                    } else if (type.equals("Penguin")) {
+                        tracker.numPenguin++;
+                    } else if (type.equals("Boss")) {
+                        tracker.numBoss++;
+                    } else if (type.equals("Giant")) {
+                        tracker.numGiant++;
+                    } else if (type.equals("Special")) {
+                        tracker.numSpecial++;
+                    }
+                    tracker.updateScore(); 
                 }
-                tracker.updateScore(); 
             }
-        }
     }
     
     protected void moveZombie() {  
@@ -129,15 +136,46 @@ public abstract class Zombie extends SuperSmoothMover
             int x = survivor.getX();
             int y = survivor.getY();
             
-            turnTowards(x, y);
+            // Calculate distance to survivor
+            double distance = Math.sqrt(Math.pow(x - getX(), 2) + Math.pow(y - getY(), 2));
             
-            if (getX() < x) {
-                setImage(getLeftImage()); 
+            // Only move if we're not close enough (stopping radius of 50 pixels)
+            if (distance > 50) {
+                turnTowards(x, y);
+                
+                if (getX() < x) {
+                    setImage(getLeftImage()); 
+                } else {
+                    setImage(getRightImage()); 
+                }
+                
+                // Store current position before moving
+                int oldX = getX();
+                int oldY = getY();
+                
+                move(speed);
+                
+                // Check if we hit a wall after moving
+                if (isTouching(Wall.class)) {
+                    // Attack the wall BEFORE moving back
+                    Wall wall = (Wall) getOneIntersectingObject(Wall.class);
+                    if (wall != null && attackCooldown == 0) {
+                        wall.takeDamage(damage);
+                        attackCooldown = 2;
+                    }
+                    
+                    // Now move back to previous position
+                    setLocation(oldX, oldY);
+                }
             } else {
-                setImage(getRightImage()); 
+                // Still face the survivor even when stopped
+                turnTowards(x, y);
+                if (getX() < x) {
+                    setImage(getLeftImage()); 
+                } else {
+                    setImage(getRightImage()); 
+                }
             }
-            
-            move(speed);
         }
     }
 }

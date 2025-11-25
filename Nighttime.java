@@ -1,8 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Nighttime/Storm effect that spawns a BlackHole 3 seconds after it appears.
+ * Nighttime/Storm effect based off of class vehicle sim storm demo taken from my vehicle sim project
  * 
- * @author (your name) 
+ * @author Cayden with some code from Mr. Cohen 
  * @version (a version number or a date)
  */
 public class Nighttime extends Effect

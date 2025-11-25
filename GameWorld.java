@@ -25,14 +25,13 @@ public class GameWorld extends World
     public boolean wall = false;
     public boolean daytime;
     public boolean nighttime;
-    private final int DAY_COOLDOWN = 600;
-    private final int NIGHT_COOLDOWN = 1200;
+    private final int DAY_COOLDOWN = 900;  
+    private final int NIGHT_COOLDOWN = 1500; 
     public int wavesCounter;
     private int cooldown;
     
     private int actCount;
-        private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
-
+    private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
     
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
@@ -48,7 +47,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,Survivors.class, Zombie.class);
+        setPaintOrder(ScoreTracker.class, UpgradeProgressBar.class, SuperStatBar.class, Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,BatSlash.class, SwordSlash.class, Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
@@ -85,10 +84,6 @@ public class GameWorld extends World
             addObject(s3, getWidth()/2, getHeight()/2);
         }
         
-        if(wall) {
-            drawWalls();   
-        }
-        
         wavesCounter = 0;
     }
     
@@ -103,9 +98,7 @@ public class GameWorld extends World
                 daytime = false;
                 nighttime = true;
                 cooldown = NIGHT_COOLDOWN;
-                if(bandages){
-                    
-                }
+                
                 // Spawn nighttime visual effect
                 addObject(new Nighttime(), 512, 400);
                 
@@ -116,9 +109,7 @@ public class GameWorld extends World
                 nighttime = false;
                 daytime = true;
                 cooldown = DAY_COOLDOWN;
-                if(bandages){
-                    
-                }
+                
             }
         }
     }
@@ -143,14 +134,18 @@ public class GameWorld extends World
         } else if( wavesCounter == 4){
             for (int i = 0; i < 12 ; i++){
                 spawnPenguin();
+                spawnRegular();
             }
+            spawnGiant();
         } else if ( wavesCounter == 5){
-            for (int i = 0; i < 4; i++){
+            for (int i = 0; i < 5; i++){
                 spawnGiant();
                 spawnRegular();
                 spawnPenguin();
             }
             spawnBoss();
+        } else if (wavesCounter == 6){
+            Greenfoot.setWorld(new WinScreen(s1,s2,s3));
         }
     }
     
@@ -259,20 +254,20 @@ public class GameWorld extends World
     
     // BGM setup
 
-public void started()
-{
-    if (bgm != null) {
-        bgm.setVolume(70);   // optional volume control
-        bgm.playLoop();     // loops forever
+    public void started()
+    {
+        if (bgm != null) {
+            bgm.setVolume(70);   // optional volume control
+            bgm.playLoop();     // loops forever
+        }
     }
-}
-
-public void stopped()
-{
-    if (bgm != null) {
-        bgm.pause();
+    
+    public void stopped()
+    {
+        if (bgm != null) {
+            bgm.pause();
+        }
     }
-}
 
     private void drawWalls() {
         int width = 400;

@@ -1,16 +1,15 @@
 #BlueJ class context
 comment0.target=Wall
-comment0.text=\n\ Wall\ class\ that\ creates\ a\ barrier.\ Can\ be\ damaged\ by\ zombies.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Wall()
-comment2.params=
-comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ checkHitSurvivor()
-comment4.params=damage
-comment4.target=void\ takeDamage(int)
+comment2.params=damage
+comment2.target=void\ takeDamage(int)
+comment3.params=amount
+comment3.target=void\ repair(int)
+comment4.params=
+comment4.target=boolean\ isFullyRepaired()
 comment5.params=
-comment5.target=void\ updateAppearance()
+comment5.target=int\ getHealth()
 comment6.params=
-comment6.target=void\ draw()
+comment6.target=void\ updateAppearance()
 numComments=7

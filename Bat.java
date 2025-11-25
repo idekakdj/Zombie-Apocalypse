@@ -12,7 +12,7 @@ public class Bat extends Melee
     private Survivors owner;      // Survivor holding this bat
     private int attackCooldown;   // cooldown timer
     GreenfootImage bat = new GreenfootImage("baseballbat.png");
-        private GreenfootSound whack = new GreenfootSound ("whack.mp3");
+    private GreenfootSound whack = new GreenfootSound ("whack.mp3");
 
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
@@ -53,7 +53,7 @@ public class Bat extends Melee
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {
-            setLocation(owner.getX() + 20, owner.getY());
+            setLocation(owner.getX() + 25, owner.getY());
         }
     }
 
@@ -62,6 +62,8 @@ public class Bat extends Melee
         List<Zombie> zombies = getObjectsInRange(range, Zombie.class);
 
         if (!zombies.isEmpty()) {
+            BatSlash slash = new BatSlash();
+            getWorld().addObject(slash, getX() + 30, getY());
             // Deal damage
             for (Zombie z : zombies) {
                 z.takeDamage(damage);
@@ -76,7 +78,7 @@ public class Bat extends Melee
     
     public void playSound()
     {
-                      Greenfoot.playSound("whack.mp3");  
+        Greenfoot.playSound("whack.mp3");  
 
     }
 }

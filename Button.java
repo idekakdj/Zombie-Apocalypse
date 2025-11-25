@@ -1,5 +1,5 @@
 import greenfoot.*;
-/*
+/**
  * Author Paul assisted by Claude (toggleable feature and drawing the checkmark)
  * 
  * Takes in paramaters to fully customize the button
@@ -37,6 +37,22 @@ public class Button extends Actor
     GreenfootImage right = new GreenfootImage("rightbubble.png");
     GreenfootImage middle = new GreenfootImage ("middlebubble.png");
     private int clickCounter = 0;
+    /**
+     * Accepts paramaters to fully customize a button and has a toggleable boolean that 
+     * shows if its been clicked if the button is meant to select something instead of change
+     * world screens.
+     * 
+     * @param text is the button text
+     * @param height is the button height
+     * @param width is the button width
+     * @param color is the button's main color
+     * @param borderWidth is the width of the border (subtracted from total width not added)
+     * @param borderColor is the color of the border
+     * @param fontSize is the size of the text
+     * @param fontColor is the color of the text
+     * @param id is the buttons id to be used in handleClick
+     * @param toggleable is the boolean for if you want the feature to show if the button was clicked when selecting items
+     */
     public Button(String text, int height, int width, Color color, int borderWidth, Color borderColor, int fontSize, Color fontColor, String id, boolean toggleable){
         this.text = text;
         this.width = width;
@@ -124,7 +140,12 @@ public class Button extends Actor
         img.drawLine(startX, startY + 1, midX, midY + 1);
         img.drawLine(midX, midY + 1, endX, endY + 1);
     }
-    
+    /**
+     * Accepts mouse click on each button, determines if toggleable is true if the button
+     * is used to select an item or to change world screens, then calls handleClick to 
+     * determine which action should be performed based on the button id and then plays a
+     * clicking sound.
+     */
     public void act()
     {
         if(Greenfoot.mouseClicked(this)){
@@ -144,14 +165,24 @@ public class Button extends Actor
             setImage(normalImage);
         }
     }
-    
+    /**
+     * gets button id to be used in handleClick and give the correct actions when each
+     * button is clicked
+     */
     public String getButtonID(){
         return buttonID;
     }
-    
+    /**
+     * Returns boolean is selected for buttons in ChooseWorld to update the booleans for 
+     * each item. For example if shield is selected SHIELD is true and if clicked again
+     * SHIELD is now false.
+     */
     public boolean isSelected(){
         return isSelected;
     }
+    /**
+     * Draws the survivors in the StartWorld for the dialogue.
+     */
     public void drawSurvivors(){
         World world = getWorld();
         chiu.scale(200,200);
@@ -161,6 +192,11 @@ public class Button extends Actor
         world.getBackground().drawImage(jayden, (getWorld().getWidth()/2) - 100, 500);
         world.getBackground().drawImage(paul, ((getWorld().getWidth()/3) * 2) - 100, 500);
     }
+    /**
+     * 
+     * Handles actions when clicking all buttons in this project. Uses buttonID to 
+     * ensure each button functions as intended when clicked.
+     */
     public void handleClick(){
         //Starts the dialogue for the background story to this simulation and the instructions on choosing items
         if(buttonID.equals("start")){

@@ -1,35 +1,19 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.List;
 
-/**
- * Wall class that creates a barrier. Can be damaged by zombies.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Wall extends Actor
 {
     private int health;
     private int maxHealth;
     
-    public Wall()
-    {
+    public Wall() {
         maxHealth = 100;
         health = maxHealth;
         GreenfootImage img = new GreenfootImage("wall.png");
         setImage(img);
     }
     
-    public void act() {
-        checkHitSurvivor();
-    }
-    
-    private void checkHitSurvivor() {
-        if (isTouching(Zombie.class)) {
-            takeDamage(10);
-        }
-    }
-    
-    private void takeDamage(int damage) {
+    public void takeDamage(int damage) {
         health -= damage;
         updateAppearance();
         
@@ -38,15 +22,28 @@ public class Wall extends Actor
         }
     }
     
+    public void repair(int amount) {
+        health += amount;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+        updateAppearance();
+    }
+    
+    public boolean isFullyRepaired() {
+        return health >= maxHealth;
+    }
+    
+    public int getHealth() {
+        return health;
+    }
+    
     private void updateAppearance() {
-        GreenfootImage img = getImage();
+        GreenfootImage img = new GreenfootImage("wall.png");
+        setImage(img);
         
         double healthPercent = (double) health / maxHealth;
         int transparency = (int)(healthPercent * 200) + 55;
         img.setTransparency(transparency);
-    }
-    
-    private void draw() {
-        
     }
 }
