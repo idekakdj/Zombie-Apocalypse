@@ -25,8 +25,8 @@ public class GameWorld extends World
     public boolean wall = false;
     public boolean daytime;
     public boolean nighttime;
-    private final int DAY_COOLDOWN = 600;
-    private final int NIGHT_COOLDOWN = 1200;
+    private final int DAY_COOLDOWN = 900;  
+    private final int NIGHT_COOLDOWN = 1500; 
     public int wavesCounter;
     private int cooldown;
     
@@ -83,10 +83,6 @@ public class GameWorld extends World
         } else if( s3){
             SurvivorThree s3 = new SurvivorThree();
             addObject(s3, getWidth()/2, getHeight()/2);
-        }
-        
-        if(wall) {
-            drawWalls();   
         }
         
         wavesCounter = 0;

@@ -46,7 +46,7 @@ public abstract class Zombie extends SuperSmoothMover
     protected void checkHitSurvivor() {
         if (isTouching(Survivors.class) && attackCooldown == 0) {
             attack();
-            attackCooldown = 30; 
+            attackCooldown = 2; 
         }
     }
     
@@ -165,7 +165,7 @@ public abstract class Zombie extends SuperSmoothMover
                     Wall wall = (Wall) getOneIntersectingObject(Wall.class);
                     if (wall != null && attackCooldown == 0) {
                         wall.takeDamage(damage);
-                        attackCooldown = 5;
+                        attackCooldown = 2;
                     }
                     
                     // Now move back to previous position

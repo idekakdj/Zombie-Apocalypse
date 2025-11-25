@@ -7,7 +7,7 @@ public class Wall extends Actor
     private int maxHealth;
     
     public Wall() {
-        maxHealth = 50;
+        maxHealth = 100;
         health = maxHealth;
         GreenfootImage img = new GreenfootImage("wall.png");
         setImage(img);
@@ -22,8 +22,25 @@ public class Wall extends Actor
         }
     }
     
+    public void repair(int amount) {
+        health += amount;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+        updateAppearance();
+    }
+    
+    public boolean isFullyRepaired() {
+        return health >= maxHealth;
+    }
+    
+    public int getHealth() {
+        return health;
+    }
+    
     private void updateAppearance() {
-        GreenfootImage img = getImage();
+        GreenfootImage img = new GreenfootImage("wall.png");
+        setImage(img);
         
         double healthPercent = (double) health / maxHealth;
         int transparency = (int)(healthPercent * 200) + 55;
