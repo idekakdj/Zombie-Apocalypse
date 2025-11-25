@@ -37,7 +37,7 @@ public abstract class Survivors extends SuperSmoothMover
     private static final double DISTANCE_BONUS_WEIGHT = 4.0;
     private static final double PREDICTION_WEIGHT = 1.5;
     private static final double SWARM_PENALTY_BASE = 2500.0;
-    private static final double EDGE_APPROACH_PENALTY = 5000.0;
+    private static final double EDGE_APPROACH_PENALTY = 12000.0;
     private static final double WALL_PENALTY_WEIGHT = 30.0;
     
     // Wall repair fields
@@ -118,7 +118,7 @@ public abstract class Survivors extends SuperSmoothMover
             );
             
             if (distance < 40) {
-                targetWall.repair(1);
+                targetWall.repair(2);
                 repairCooldown = 10;
                 
                 if (targetWall.isFullyRepaired()) {

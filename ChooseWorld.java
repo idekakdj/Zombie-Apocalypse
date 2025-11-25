@@ -6,15 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Paul 
  * 
  * The world to choose your survivor and items for the simulation.
- * You can pick on survivor and three items.
+ * You can pick one survivor one weapon and two support items.
  */
 public class ChooseWorld extends World
 {
 
-    /**
-     * Constructor for objects of class ChooseWorld.
-     * 
-     */
+    
     private int numSurvivors;
     public boolean MELEE;
     public boolean GUN;
@@ -24,6 +21,9 @@ public class ChooseWorld extends World
     public boolean SURVIVOR_TWO;
     public boolean SURVIVOR_THREE;
     public boolean WALL;
+    /**
+     * Constuctor for world where you select survivor and items.
+     */
     public ChooseWorld()
     {    
         super(1024, 700, 1); 
@@ -51,6 +51,9 @@ public class ChooseWorld extends World
         Button wall = new Button("Choose Wall", 50,150, Color.GRAY, 5, Color.BLACK, 20, Color.WHITE,"wall",true);
         addObject(wall, ((getWidth()/3) * 2) + 45, 550 );
     }
+    /**
+     * Starts simulation and passes all booleans to game world to determine which items and survivor to spawn.
+     */
     public void startSimulation(){
         Greenfoot.setWorld(new GameWorld(SURVIVOR_ONE,SURVIVOR_TWO, SURVIVOR_THREE, MELEE, GUN, SHIELD, BANDAGES, WALL));
     }
@@ -58,6 +61,11 @@ public class ChooseWorld extends World
      * 1, 2, 3
      * 4, 5, 6
      * 7, 8, 9
+     */
+    /**
+     * Updates selection booleans when called in handleClick of button class
+     * @param buttonNum assigns number to all selection buttons as shown in the comment above to update correct boolean
+     * @param value takes value from button class when clicked to update to true
      */
     public void updateBoolean(int buttonNum, boolean value){
         if(buttonNum == 1){

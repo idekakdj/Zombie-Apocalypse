@@ -144,7 +144,7 @@ public class GameWorld extends World
                 spawnPenguin();
             }
             spawnBoss();
-        } else if (wavesCounter == 5 && daytime){
+        } else if (wavesCounter == 6){
             Greenfoot.setWorld(new WinScreen(s1,s2,s3));
         }
     }

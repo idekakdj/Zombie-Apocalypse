@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=ChooseWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ ChooseWorld\ here.\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n\ The\ world\ to\ choose\ your\ survivor\ and\ items\ for\ the\ simulation.\r\n\ You\ can\ pick\ on\ survivor\ and\ three\ items.\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ChooseWorld\ here.\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n\ The\ world\ to\ choose\ your\ survivor\ and\ items\ for\ the\ simulation.\r\n\ You\ can\ pick\ one\ survivor\ one\ weapon\ and\ two\ support\ items.\r\n
 comment1.params=
 comment1.target=ChooseWorld()
+comment1.text=\r\n\ Constuctor\ for\ world\ where\ you\ select\ survivor\ and\ items.\r\n
 comment2.params=
 comment2.target=void\ prepareButtons()
 comment3.params=
 comment3.target=void\ startSimulation()
+comment3.text=\r\n\ Starts\ simulation\ and\ passes\ all\ booleans\ to\ game\ world\ to\ determine\ which\ items\ and\ survivor\ to\ spawn.\r\n
 comment4.params=buttonNum\ value
 comment4.target=void\ updateBoolean(int,\ boolean)
-comment4.text=Buttons\ are\ number\ 1-9\ on\ the\ choose\ world\ starting\ top\ left\ with\ Survivor\ One\ and\ going\ row\ by\ row\ like\ this.\r\n\ 1,\ 2,\ 3\r\n\ 4,\ 5,\ 6\r\n\ 7,\ 8,\ 9\r\n
+comment4.text=\r\n\ Updates\ selection\ booleans\ when\ called\ in\ handleClick\ of\ button\ class\r\n\ @param\ buttonNum\ assigns\ number\ to\ all\ selection\ buttons\ as\ shown\ in\ the\ comment\ above\ to\ update\ correct\ boolean\r\n\ @param\ value\ takes\ value\ from\ button\ class\ when\ clicked\ to\ update\ to\ true\r\n
 numComments=5
