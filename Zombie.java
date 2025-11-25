@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Write a description of class Zombies here.
+ * Superclass for all zombie types
  * 
- * @author Cayden 
+ * @author Cayden and hp bars by Jayden
  * @version (a version number or a date)
  */
 public abstract class Zombie extends SuperSmoothMover
@@ -54,10 +54,6 @@ public abstract class Zombie extends SuperSmoothMover
     
     protected abstract GreenfootImage getRightImage();
     
-    /**
-     * Returns the zombie type for score tracking
-     * Override this in each zombie subclass
-     */
     protected abstract String getZombieType();
     
     public void act()
