@@ -48,7 +48,7 @@ public class GameWorld extends World
         this.wall = wall;
         setBackground(world);
         // CRITICAL: Set paint order so HP bars appear on top
-        setPaintOrder(SuperStatBar.class, ScoreTracker.class,Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,Survivors.class, Zombie.class);
+        setPaintOrder(ScoreTracker.class, UpgradeProgressBar.class, SuperStatBar.class, Nighttime.class, Bandages.class,Melee.class, Shield.class, Gun.class, MachineGun.class,Survivors.class, Zombie.class);
         prepare();
         
         actCount = 0;
@@ -263,20 +263,20 @@ public class GameWorld extends World
     
     // BGM setup
 
-public void started()
-{
-    if (bgm != null) {
-        bgm.setVolume(70);   // optional volume control
-        bgm.playLoop();     // loops forever
+    public void started()
+    {
+        if (bgm != null) {
+            bgm.setVolume(70);   // optional volume control
+            bgm.playLoop();     // loops forever
+        }
     }
-}
-
-public void stopped()
-{
-    if (bgm != null) {
-        bgm.pause();
+    
+    public void stopped()
+    {
+        if (bgm != null) {
+            bgm.pause();
+        }
     }
-}
 
     private void drawWalls() {
         int width = 400;
