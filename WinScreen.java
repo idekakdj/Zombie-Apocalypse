@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WinScreen here.
+ * Screen when you win after surviving 5 waves.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Paul
+ * 
  */
 public class WinScreen extends World
 {

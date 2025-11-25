@@ -251,6 +251,11 @@ public abstract class Survivors extends SuperSmoothMover
         
         return false; // No walls to build
     }
+        else if(bandages && !hasBandages){
+            spawnBandages();
+        }
+    }
+
    
     public void getUserItems(){
         World w = getWorld();
@@ -391,7 +396,7 @@ public abstract class Survivors extends SuperSmoothMover
         if (hasGun) return; // make sure we only spawn it once
         World w = getWorld();
         if (w != null) {
-            Gun gun = new Gun(50, 20, this);
+            Gun gun = new Gun(50, 50, this);
             w.addObject(gun, getX(), getY());
             hasGun = true;
         }

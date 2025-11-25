@@ -1,12 +1,12 @@
 import greenfoot.*;
 
-public class Projectile2 extends SuperSmoothMover
+public class Projectile extends Actor
 {
     private int speed = 7;
     private int damage;
     private Zombie target;
 
-    public Projectile2(int damage, Zombie target)
+    public Projectile(int damage, Zombie target)
     {
         this.damage = damage;
         this.target = target;
@@ -21,13 +21,10 @@ public class Projectile2 extends SuperSmoothMover
         // If target exists and is still in world → move toward it
         if (target != null && target.getWorld() != null)
         {
-            moveTowards(target.getX(), target.getY(), speed);
-        }
-        else
-        {
-            // If target died, move straight ahead in current direction
+            turnTowards(target.getX(), target.getY());
             move(speed);
         }
+        
 
         // Hit detection
         Zombie z = (Zombie)getOneIntersectingObject(Zombie.class);
