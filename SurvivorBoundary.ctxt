@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=SurvivorBoundary
-comment0.text=\n\ Invisible\ boundaries\ for\ survivors.\n\ \n\ @author\ Paul\ assisted\ by\ Claude\n
+comment0.text=\r\n\ Invisible\ boundaries\ for\ survivors.\r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n
 comment1.params=centerX\ centerY\ width\ height
 comment1.target=SurvivorBoundary(int,\ int,\ int,\ int)
+comment1.text=\r\n\ constructor\ to\ make\ invisible\ regtanle\r\n\ @param\ centerX,\ x\ position\ to\ spawn\r\n\ @param\ centerY,\ y\ position\ to\ spawn\r\n\ @param\ width,\ rectangle\ width\r\n\ @param\ height,\ rectangle\ height\r\n
 comment2.params=x\ y
 comment2.target=boolean\ contains(int,\ int)
+comment2.text=\r\n\ helps\ determine\ if\ survivor\ is\ inside\ the\ boundary\r\n\ @param\ x,\ x\ value\ in\ box\r\n\ @param\ y,\ y\ value\ in\ box\r\n\ \r\n\ @returns\ true\ if\ position\ is\ within\ the\ rectangle\r\n
 numComments=3

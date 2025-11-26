@@ -32,9 +32,18 @@ public class GameWorld extends World
     
     private int actCount;
     private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
-        private GreenfootSound groan = new GreenfootSound ("groan.mp3");
-
-    
+    /**
+     * Simulation world where survivor has to survive past 5 waves or die.
+     * Takes booleans from ChooseWorld depending on what the user selected.
+     * @param s1, survivor one boolean 
+     * @param s2, survivor two boolean
+     * @param s3, survivor three boolean
+     * @param melee, melee weapon boolean
+     * @param gun, gun boolean
+     * @param shield, shield boolean
+     * @param bandages, bandages boolean
+     * @param wall, wall boolean
+     */
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
         // Create a new world with 1024x700 cells with a cell size of 1x1 pixels.
@@ -61,12 +70,14 @@ public class GameWorld extends World
         bgm.playLoop();
 
     }
-    
+    /**
+     * Cycles through day/night, heals during and repairs wall during day, fights zombeis at night
+     */
     public void act() {
         actCount++;
         dayNightCycle();
     }
-
+    //Spawns survivor boundary, score tracker, upgrade progress bar, the selected survivor and sets waves counter to 0 
     private void prepare() {
         //spawn survivor's movement boundary
         boundary = new SurvivorBoundary(this.getWidth()/2,this.getHeight()/2, 400,300 );
@@ -118,8 +129,6 @@ public class GameWorld extends World
     
     //Progressively harder waves up to 5.
     public void waves(){
-                Greenfoot.playSound("groan.mp3");  
-
         wavesCounter++;
         if (wavesCounter == 1){
             for(int i = 0; i < 5; i++){
@@ -152,7 +161,11 @@ public class GameWorld extends World
             Greenfoot.setWorld(new WinScreen(s1,s2,s3));
         }
     }
-    
+    /**
+     * Helps survivor determine valid positions to move.
+     * @param x, x position in the boundary
+     * @param y, y position in the boundary
+     */
     public boolean isValidPosition(int x, int y){
         if (boundary == null){
             return true;
@@ -256,7 +269,9 @@ public class GameWorld extends World
         addObject(zombie, x, y);
     }
     
-    // BGM setup
+    /**
+     * Background music setup
+     */ 
 
     public void started()
     {
@@ -265,7 +280,9 @@ public class GameWorld extends World
             bgm.playLoop();     // loops forever
         }
     }
-    
+    /**
+     * Stops background music
+     */
     public void stopped()
     {
         if (bgm != null) {
@@ -274,7 +291,6 @@ public class GameWorld extends World
     }
 
     private void drawWalls() {
-
         int width = 400;
         int height = 300;
         

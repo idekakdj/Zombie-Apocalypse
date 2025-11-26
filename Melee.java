@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Melee here.
+ * Melee weapons superclass
  * 
  * @author Jayden
- * @version (a version number or a date)
+ * 
  */
 public abstract class Melee extends Actor
 {
@@ -12,8 +12,11 @@ public abstract class Melee extends Actor
     protected int range;
     protected int coolDown;
     /**
-     * Act - do whatever the Melee wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Superclass constructor for melee weapons
+     * @param damage, damage the weapon deals
+     * @param coolDown, cooldown before attacking again
+     * @param range, range for attacking zombies
+     * 
      */
     
     public Melee(int damage, int coolDown, int range)
@@ -21,11 +24,6 @@ public abstract class Melee extends Actor
         this.range = range;
         this.coolDown = coolDown;
         this.damage = damage;
-    }
-    
-    public void act()
-    {
-        // Add your action code here.
     }
     
    

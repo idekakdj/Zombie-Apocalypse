@@ -1,6 +1,6 @@
 import greenfoot.*;
-/*
- * 
+/**
+ * Shows progress to weapon upgrade
  * @author Paul assisted by Claude
  * 
  */
@@ -21,6 +21,18 @@ public class UpgradeProgressBar extends Actor
     boolean melee;
     boolean gun;
     boolean hasUpgrade;
+    /**
+     * constructor for bar, fully customizable
+     * @param width, width of bar
+     * @param height, height of bar
+     * @param fillColor, color that shows progress and fills 
+     * @param empty color, default color that gets covered as bar fills
+     * @param borderWidth, border width
+     * @param borderColor, color of border
+     * @param text, text on the bar
+     * @param melee, takes melee boolean from game world to remove bat and add sword when upgrade is ready
+     * @param gun, takes gun boolean from game world to remove gun and add machine gun when upgrade is ready
+     */
     public UpgradeProgressBar(int width, int height, Color fillColor, Color emptyColor, int borderWidth, Color borderColor, String text, boolean melee, boolean gun){
         this.width = width;
         this.height = height;
@@ -34,7 +46,9 @@ public class UpgradeProgressBar extends Actor
         drawBar();
         setImage(rect);
     }
-    
+    /**
+     * updates bar with new progress, has glow image when complete and switches to weapon upgrades when bar is filled
+     */
     public void act()
     {
         updateProgress();
@@ -129,11 +143,17 @@ public class UpgradeProgressBar extends Actor
         
         getWorld().getBackground().drawImage(rect, getX() - width/2, getY() - height/2);
     }
-    
+    /**
+     * determines if upgrade is ready
+     * 
+     * @return isComplete if upgrade is ready
+     */
     public boolean isUpgradeReady() {
         return isComplete;
     }
-    
+    /**
+     * resets bar
+     */
     public void reset() {
         currentScore = 0;
         isComplete = false;

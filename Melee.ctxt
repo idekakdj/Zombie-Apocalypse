@@ -1,9 +1,7 @@
 #BlueJ class context
 comment0.target=Melee
-comment0.text=\n\ Write\ a\ description\ of\ class\ Melee\ here.\n\ \n\ @author\ Jayden\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Melee\ weapons\ superclass\r\n\ \r\n\ @author\ Jayden\r\n\ \r\n
 comment1.params=damage\ coolDown\ range
 comment1.target=Melee(int,\ int,\ int)
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Melee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment1.text=\r\n\ Superclass\ constructor\ for\ melee\ weapons\r\n\ @param\ damage,\ damage\ the\ weapon\ deals\r\n\ @param\ coolDown,\ cooldown\ before\ attacking\ again\r\n\ @param\ range,\ range\ for\ attacking\ zombies\r\n\ \r\n
+numComments=2

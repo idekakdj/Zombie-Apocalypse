@@ -14,7 +14,9 @@ public class Nighttime extends Effect
     private final int FADE_IN_TIME = 90;
     private int fadeInCounter;
     private final int STAR_DENSITY = 200;
-    
+    /**
+     * World effect constructor for night cycle
+     */
     public Nighttime () {
         drawimage();
         actCount = 1200;
@@ -31,7 +33,9 @@ public class Nighttime extends Effect
             firstAct = false;
         }
     }
-    
+    /**
+     * fades in and out when used
+     */
     public void act () {
         if (fadeInCounter > 0) {
             fadeIn(fadeInCounter, FADE_IN_TIME);

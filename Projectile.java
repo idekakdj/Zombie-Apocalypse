@@ -1,21 +1,18 @@
 import greenfoot.*;
 /**
- * Author Jayden  
+ * Projectile for gun and machine gun
  * 
- * speed var is the number of pixels moved in the direction facing
- * damage is the amount of damage taken from the zombie that the projectile hits (int)
- * target zombie that the projectile is moving towards
+ * @autho Jayden assisted by Paul
  */
 public class Projectile extends Actor
 {
     private int speed = 7;
     private int damage;
     private Zombie target;
-/**
-     * @param damage is the damage an individual projectile will do against a zombie
-     * @param target is the zombie that is being targeted by the projectile
-     * 
-     * 
+    /**
+     * constructor for projectile
+     * @param damage, damage to deal 
+     * @param target, nearest zombie that it targets first
      */
     public Projectile(int damage, Zombie target)
     {
@@ -26,9 +23,12 @@ public class Projectile extends Actor
         img.scale(20, 20);
         setImage(img);
     }
-
+    /**
+     * targets nearest zombie and moves towards it, deals damage when touching zombies
+     */
     public void act()
     {
+        // If target exists and is still in world → move toward it
         if (target != null && target.getWorld() != null)
         {
             turnTowards(target.getX(), target.getY());
@@ -41,7 +41,7 @@ public class Projectile extends Actor
         }
         
 
-        // checks if there is an intersecting zombie
+        // Hit detection
         Zombie z = (Zombie)getOneIntersectingObject(Zombie.class);
         if (z != null)
         {
@@ -50,7 +50,7 @@ public class Projectile extends Actor
             return;
         }
 
-        // Remove projectile if off screen
+        // Remove if off screen
         if (isAtEdge())
         {
             if(getWorld() != null){

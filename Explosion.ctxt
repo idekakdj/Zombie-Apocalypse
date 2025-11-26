@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=Explosion
-comment0.text=\n\ \n\ Taken\ from\ my\ vehicle\ sim\ with\ colours\ changed\ \n\ \n\ @author\ Cayden\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ \r\n\ Taken\ from\ my\ vehicle\ sim\ with\ colours\ changed\ \r\n\ \r\n\ @author\ Cayden\r\n\ \r\n
 comment1.params=
 comment1.target=Explosion()
+comment1.text=\r\n\ Explosion\ constructor\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Draws\ the\ explosion\ and\ calls\ parent\ act\ for\ fading\ effect\ and\ removal\r\n
 comment3.params=
 comment3.target=void\ drawExplosion()
-comment3.text=\n\ Draws\ the\ green\ explosion\ circle\n
+comment3.text=\r\n\ Draws\ the\ green\ explosion\ circle\r\n
 numComments=4

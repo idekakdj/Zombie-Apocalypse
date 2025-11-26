@@ -25,7 +25,14 @@ public class ScoreTracker extends Actor
     public int numBoss = 0;
     public int numGiant = 0;
     public int numSpecial = 0;
-    
+    /**
+     * constructor that draws the bar
+     * @param width, width of the bar
+     * @param height, height of the bar
+     * @param color, bar color
+     * @param borderWidth, width of the border
+     * @param borderColor, color of the border
+     */
     public ScoreTracker(int width, int height, Color color, int borderWidth, Color borderColor){
         this.color = color;
         this.width = width;
@@ -54,12 +61,16 @@ public class ScoreTracker extends Actor
         rect.setColor(Color.WHITE);
         rect.setFont(new Font("Arial", 20));
     }
-    
+    /**
+     * updates score in the game world every act
+     */
     public void act()
     {
         updateScore();
     }
-    
+    /**
+     * gets a new update count of zombies killed to calculate new score and draw the new score number on the tracker
+     */
     public void updateScore(){
         if (getWorld() instanceof GameWorld){
             GameWorld world = (GameWorld) getWorld();

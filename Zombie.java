@@ -6,7 +6,7 @@ import java.util.List;
  * Superclass for all zombie types
  * 
  * @author Cayden and hp bars by Jayden
- * @version (a version number or a date)
+ * 
  */
 public abstract class Zombie extends SuperSmoothMover
 {
@@ -55,7 +55,9 @@ public abstract class Zombie extends SuperSmoothMover
     protected abstract GreenfootImage getRightImage();
     
     protected abstract String getZombieType();
-    
+    /**
+     * Act method called repeatedly, moves, checks hit, and updates health bar if the zombie is still alive else it kills it
+     */
     public void act()
     {
         if (!isDead()) {
@@ -82,6 +84,11 @@ public abstract class Zombie extends SuperSmoothMover
         }
     }
     
+    /**
+     * Updates zombie health and hp bar when damage taken 
+     * 
+     * @param dmg amount of damage taken by zombie
+     */
     public void takeDamage(int dmg) {
         health -= dmg;
         if (hpBar != null) {

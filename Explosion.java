@@ -4,14 +4,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Taken from my vehicle sim with colours changed 
  * 
  * @author Cayden
- * @version (a version number or a date)
+ * 
  */
 public class Explosion extends Effect
 {
     private int maxDiameter;
     private int currentDiameter;
     private int growthRate;
-    
+    /**
+     * Explosion constructor
+     */
     public Explosion() {
         maxDiameter = 240; // Maximum explosion size
         currentDiameter = 20; // Start small
@@ -22,7 +24,9 @@ public class Explosion extends Effect
         
         drawExplosion();
     }
-    
+    /**
+     * Draws the explosion and calls parent act for fading effect and removal
+     */
     public void act() {
         // Expand the explosion
         if (currentDiameter < maxDiameter) {

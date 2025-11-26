@@ -11,9 +11,15 @@ public class SurvivorThree extends Survivors
     private int speed = 2;
     private GreenfootImage p3 = new GreenfootImage("chapman.png");
     private SuperStatBar hpBar;
+    /**
+     * getter for hp bar
+     */
     public SuperStatBar getHPBar(){
         return hpBar;
     }    
+    /**
+     * constructor for survivor three, sets hp and creates new hp bar
+     */
     public SurvivorThree(){
         enableStaticRotation();
         startHP = 200;
@@ -30,7 +36,9 @@ public class SurvivorThree extends Survivors
         w.addObject(hpBar, w.getWidth() / 3, 30);
         hpBar.update(hp);
     }
-    
+    /**
+     * calls super act for movement and updates hp bar
+     */
     public void act()
     {
         if(hp <= 0){
@@ -42,7 +50,10 @@ public class SurvivorThree extends Survivors
         hpBar.update(hp);
         moveIntelligently(speed);
     }
-    
+    /**
+     * method to receive damage and update hp bar
+     * @param damage, amount of damage to receive
+     */
     public void takeDamage(int damage){
         if(super.shield){
             hp -= (damage/2);

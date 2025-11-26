@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Shield
-comment0.text=\n\ Write\ a\ description\ of\ class\ Shield\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Shield\ class\ for\ constructor\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
 comment1.params=owner
 comment1.target=Shield(Survivors)
+comment1.text=\r\n\ Shield\ constructor\r\n\ @param\ owner,\ tracks\ owner\ to\ follow\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ follows\ owner\ and\ updates\ position\ every\ act\r\n
 comment3.params=
 comment3.target=void\ followOwner()
 numComments=4

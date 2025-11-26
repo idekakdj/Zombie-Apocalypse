@@ -1,14 +1,18 @@
 #BlueJ class context
 comment0.target=SurvivorThree
-comment0.text=\n\ SurvivorThree\ -\ Tank\ survivor\ with\ high\ HP,\ named\ Paul\n\ \n\ @author\ Paul\n\ \n
+comment0.text=\r\n\ SurvivorThree\ -\ Tank\ survivor\ with\ high\ HP,\ named\ Paul\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
 comment1.params=
 comment1.target=SuperStatBar\ getHPBar()
+comment1.text=\r\n\ getter\ for\ hp\ bar\r\n
 comment2.params=
 comment2.target=SurvivorThree()
+comment2.text=\r\n\ constructor\ for\ survivor\ three,\ sets\ hp\ and\ creates\ new\ hp\ bar\r\n
 comment3.params=w
 comment3.target=void\ addedToWorld(greenfoot.World)
 comment4.params=
 comment4.target=void\ act()
+comment4.text=\r\n\ calls\ super\ act\ for\ movement\ and\ updates\ hp\ bar\r\n
 comment5.params=damage
 comment5.target=void\ takeDamage(int)
+comment5.text=\r\n\ method\ to\ receive\ damage\ and\ update\ hp\ bar\r\n\ @param\ damage,\ amount\ of\ damage\ to\ receive\r\n
 numComments=6

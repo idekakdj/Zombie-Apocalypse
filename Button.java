@@ -72,7 +72,7 @@ public class Button extends Actor
         }
         setImage(normalImage);
     }
-    
+    //Creates default image
     private GreenfootImage createNormalImage() {
         GreenfootImage button = new GreenfootImage(width, height);
         
@@ -97,7 +97,7 @@ public class Button extends Actor
         
         return button;
     }
-    
+    //Creates image for when button is selected using toggleable feature
     private GreenfootImage createSelectedImage() {
         GreenfootImage button = new GreenfootImage(width, height);
         
@@ -116,7 +116,7 @@ public class Button extends Actor
         
         return button;
     }
-    
+    //Draws the checkmark on the toggleable button
     private void drawCheckmark(GreenfootImage img) {
         img.setColor(Color.GREEN);
         int checkSize = Math.min(width, height) / 4;
@@ -168,12 +168,14 @@ public class Button extends Actor
     /**
      * gets button id to be used in handleClick and give the correct actions when each
      * button is clicked
+     * 
+     * @returns buttonID
      */
     public String getButtonID(){
         return buttonID;
     }
     /**
-     * Returns boolean is selected for buttons in ChooseWorld to update the booleans for 
+     * @return boolean isSelected for buttons in ChooseWorld to update the booleans for 
      * each item. For example if shield is selected SHIELD is true and if clicked again
      * SHIELD is now false.
      */

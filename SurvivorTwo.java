@@ -11,9 +11,15 @@ public class SurvivorTwo extends Survivors
     private int speed = 6;
     private GreenfootImage p2 = new GreenfootImage("jayden.png");
     private SuperStatBar hpBar;
+    /**
+     * getter for hp bar
+     */
     public SuperStatBar getHPBar(){
         return hpBar;
     }
+    /**
+     * assigns hp value and makes new hp bar
+     */
     public SurvivorTwo(){
         enableStaticRotation();
         startHP = 50;
@@ -29,7 +35,9 @@ public class SurvivorTwo extends Survivors
         w.addObject(hpBar, w.getWidth() / 3, 30);
         hpBar.update(hp);
     }
-    
+    /**
+     * calls on super act to move and updates hp bar
+     */
     public void act()
     {
         if(hp <= 0){
@@ -43,7 +51,10 @@ public class SurvivorTwo extends Survivors
 
         moveIntelligently(speed);
     }
-    
+    /**
+     * method to receive damage, considers if shield is selected and updates hp bar
+     * @param damage, amount to receive
+     */
     public void takeDamage(int damage){
         if(super.shield){
             hp -= (damage/2);

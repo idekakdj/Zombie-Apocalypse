@@ -44,7 +44,7 @@ public class SwordSlash extends Actor
     }
     
     /**
-     * Animate the sword slash
+     * Animate the sword slash by switching frames.
      */
     public void animateSlash()
     {
@@ -69,7 +69,9 @@ public class SwordSlash extends Actor
             setImage(slashFrames[frameIndex]);
         }
     }
-    
+    /**
+     * Cycles through the various frames for the animation.
+     */
     public void act()
     {
         animateSlash();

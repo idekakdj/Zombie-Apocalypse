@@ -1,15 +1,22 @@
 #BlueJ class context
 comment0.target=Wall
+comment0.text=\r\n\ Class\ for\ walls\ that\ stop\ zombies\ from\ reaching\ the\ survivor\r\n\ \r\n\ @author\ Cayden\ and\ hp\ bars\ by\ Jayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Wall()
-comment2.params=damage
+comment1.text=\r\n\ constructor\ for\ wall,\ sets\ health\ and\ image\r\n
+comment2.params=dmg
 comment2.target=void\ takeDamage(int)
+comment2.text=\r\n\ Makes\ wall\ take\ damage\ and\ update\ its\ appearance\ \r\n\ \r\n\ @param\ dmg\ amount\ of\ damage\ taken\ by\ wall\r\n
 comment3.params=amount
 comment3.target=void\ repair(int)
+comment3.text=\r\n\ Method\ used\ by\ survivor\ to\ repair\ the\ walls\ \r\n\ \r\n\ @param\ amount\ amount\ of\ health\ that\ wall\ gains\ \r\n
 comment4.params=
 comment4.target=boolean\ isFullyRepaired()
+comment4.text=\r\n\ Getter\ method\ for\ if\ the\ wall\ is\ at\ max\ health\ \r\n\ \r\n\ @return\ boolean\ true\ if\ health\ is\ greater\ or\ equal\ to\ maxHealth\ false\ if\ otherwise\ \r\n
 comment5.params=
 comment5.target=int\ getHealth()
+comment5.text=\r\n\ Getter\ method\ to\ get\ the\ current\ health\ of\ the\ wall\r\n\ \r\n\ @return\ int\ health\ the\ current\ health\ \r\n
 comment6.params=
 comment6.target=void\ updateAppearance()
+comment6.text=\r\n\ Method\ to\ make\ the\ walls\ become\ more\ transparent\ the\ less\ health\ they\ have\ (Assisted\ by\ Claude)\r\n
 numComments=7

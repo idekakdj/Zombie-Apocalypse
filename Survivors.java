@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Super class for survivors that handles all movement and spawning items that are selected
  * 
- * @author Paul with assistance Cayden and from Claude (Expert AI pathfinding implementation)
+ * @author Paul with assistance from Cayden and from Claude (Expert AI pathfinding implementation)
  */
 public abstract class Survivors extends SuperSmoothMover
 {
@@ -37,16 +37,18 @@ public abstract class Survivors extends SuperSmoothMover
     private static final double DISTANCE_BONUS_WEIGHT = 4.0;
     private static final double PREDICTION_WEIGHT = 1.5;
     private static final double SWARM_PENALTY_BASE = 2500.0;
-    private static final double EDGE_APPROACH_PENALTY = 12000.0;
+    private static final double EDGE_APPROACH_PENALTY = 20000.0;
     private static final double WALL_PENALTY_WEIGHT = 30.0;
     
     // Wall repair fields
     private Wall targetWall = null;
-    private int repairCooldown = 20;
+    private int repairCooldown = 10;
     private boolean returningToCenter = false;
     private boolean wasNighttime = false;
-
-    
+    /**
+     * gets user selection of items, checks for day and nighttime, moves away from zombies in range at night
+     * spawns all equipment that is selected
+     */
     public void act()
     {
         getUserItems();
@@ -119,7 +121,7 @@ public abstract class Survivors extends SuperSmoothMover
             );
             
             if (distance < 40) {
-                targetWall.repair(2);
+                targetWall.repair(5);
                 repairCooldown = 10;
                 
                 if (targetWall.isFullyRepaired()) {
@@ -183,7 +185,6 @@ public abstract class Survivors extends SuperSmoothMover
     }
     
     private boolean rebuildBrokenWalls() {
-
         GameWorld world = (GameWorld) getWorld();
         if (world == null) return false;
         
@@ -268,7 +269,9 @@ public abstract class Survivors extends SuperSmoothMover
         
         return false;
     }
-   
+    /**
+     * gets all booleans from game world to know which items to spawn
+     */
     public void getUserItems(){
         World w = getWorld();
         if (w instanceof GameWorld) {
@@ -280,11 +283,15 @@ public abstract class Survivors extends SuperSmoothMover
             wall = world.wall;
         }
     }
-    
+    /**
+     * gets start hp variable
+     */
     public int getStartHP(){
         return startHP;
     }
-    
+    /**
+     * gets angle zombies are approaching from
+     */
     public int getAngleTowards(Actor target){
         return calculateAngle(target.getX(), target.getY());
     }
@@ -605,17 +612,26 @@ public abstract class Survivors extends SuperSmoothMover
             return angle != -1 && speed > 0;
         }
     }
-    
+    /**
+     * for survivors to take damage from zombies
+     * @param damage, amount of damage to be taken
+     */
     public abstract void takeDamage(int damage);
-    
+    /**
+     * gets current hp
+     */
     public int getHP() {
         return hp;
     }
-    
+    /**
+     * gets maximum hp
+     */    
     public int getMaxHP() {
         return startHP;
     }
-    
+    /**
+     * for bandages to call to heal hp
+     */
     public void heal(){
         hp += 25;
         if (hp > startHP) {

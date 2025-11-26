@@ -1,7 +1,8 @@
 import greenfoot.*;
 import java.util.List;
-/*
- * @author Jayden
+/**
+ * Base gun class, calls on superclass act 
+ * @author Paul
  */
 public class Gun extends Ranged
 {
