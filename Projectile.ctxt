@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=Projectile
+comment0.text=\r\n\ Projectile\ for\ gun\ and\ machine\ gun\r\n\ \r\n\ @autho\ Jayden\ assisted\ by\ Paul\r\n
 comment1.params=damage\ target
 comment1.target=Projectile(int,\ Zombie)
+comment1.text=\r\n\ constructor\ for\ projectile\r\n\ @param\ damage,\ damage\ to\ deal\ \r\n\ @param\ target,\ nearest\ zombie\ that\ it\ targets\ first\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ targets\ nearest\ zombie\ and\ moves\ towards\ it,\ deals\ damage\ when\ touching\ zombies\r\n
 numComments=3

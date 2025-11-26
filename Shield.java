@@ -1,24 +1,30 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Shield here.
+ * Shield class for constructor
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Paul
+ * 
  */
 public class Shield extends Actor
 {
     
-    private final int SHIELD_DURABILITY = 100;
     GreenfootImage shield = new GreenfootImage("shield.png");
     private final int offsetX = 20;
     private Survivors owner;
+    /**
+     * Shield constructor
+     * @param owner, tracks owner to follow
+     */
     public Shield (Survivors owner){
         this.owner = owner;
         shield.scale(50,50);
         setImage(shield);
         
     }
+    /**
+     * follows owner and updates position every act
+     */
     public void act()
     {
         followOwner();;

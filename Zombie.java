@@ -6,7 +6,7 @@ import java.util.List;
  * Superclass for all zombie types
  * 
  * @author Cayden and hp bars by Jayden
- * @version (a version number or a date)
+ * 
  */
 public abstract class Zombie extends SuperSmoothMover
 {

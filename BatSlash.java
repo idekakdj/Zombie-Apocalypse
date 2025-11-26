@@ -1,9 +1,10 @@
 import greenfoot.*;
 
 /**
- * Bat slashing animation effect
+ * Bat slashing animation effect uses thin white slashing frames.
+ * Frames from spikerman.itch.io
  * 
- * @author Abithan, altered by Paul and Claude
+ * @author Abithan, edited by Paul and Claude
  * 
  */
 public class BatSlash extends Actor
@@ -69,7 +70,9 @@ public class BatSlash extends Actor
             setImage(slashFrames[frameIndex]);
         }
     }
-    
+    /**
+     * Calls the animation and swaps between images.
+     */
     public void act()
     {
         animateSlash();

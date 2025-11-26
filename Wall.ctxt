@@ -3,6 +3,7 @@ comment0.target=Wall
 comment0.text=\r\n\ Class\ for\ walls\ that\ stop\ zombies\ from\ reaching\ the\ survivor\r\n\ \r\n\ @author\ Cayden\ and\ hp\ bars\ by\ Jayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Wall()
+comment1.text=\r\n\ constructor\ for\ wall,\ sets\ health\ and\ image\r\n
 comment2.params=dmg
 comment2.target=void\ takeDamage(int)
 comment2.text=\r\n\ Makes\ wall\ take\ damage\ and\ update\ its\ appearance\ \r\n\ \r\n\ @param\ dmg\ amount\ of\ damage\ taken\ by\ wall\r\n

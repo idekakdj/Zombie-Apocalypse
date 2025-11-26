@@ -1,11 +1,19 @@
 import greenfoot.*;
-
+/**
+ * Projectile for gun and machine gun
+ * 
+ * @autho Jayden assisted by Paul
+ */
 public class Projectile extends Actor
 {
     private int speed = 7;
     private int damage;
     private Zombie target;
-
+    /**
+     * constructor for projectile
+     * @param damage, damage to deal 
+     * @param target, nearest zombie that it targets first
+     */
     public Projectile(int damage, Zombie target)
     {
         this.damage = damage;
@@ -15,7 +23,9 @@ public class Projectile extends Actor
         img.scale(20, 20);
         setImage(img);
     }
-
+    /**
+     * targets nearest zombie and moves towards it, deals damage when touching zombies
+     */
     public void act()
     {
         // If target exists and is still in world → move toward it

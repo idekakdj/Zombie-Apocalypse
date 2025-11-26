@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Big zombie, slower speed but higher damage and higher health
  * 
  * @author Cayden
- * @version (a version number or a date)
+ * 
  */
 public class Giant extends Zombie
 {
@@ -16,7 +16,10 @@ public class Giant extends Zombie
     private GreenfootImage rightImage;
 
     private SuperStatBar hpBar;
-
+    /**
+     * constructor for giant zombie, makes new hp bar, has lower speed, higher damage and higher hp
+     * 
+     */
     public Giant()
     {
         // fill in stats in brackets to give attributes to Giant
@@ -41,6 +44,18 @@ public class Giant extends Zombie
         
         setImage(leftImage);
     }
+    /**
+     * updates hp bar and calls super act method
+     */
+    public void act()
+    {
+        super.act();
+        hpBar.update(health);
+    }
+    /**
+     * adds zombie to world
+     * @param w, world to add to
+     */
     public void addedToWorld(World w)
     {
         

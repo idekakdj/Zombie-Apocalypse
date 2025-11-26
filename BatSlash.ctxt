@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=BatSlash
-comment0.text=\r\n\ Bat\ slashing\ animation\ effect\r\n\ \r\n\ @author\ Abithan,\ altered\ by\ Paul\ and\ Claude\r\n\ \r\n
+comment0.text=\r\n\ Bat\ slashing\ animation\ effect\ uses\ thin\ white\ slashing\ frames.\r\n\ Frames\ from\ spikerman.itch.io\r\n\ \r\n\ @author\ Abithan,\ edited\ by\ Paul\ and\ Claude\r\n\ \r\n
 comment1.params=
 comment1.target=BatSlash()
 comment1.text=\r\n\ Constructor\ -\ Simple\ version\ with\ default\ settings\r\n
@@ -12,4 +12,5 @@ comment3.target=void\ animateSlash()
 comment3.text=\r\n\ Animate\ the\ sword\ slash\r\n
 comment4.params=
 comment4.target=void\ act()
+comment4.text=\r\n\ Calls\ the\ animation\ and\ swaps\ between\ images.\r\n
 numComments=5

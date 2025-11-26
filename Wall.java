@@ -10,7 +10,9 @@ public class Wall extends Actor
 {
     private int health;
     private int maxHealth;
-    
+    /**
+     * constructor for wall, sets health and image
+     */
     public Wall() {
         maxHealth = 100;
         health = maxHealth;

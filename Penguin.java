@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Cayden
  * @version (a version number or a date)
  */
-/**
+
  
- */public class Penguin extends Zombie
+public class Penguin extends Zombie
 {
     private final static int PENG_HEALTH = 50;
     private final static double PENG_SPEED = 4;
@@ -16,7 +16,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
     
     private GreenfootImage leftImage;
     private GreenfootImage rightImage;
-    
+    /**
+     * contructor for penguin, lower hp and damage, higher speed
+     */
     public Penguin() {
         health = PENG_HEALTH;
         speed = PENG_SPEED;

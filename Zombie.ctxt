@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Zombie
-comment0.text=\r\n\ Superclass\ for\ all\ zombie\ types\r\n\ \r\n\ @author\ Cayden\ and\ hp\ bars\ by\ Jayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Superclass\ for\ all\ zombie\ types\r\n\ \r\n\ @author\ Cayden\ and\ hp\ bars\ by\ Jayden\r\n\ \r\n
 comment1.params=
 comment1.target=void\ updateHpBar()
 comment1.text=\r\n\ Method\ automatically\ called\ by\ Greenfoot\ when\ zombie\ is\ added\ to\ world\r\n\ This\ ensures\ the\ HP\ bar\ gets\ added\ to\ the\ world\r\n

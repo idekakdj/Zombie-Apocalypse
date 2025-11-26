@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TitleScreen here.
+ * Title screen, changes to start world after 3 seconds.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Paul 
+ * 
  */
 public class TitleScreen extends World
 {

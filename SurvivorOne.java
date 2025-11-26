@@ -11,10 +11,15 @@ public class SurvivorOne extends Survivors
     private int speed = 4;
     private GreenfootImage p1 = new GreenfootImage("chiu.png");
     private SuperStatBar hpBar;
-    
+    /**
+     * getter for hp bar for this survivor
+     */
     public SuperStatBar getHPBar(){
         return hpBar;
     }
+    /**
+     * constructor for survivor one, sets hp value and hp bar
+     */
     public SurvivorOne(){
         enableStaticRotation();
         startHP = 100;
@@ -32,7 +37,9 @@ public class SurvivorOne extends Survivors
         w.addObject(hpBar, w.getWidth() / 3, 30);
         hpBar.update(hp);
     }
-    
+    /**
+     * updates hp bar, sets world to end screen if survivor dies and calls super act method for movement
+     */
     public void act()
     {
         if(hp <= 0){
@@ -48,7 +55,10 @@ public class SurvivorOne extends Survivors
         
         moveIntelligently(speed);
     }
-    
+    /**
+     * calculates damages taken, take into account if shield is selected and updates hp bar
+     * @param damage, amount of damage to be taken
+     */
     public void takeDamage(int damage){
         if(super.shield){
             hp -= (damage/2);

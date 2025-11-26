@@ -19,6 +19,11 @@ public class Bandages extends Actor
     private boolean nighttime;
     private int ownerStartHP;
     private boolean used = false;
+    GreenfootSound heal = new GreenfootSound("heal.mp3");
+    /**
+     * Spawns the bandages, sets the use counter to 2 and checks which survivor was selected because they have different hp values.
+     * @param owner, keeps track of the owner to follow the survivor
+     */
     public Bandages(Survivors owner){
         this.owner = owner;
         setImage(bandages);
@@ -31,6 +36,10 @@ public class Bandages extends Actor
             ownerStartHP = ((SurvivorThree) owner).getMaxHP();
         }
     }
+    /**
+     * Checks for updated daytime status first because it only heals during the day, shows during the day to heal
+     * otherwise has a method to turn the image invisible while still following the survivor.
+     */
     public void act()
     {
         updateDaytimeStatus();
@@ -42,6 +51,7 @@ public class Bandages extends Actor
             usageTime--;
             if(usageTime == 0 && useCounter > 0 ){
                 owner.heal();
+                heal.play();
                 if (owner instanceof SurvivorOne) {
                     ((SurvivorOne) owner).getHPBar().update(owner.getHP());
                 } else if (owner instanceof SurvivorTwo) {
@@ -68,12 +78,20 @@ public class Bandages extends Actor
             this.nighttime = gameWorld.nighttime;
         }
     }
+    /**
+     * hides the image by turning it invisible.
+     */
     public void hide(){
         setImage(new GreenfootImage(1,1));
     }
+    
+    /**
+     * Shows the original image when being used.
+     */
     public void show (){
         setImage(bandages);
     }
+    //follows survivor
     private void followOwner()
     {
         if (owner != null && getWorld() != null) {

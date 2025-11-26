@@ -1,6 +1,10 @@
 import greenfoot.*;
 import java.util.List;
-// whack01 by freesound_community on pixabay
+/**
+ *  Bat class, spawns bat that spins when attacking and uses slash animation
+ *  @author Jayden
+ *  whack01 by freesound_community on pixabay
+ */
 public class Bat extends Melee
 {
   
@@ -13,7 +17,13 @@ public class Bat extends Melee
     private int attackCooldown;   // cooldown timer
     GreenfootImage bat = new GreenfootImage("baseballbat.png");
     private GreenfootSound whack = new GreenfootSound ("whack.mp3");
-
+    /**
+     * Bat constructor
+     * @param damage, damage bat deals
+     * @param coolDown, cooldown before attacking
+     * @param range, range for attacking
+     * @param owner, tracks the survivor owner to follow it
+     */
     public Bat(int damage, int coolDown, int range, Survivors owner)
     {
         
@@ -25,7 +35,9 @@ public class Bat extends Melee
         setImage(bat);
         
     }
-
+    /**
+     * follows survivor owner, spins when attacking and detects nearby zombies to attack
+     */
     public void act()
     {
         followOwner();
@@ -45,10 +57,7 @@ public class Bat extends Melee
         }
     }
     
-    public void attack()
-    {
-        
-    }
+    
 
     private void followOwner()
     {
@@ -75,7 +84,9 @@ public class Bat extends Melee
             spinTimer = 10;   // spin for 10 frames (adjust if you want)
         }
     }
-    
+    /**
+     * plays sound when attacking
+     */
     public void playSound()
     {
         Greenfoot.playSound("whack.mp3");  

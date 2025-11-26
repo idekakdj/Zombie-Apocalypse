@@ -16,7 +16,9 @@ public class Regular extends Zombie
     private GreenfootImage rightImage;
     
     // Removed the act() method - parent class handles everything
-    
+    /**
+     * constructor for regular zombie, adds new hp bar
+     */
     public Regular() {
         
         health = REG_HEALTH;
@@ -37,7 +39,10 @@ public class Regular extends Zombie
         
         setImage(leftImage);
     }
-    
+    /**
+     * method to add to world
+     * @param w, world to add this to
+     */
     public void addedToWorld(World w)
     {
         if (hpBar != null)

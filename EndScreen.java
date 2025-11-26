@@ -20,10 +20,12 @@ public class EndScreen extends World
         prepareButtons();
         prepareDialogue();
     }
+    //Button back to start
     private void prepareButtons(){
         Button returnToStart = new Button ("Back to Start", 80, 300, Color.WHITE, 5, Color.BLACK, 40, Color.BLACK,"backtostart",false);
         addObject(returnToStart, getWidth()/2, 655);
     }
+    //Dialogue
     private void prepareDialogue(){
         setBackground("diedworld.png");
         zombie.scale(200,200);

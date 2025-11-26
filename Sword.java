@@ -12,6 +12,14 @@ public class Sword extends Melee
     private Survivors owner;     
     private int attackCooldown;   // cooldown timer
     GreenfootImage sword = new GreenfootImage("sword.png");
+    GreenfootSound slash = new GreenfootSound("slash.mp3");
+    /**
+     * Sword constructor
+     * @param damage, damage to deal to zombies
+     * @param coolDown, attack cooldown
+     * @param range, attack range
+     * @param owner, owner to follow
+     */
     public Sword(int damage, int coolDown, int range, Survivors owner)
     {
         
@@ -23,6 +31,9 @@ public class Sword extends Melee
         setImage(sword);
         
     }
+    /**
+     * follows owner and attacks, uses thick red slash animation
+     */
     public void act(){
         followOwner();
         if (attackCooldown > 0) {
@@ -46,6 +57,7 @@ public class Sword extends Melee
         if (!zombies.isEmpty()) {
             //Slash animation
             SwordSlash slash = new SwordSlash();
+            Greenfoot.playSound("slash.mp3");
             getWorld().addObject(slash, getX() + 30, getY());
             // Deal damage
             for (Zombie z : zombies) {
