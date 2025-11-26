@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class Regular here.
+ * Base zombie moderate health, speed, and damage
  * 
  * @author Cayden 
  * @version (a version number or a date)

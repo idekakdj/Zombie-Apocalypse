@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boss here.
+ * Big Boss that explodes and spawns penguins upon death
  * 
  * @author Cayden
  * @version (a version number or a date)
@@ -45,22 +45,13 @@ public class Boss extends Zombie
         setImage(leftImage);
     }
     
-    public void act()
-    {
-        super.act();
-        
-        if(Greenfoot.isKeyDown("k")){
-            health = 0;
-        }
-    }
-    
     protected void killZombie() {
         World world = getWorld();
         int x = getX();
         int y = getY();
         
-        int[] xOffsets = {-xOff, 0, xOff};  // Left, center, right
-        int[] yOffsets = {-yOff, yOff, 0};  // Top, bottom, center
+        int[] xOffsets = {-xOff, 0, xOff};  
+        int[] yOffsets = {-yOff, yOff, 0}; 
         
         if (world != null) {
             world.addObject(new Explosion(), x, y);

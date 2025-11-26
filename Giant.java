@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Giant here.
+ * Big zombie, slower speed but higher damage and higher health
  * 
  * @author Cayden
  * @version (a version number or a date)
@@ -25,7 +25,7 @@ public class Giant extends Zombie
         health = GIANT_HEALTH;
         maxHealth = GIANT_HEALTH;  
  
-    hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, -85, Color.GREEN, Color.RED, false, Color.ORANGE, 1);
+        hpBar = new SuperStatBar(maxHealth, health, this, 50, 5, -85, Color.GREEN, Color.RED, false, Color.ORANGE, 1);
 
         speed = GIANT_SPEED;
         damage = GIANT_DAMAGE;
@@ -49,12 +49,6 @@ public class Giant extends Zombie
             w.addObject(hpBar, getX(), getY());
             hpBar.update(health);
         }
-    }
-    
-    public void act()
-    {
-        super.act();
-        hpBar.update(health);
     }
     
     protected GreenfootImage getLeftImage() {

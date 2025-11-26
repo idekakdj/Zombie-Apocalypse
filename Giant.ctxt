@@ -1,16 +1,14 @@
 #BlueJ class context
 comment0.target=Giant
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Giant\ here.\r\n\ \r\n\ @author\ Cayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Big\ zombie,\ slower\ speed\ but\ higher\ damage\ and\ higher\ health\r\n\ \r\n\ @author\ Cayden\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Giant()
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
-comment3.target=void\ act()
+comment3.target=greenfoot.GreenfootImage\ getLeftImage()
 comment4.params=
-comment4.target=greenfoot.GreenfootImage\ getLeftImage()
+comment4.target=greenfoot.GreenfootImage\ getRightImage()
 comment5.params=
-comment5.target=greenfoot.GreenfootImage\ getRightImage()
-comment6.params=
-comment6.target=java.lang.String\ getZombieType()
-numComments=7
+comment5.target=java.lang.String\ getZombieType()
+numComments=6
