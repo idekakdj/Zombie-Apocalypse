@@ -9,7 +9,8 @@ comment2.target=SwordSlash(int,\ int)
 comment2.text=\r\n\ Constructor\ -\ Customizable\ version\r\n\ \r\n\ @param\ numFrames\ Number\ of\ animation\ frames\ (images)\r\n\ @param\ speed\ Acts\ between\ frame\ changes\ (lower\ \=\ faster)\r\n
 comment3.params=
 comment3.target=void\ animateSlash()
-comment3.text=\r\n\ Animate\ the\ sword\ slash\r\n
+comment3.text=\r\n\ Animate\ the\ sword\ slash\ by\ switching\ frames.\r\n
 comment4.params=
 comment4.target=void\ act()
+comment4.text=\r\n\ Cycles\ through\ the\ various\ frames\ for\ the\ animation.\r\n
 numComments=5
