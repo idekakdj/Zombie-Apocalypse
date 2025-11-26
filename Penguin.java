@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Special here.
+ * Penguin zombie very quick but very low health 
  * 
  * @author Cayden
  * @version (a version number or a date)
@@ -32,11 +32,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
         rightImage.scale(56, 61);
         
         setImage(leftImage);
-    }
-
-    public void act()
-    {
-        super.act();
     }
     
     protected GreenfootImage getLeftImage() {
