@@ -9,6 +9,8 @@ public class EndScreen extends World
 {
     private GreenfootImage zombie = new GreenfootImage("Zombie.png");
     private GreenfootImage right = new GreenfootImage("rightbubble.png");
+    private GreenfootSound scream = new GreenfootSound ("scream.mp3");
+
     /**
      * Constructor for objects of class EndScreen.
      * 
@@ -19,6 +21,8 @@ public class EndScreen extends World
         setBackground("diedworld.png");
         prepareButtons();
         prepareDialogue();
+                Greenfoot.playSound("scream.mp3");  
+
     }
     private void prepareButtons(){
         Button returnToStart = new Button ("Back to Start", 80, 300, Color.WHITE, 5, Color.BLACK, 40, Color.BLACK,"backtostart",false);

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Nighttime
-comment0.text=\r\n\ Nighttime/Storm\ effect\ based\ off\ of\ class\ vehicle\ sim\ storm\ demo\ taken\ from\ my\ vehicle\ sim\ project\r\n\ \r\n\ @author\ Cayden\ with\ some\ code\ from\ Mr.\ Cohen\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Nighttime/Storm\ effect\ based\ off\ of\ class\ vehicle\ sim\ storm\ demo\ taken\ from\ my\ vehicle\ sim\ project\n\ \n\ @author\ Cayden\ with\ some\ code\ from\ Mr.\ Cohen\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Nighttime()
 comment2.params=w

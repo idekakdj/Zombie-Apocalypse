@@ -32,6 +32,8 @@ public class GameWorld extends World
     
     private int actCount;
     private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
+        private GreenfootSound groan = new GreenfootSound ("groan.mp3");
+
     
     public GameWorld(boolean s1,boolean s2, boolean s3, boolean melee, boolean gun, boolean shield, boolean bandages, boolean wall)
     {    
@@ -116,6 +118,8 @@ public class GameWorld extends World
     
     //Progressively harder waves up to 5.
     public void waves(){
+                Greenfoot.playSound("groan.mp3");  
+
         wavesCounter++;
         if (wavesCounter == 1){
             for(int i = 0; i < 5; i++){
@@ -270,6 +274,7 @@ public class GameWorld extends World
     }
 
     private void drawWalls() {
+
         int width = 400;
         int height = 300;
         

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Survivors
-comment0.text=\r\n\ Super\ class\ for\ survivors\ that\ handles\ all\ movement\ and\ spawning\ items\ that\ are\ selected\r\n\ \r\n\ @author\ Paul\ with\ assistance\ Cayden\ and\ from\ Claude\ (Expert\ AI\ pathfinding\ implementation)\r\n
+comment0.text=\n\ Super\ class\ for\ survivors\ that\ handles\ all\ movement\ and\ spawning\ items\ that\ are\ selected\n\ \n\ @author\ Paul\ with\ assistance\ Cayden\ and\ from\ Claude\ (Expert\ AI\ pathfinding\ implementation)\n
 comment1.params=
 comment1.target=void\ act()
 comment10.params=targetX\ targetY

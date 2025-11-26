@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=WinScreen
-comment0.text=\r\n\ Screen\ when\ you\ win\ after\ surviving\ 5\ waves.\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
+comment0.text=\n\ Screen\ when\ you\ win\ after\ surviving\ 5\ waves.\n\ \n\ @author\ Paul\n\ \n
 comment1.params=s1\ s2\ s3
 comment1.target=WinScreen(boolean,\ boolean,\ boolean)
-comment1.text=\r\n\ Constructor\ with\ survivor\ selection\r\n\ @param\ s1\ -\ true\ if\ Paul\ (SurvivorThree)\ was\ selected\r\n\ @param\ s2\ -\ true\ if\ Jayden\ (SurvivorTwo)\ was\ selected\r\n\ @param\ s3\ -\ true\ if\ Cayden\ (SurvivorOne)\ was\ selected\r\n
+comment1.text=\n\ Constructor\ with\ survivor\ selection\n\ @param\ s1\ -\ true\ if\ Paul\ (SurvivorThree)\ was\ selected\n\ @param\ s2\ -\ true\ if\ Jayden\ (SurvivorTwo)\ was\ selected\n\ @param\ s3\ -\ true\ if\ Cayden\ (SurvivorOne)\ was\ selected\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Changes\ dialogue\ from\ survivor\ to\ zombie\ after\ he\ tells\ us\ hes\ been\ infected.\r\n
+comment2.text=\n\ Changes\ dialogue\ from\ survivor\ to\ zombie\ after\ he\ tells\ us\ hes\ been\ infected.\n
 comment3.params=
 comment3.target=void\ drawDialogue()
 comment4.params=

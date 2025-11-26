@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Effect
-comment0.text=\r\n\ Effects\ superclass\ taken\ from\ the\ class\ vehicle\ sim\ demos\r\n\ \r\n\ @author\ Mr\ Cohen\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Effects\ superclass\ taken\ from\ the\ class\ vehicle\ sim\ demos\n\ \n\ @author\ Mr\ Cohen\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=timeLeft\ totalFadeTime
 comment1.target=void\ fade(int,\ int)
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Effect\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ Effect\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 numComments=3

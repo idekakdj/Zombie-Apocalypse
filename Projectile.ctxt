@@ -1,7 +1,9 @@
 #BlueJ class context
 comment0.target=Projectile
+comment0.text=\n\ Author\ Jayden\ \ \n\ \n\ speed\ var\ is\ the\ number\ of\ pixels\ moved\ in\ the\ direction\ facing\n\ damage\ is\ the\ amount\ of\ damage\ taken\ from\ the\ zombie\ that\ the\ projectile\ hits\ (int)\n\ target\ zombie\ that\ the\ projectile\ is\ moving\ towards\n
 comment1.params=damage\ target
 comment1.target=Projectile(int,\ Zombie)
+comment1.text=\n\ @param\ damage\ is\ the\ damage\ an\ individual\ projectile\ will\ do\ against\ a\ zombie\n\ @param\ target\ is\ the\ zombie\ that\ is\ being\ targeted\ by\ the\ projectile\n\ \n\ \n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

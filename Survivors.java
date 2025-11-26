@@ -45,6 +45,7 @@ public abstract class Survivors extends SuperSmoothMover
     private int repairCooldown = 20;
     private boolean returningToCenter = false;
     private boolean wasNighttime = false;
+
     
     public void act()
     {
@@ -182,6 +183,7 @@ public abstract class Survivors extends SuperSmoothMover
     }
     
     private boolean rebuildBrokenWalls() {
+
         GameWorld world = (GameWorld) getWorld();
         if (world == null) return false;
         
