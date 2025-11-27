@@ -1,20 +1,20 @@
 #BlueJ class context
 comment0.target=Bandages
-comment0.text=\n\ @author\ Paul\n\n\n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses\ and\ can\ only\ be\ used\n\ once\ at\ a\ time\ during\ the\ day.\n\n
+comment0.text=\r\n\ @author\ Paul\r\n\r\n\r\n\ Heals\ the\ user\ by\ 25hp\ when\ used.\ Has\ two\ uses\ and\ can\ only\ be\ used\r\n\ once\ at\ a\ time\ during\ the\ day.\r\n\r\n
 comment1.params=owner
 comment1.target=Bandages(Survivors)
-comment1.text=\n\ Spawns\ the\ bandages,\ sets\ the\ use\ counter\ to\ 2\ and\ checks\ which\ survivor\ was\ selected\ because\ they\ have\ different\ hp\ values.\n\ @param\ owner,\ keeps\ track\ of\ the\ owner\ to\ follow\ the\ survivor\n
+comment1.text=\r\n\ Spawns\ the\ bandages,\ sets\ the\ use\ counter\ to\ 2\ and\ checks\ which\ survivor\ was\ selected\ because\ they\ have\ different\ hp\ values.\r\n\ @param\ owner,\ keeps\ track\ of\ the\ owner\ to\ follow\ the\ survivor\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Checks\ for\ updated\ daytime\ status\ first\ because\ it\ only\ heals\ during\ the\ day,\ shows\ during\ the\ day\ to\ heal\n\ otherwise\ has\ a\ method\ to\ turn\ the\ image\ invisible\ while\ still\ following\ the\ survivor.\n
+comment2.text=\r\n\ Checks\ for\ updated\ daytime\ status\ first\ because\ it\ only\ heals\ during\ the\ day,\ shows\ during\ the\ day\ to\ heal\r\n\ otherwise\ has\ a\ method\ to\ turn\ the\ image\ invisible\ while\ still\ following\ the\ survivor.\r\n
 comment3.params=
 comment3.target=void\ updateDaytimeStatus()
 comment4.params=
 comment4.target=void\ hide()
-comment4.text=\n\ hides\ the\ image\ by\ turning\ it\ invisible.\n
+comment4.text=\r\n\ hides\ the\ image\ by\ turning\ it\ invisible.\r\n
 comment5.params=
 comment5.target=void\ show()
-comment5.text=\n\ Shows\ the\ original\ image\ when\ being\ used.\n
+comment5.text=\r\n\ Shows\ the\ original\ image\ when\ being\ used.\r\n
 comment6.params=
 comment6.target=void\ followOwner()
 numComments=7

@@ -33,11 +33,11 @@ public abstract class Survivors extends SuperSmoothMover
     private static final double REGULAR_THREAT = 1.0;
     
     // Scoring weights
-    private static final double ZOMBIE_DANGER_WEIGHT = 8000.0;
+    private static final double ZOMBIE_DANGER_WEIGHT = 5000.0;
     private static final double DISTANCE_BONUS_WEIGHT = 4.0;
     private static final double PREDICTION_WEIGHT = 1.5;
     private static final double SWARM_PENALTY_BASE = 2500.0;
-    private static final double EDGE_APPROACH_PENALTY = 20000.0;
+    private static final double EDGE_APPROACH_PENALTY = 30000.0;
     private static final double WALL_PENALTY_WEIGHT = 30.0;
     
     // Wall repair fields
@@ -358,7 +358,11 @@ public abstract class Survivors extends SuperSmoothMover
             if (!world.isValidPosition(projX, projY)) {
                 continue;
             }
-            
+            int edgeBuffer = 80;
+            if (projX < edgeBuffer || projX > world.getWidth() - edgeBuffer ||
+                projY < edgeBuffer || projY > world.getHeight() - edgeBuffer) {
+                continue;
+            }
             if (wall && wouldCollideWithWall(projX, projY, world)) {
                 continue;
             }
@@ -560,13 +564,23 @@ public abstract class Survivors extends SuperSmoothMover
         
         int centerX = world.getWidth() / 2;
         int centerY = world.getHeight() / 2;
-        double distFromCenter = distance(x, y, centerX, centerY);
-        double maxComfortDist = Math.min(world.getWidth() / 2 - 40, world.getHeight() / 2 - 40);
         
-        if (distFromCenter > maxComfortDist) {
-            totalScore -= (distFromCenter - maxComfortDist) * EDGE_APPROACH_PENALTY;
+        // Replace the edge penalty section with this:
+        int distToLeftEdge = x;
+        int distToRightEdge = world.getWidth() - x;
+        int distToTopEdge = y;
+        int distToBottomEdge = world.getHeight() - y;
+        
+        int minEdgeDist = Math.min(
+            Math.min(distToLeftEdge, distToRightEdge),
+            Math.min(distToTopEdge, distToBottomEdge)
+        );
+        
+        // Apply massive penalty when within 80 pixels of any edge
+        if (minEdgeDist < 80) {
+            double edgePenalty = (80 - minEdgeDist) * 500; // Strong exponential
+            totalScore -= edgePenalty * edgePenalty; // Make it quadratic
         }
-        
         return totalScore;
     }
     

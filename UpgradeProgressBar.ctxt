@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=UpgradeProgressBar
-comment0.text=\n\ Shows\ progress\ to\ weapon\ upgrade\n\ @author\ Paul\ assisted\ by\ Claude\n\ \n
+comment0.text=\r\n\ Shows\ progress\ to\ weapon\ upgrade\r\n\ @author\ Paul\ assisted\ by\ Claude\r\n\ \r\n
 comment1.params=width\ height\ fillColor\ emptyColor\ borderWidth\ borderColor\ text\ melee\ gun
 comment1.target=UpgradeProgressBar(int,\ int,\ greenfoot.Color,\ greenfoot.Color,\ int,\ greenfoot.Color,\ java.lang.String,\ boolean,\ boolean)
-comment1.text=\n\ constructor\ for\ bar,\ fully\ customizable\n\ @param\ width,\ width\ of\ bar\n\ @param\ height,\ height\ of\ bar\n\ @param\ fillColor,\ color\ that\ shows\ progress\ and\ fills\ \n\ @param\ empty\ color,\ default\ color\ that\ gets\ covered\ as\ bar\ fills\n\ @param\ borderWidth,\ border\ width\n\ @param\ borderColor,\ color\ of\ border\n\ @param\ text,\ text\ on\ the\ bar\n\ @param\ melee,\ takes\ melee\ boolean\ from\ game\ world\ to\ remove\ bat\ and\ add\ sword\ when\ upgrade\ is\ ready\n\ @param\ gun,\ takes\ gun\ boolean\ from\ game\ world\ to\ remove\ gun\ and\ add\ machine\ gun\ when\ upgrade\ is\ ready\n
+comment1.text=\r\n\ constructor\ for\ bar,\ fully\ customizable\r\n\ @param\ width,\ width\ of\ bar\r\n\ @param\ height,\ height\ of\ bar\r\n\ @param\ fillColor,\ color\ that\ shows\ progress\ and\ fills\ \r\n\ @param\ empty\ color,\ default\ color\ that\ gets\ covered\ as\ bar\ fills\r\n\ @param\ borderWidth,\ border\ width\r\n\ @param\ borderColor,\ color\ of\ border\r\n\ @param\ text,\ text\ on\ the\ bar\r\n\ @param\ melee,\ takes\ melee\ boolean\ from\ game\ world\ to\ remove\ bat\ and\ add\ sword\ when\ upgrade\ is\ ready\r\n\ @param\ gun,\ takes\ gun\ boolean\ from\ game\ world\ to\ remove\ gun\ and\ add\ machine\ gun\ when\ upgrade\ is\ ready\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ updates\ bar\ with\ new\ progress,\ has\ glow\ image\ when\ complete\ and\ switches\ to\ weapon\ upgrades\ when\ bar\ is\ filled\n
+comment2.text=\r\n\ updates\ bar\ with\ new\ progress,\ has\ glow\ image\ when\ complete\ and\ switches\ to\ weapon\ upgrades\ when\ bar\ is\ filled\r\n
 comment3.params=
 comment3.target=void\ updateProgress()
 comment4.params=
@@ -15,8 +15,8 @@ comment5.params=
 comment5.target=void\ glow()
 comment6.params=
 comment6.target=boolean\ isUpgradeReady()
-comment6.text=\n\ determines\ if\ upgrade\ is\ ready\n\ \n\ @return\ isComplete\ if\ upgrade\ is\ ready\n
+comment6.text=\r\n\ determines\ if\ upgrade\ is\ ready\r\n\ \r\n\ @return\ isComplete\ if\ upgrade\ is\ ready\r\n
 comment7.params=
 comment7.target=void\ reset()
-comment7.text=\n\ resets\ bar\n
+comment7.text=\r\n\ resets\ bar\r\n
 numComments=8

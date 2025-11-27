@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Regular
-comment0.text=\n\ Base\ zombie\ moderate\ health,\ speed,\ and\ damage\n\ \n\ @author\ Cayden\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Base\ zombie\ moderate\ health,\ speed,\ and\ damage\r\n\ \r\n\ @author\ Cayden\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Regular()
-comment1.text=\n\ constructor\ for\ regular\ zombie,\ adds\ new\ hp\ bar\n
+comment1.text=\r\n\ constructor\ for\ regular\ zombie,\ adds\ new\ hp\ bar\r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
-comment2.text=\n\ method\ to\ add\ to\ world\n\ @param\ w,\ world\ to\ add\ this\ to\n
+comment2.text=\r\n\ method\ to\ add\ to\ world\r\n\ @param\ w,\ world\ to\ add\ this\ to\r\n
 comment3.params=
 comment3.target=greenfoot.GreenfootImage\ getLeftImage()
 comment4.params=

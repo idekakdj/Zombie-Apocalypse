@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=TitleScreen
-comment0.text=\n\ Title\ screen,\ changes\ to\ start\ world\ after\ 3\ seconds.\n\ \n\ @author\ Paul\ \n\ \n
+comment0.text=\r\n\ Title\ screen,\ changes\ to\ start\ world\ after\ 3\ seconds.\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n
 comment1.params=
 comment1.target=TitleScreen()
-comment1.text=\n\ New\ title\ screen\ \n
+comment1.text=\r\n\ New\ title\ screen\ \r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Automatically\ changes\ to\ StartWorld\ after\ 3\ seconds.\n
+comment2.text=\r\n\ Automatically\ changes\ to\ StartWorld\ after\ 3\ seconds.\r\n
 numComments=3

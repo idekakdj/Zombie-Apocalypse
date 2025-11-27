@@ -14,7 +14,7 @@ public class Wall extends Actor
      * constructor for wall, sets health and image
      */
     public Wall() {
-        maxHealth = 100;
+        maxHealth = 50;
         health = maxHealth;
         GreenfootImage img = new GreenfootImage("wall.png");
         setImage(img);
