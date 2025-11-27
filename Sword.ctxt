@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Sword
-comment0.text=\r\n\ Upgrade\ to\ Bat\ triggers\ when\ user\ hits\ a\ certain\ score.\r\n\ \r\n\ @author\ Paul\r\n
+comment0.text=\n\ Upgrade\ to\ Bat\ triggers\ when\ user\ hits\ a\ certain\ score.\n\ \n\ @author\ Paul\n
 comment1.params=damage\ coolDown\ range\ owner
 comment1.target=Sword(int,\ int,\ int,\ Survivors)
-comment1.text=\r\n\ Sword\ constructor\r\n\ @param\ damage,\ damage\ to\ deal\ to\ zombies\r\n\ @param\ coolDown,\ attack\ cooldown\r\n\ @param\ range,\ attack\ range\r\n\ @param\ owner,\ owner\ to\ follow\r\n
+comment1.text=\n\ Sword\ constructor\n\ @param\ damage,\ damage\ to\ deal\ to\ zombies\n\ @param\ coolDown,\ attack\ cooldown\n\ @param\ range,\ attack\ range\n\ @param\ owner,\ owner\ to\ follow\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ follows\ owner\ and\ attacks,\ uses\ thick\ red\ slash\ animation\r\n
+comment2.text=\n\ follows\ owner\ and\ attacks,\ uses\ thick\ red\ slash\ animation\n
 comment3.params=
 comment3.target=void\ followOwner()
 comment4.params=

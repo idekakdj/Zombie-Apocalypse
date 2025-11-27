@@ -1,15 +1,17 @@
 #BlueJ class context
 comment0.target=Ranged
-comment0.text=\r\n\ Super\ class\ for\ gun\ and\ machine\ gun\r\n\ \r\n\ @author\ Paul\ \r\n\ \r\n
+comment0.text=\n\ Super\ class\ for\ gun\ and\ machine\ gun\n\ \n\ @authors\ Paul\ and\ Jayden\n\ \n
 comment1.params=damage\ fireRate\ owner
 comment1.target=Ranged(int,\ int,\ Survivors)
-comment1.text=\r\n\ superclass\ constructor\ that\ works\ for\ both\ gun\ subclasses\r\n\ @param\ damage,\ damage\ to\ deal\r\n\ @param\ fireRate,\ how\ fast\ it\ shoots,\ faster\ for\ machine\ gun\r\n\ @param\ owner,\ tracks\ owner\ to\ follow\r\n
+comment1.text=\n\ superclass\ constructor\ that\ works\ for\ both\ gun\ subclasses\n\ @param\ damage,\ damage\ to\ deal\n\ @param\ fireRate,\ how\ fast\ it\ shoots,\ faster\ for\ machine\ gun\n\ @param\ owner,\ tracks\ owner\ to\ follow\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ follows\ owner\ and\ finds\ closest\ zombie\ to\ target\ and\ then\ shoot\ at\r\n
-comment3.params=zombies
-comment3.target=Zombie\ findClosestZombie(java.util.List)
-comment4.params=target
-comment4.target=void\ attack(Zombie)
-comment4.text=\r\n\ sends\ projectile\ to\ zombie\ targets\r\n\ @param\ target,\ nearest\ zombie\ that\ is\ found\ in\ the\ method\ above\r\n
-numComments=5
+comment2.text=\n\ follows\ owner\ and\ finds\ closest\ zombie\ to\ target\ and\ then\ shoot\ at\n
+comment3.params=
+comment3.target=void\ soundFix()
+comment4.params=zombies
+comment4.target=Zombie\ findClosestZombie(java.util.List)
+comment5.params=target
+comment5.target=void\ attack(Zombie)
+comment5.text=\n\ sends\ projectile\ to\ zombie\ targets\n\ @param\ target,\ nearest\ zombie\ that\ is\ found\ in\ the\ method\ above\n
+numComments=6

@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=ScoreTracker
-comment0.text=\r\n\ \r\n\ @author\ Paul\ assisted\ by\ Claude\r\n\ \r\n\ Keeps\ track\ of\ waves\ and\ score.\r\n\ Score\ is\ calculated\ on\ number\ of\ Zombies\ killed\ (you\ don't\ have\ to\ kill\ all\ the\ \r\n\ zombies\ to\ move\ to\ another\ wave\ just\ last\ until\ day)\r\n
+comment0.text=\n\ \n\ @author\ Paul\ assisted\ by\ Claude\n\ \n\ Keeps\ track\ of\ waves\ and\ score.\n\ Score\ is\ calculated\ on\ number\ of\ Zombies\ killed\ (you\ don't\ have\ to\ kill\ all\ the\ \n\ zombies\ to\ move\ to\ another\ wave\ just\ last\ until\ day)\n
 comment1.params=width\ height\ color\ borderWidth\ borderColor
 comment1.target=ScoreTracker(int,\ int,\ greenfoot.Color,\ int,\ greenfoot.Color)
-comment1.text=\r\n\ constructor\ that\ draws\ the\ bar\r\n\ @param\ width,\ width\ of\ the\ bar\r\n\ @param\ height,\ height\ of\ the\ bar\r\n\ @param\ color,\ bar\ color\r\n\ @param\ borderWidth,\ width\ of\ the\ border\r\n\ @param\ borderColor,\ color\ of\ the\ border\r\n
+comment1.text=\n\ constructor\ that\ draws\ the\ bar\n\ @param\ width,\ width\ of\ the\ bar\n\ @param\ height,\ height\ of\ the\ bar\n\ @param\ color,\ bar\ color\n\ @param\ borderWidth,\ width\ of\ the\ border\n\ @param\ borderColor,\ color\ of\ the\ border\n
 comment2.params=
 comment2.target=void\ createTrackerImage()
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\r\n\ updates\ score\ in\ the\ game\ world\ every\ act\r\n
+comment3.text=\n\ updates\ score\ in\ the\ game\ world\ every\ act\n
 comment4.params=
 comment4.target=void\ updateScore()
-comment4.text=\r\n\ gets\ a\ new\ update\ count\ of\ zombies\ killed\ to\ calculate\ new\ score\ and\ draw\ the\ new\ score\ number\ on\ the\ tracker\r\n
+comment4.text=\n\ gets\ a\ new\ update\ count\ of\ zombies\ killed\ to\ calculate\ new\ score\ and\ draw\ the\ new\ score\ number\ on\ the\ tracker\n
 numComments=5

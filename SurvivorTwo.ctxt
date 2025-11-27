@@ -1,18 +1,18 @@
 #BlueJ class context
 comment0.target=SurvivorTwo
-comment0.text=\r\n\ SurvivorTwo\ -\ Fast\ survivor\ with\ lower\ HP,\ named\ Jayden\r\n\ \r\n\ @author\ Paul\r\n\ \r\n
+comment0.text=\n\ SurvivorTwo\ -\ Fast\ survivor\ with\ lower\ HP,\ named\ Jayden\n\ \n\ @author\ Paul\n\ \n
 comment1.params=
 comment1.target=SuperStatBar\ getHPBar()
-comment1.text=\r\n\ getter\ for\ hp\ bar\r\n
+comment1.text=\n\ getter\ for\ hp\ bar\n
 comment2.params=
 comment2.target=SurvivorTwo()
-comment2.text=\r\n\ assigns\ hp\ value\ and\ makes\ new\ hp\ bar\r\n
+comment2.text=\n\ assigns\ hp\ value\ and\ makes\ new\ hp\ bar\n
 comment3.params=w
 comment3.target=void\ addedToWorld(greenfoot.World)
 comment4.params=
 comment4.target=void\ act()
-comment4.text=\r\n\ calls\ on\ super\ act\ to\ move\ and\ updates\ hp\ bar\r\n
+comment4.text=\n\ calls\ on\ super\ act\ to\ move\ and\ updates\ hp\ bar\n
 comment5.params=damage
 comment5.target=void\ takeDamage(int)
-comment5.text=\r\n\ method\ to\ receive\ damage,\ considers\ if\ shield\ is\ selected\ and\ updates\ hp\ bar\r\n\ @param\ damage,\ amount\ to\ receive\r\n
+comment5.text=\n\ method\ to\ receive\ damage,\ considers\ if\ shield\ is\ selected\ and\ updates\ hp\ bar\n\ @param\ damage,\ amount\ to\ receive\n
 numComments=6

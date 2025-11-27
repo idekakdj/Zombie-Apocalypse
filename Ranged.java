@@ -1,9 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Super class for gun and machine gun
  * 
- * @author Paul 
+ * @authors Paul and Jayden
  * 
  */
 public abstract class Ranged extends Actor
@@ -12,7 +14,10 @@ public abstract class Ranged extends Actor
     protected int fireRate;
     protected int cooldown = 0;
     Survivors owner;
-    private GreenfootSound shot = new GreenfootSound ("shot.mp3");
+    private ArrayList<GreenfootSound> soundQueue = new ArrayList<GreenfootSound>();
+    private int soundCooldown = 0;
+    private final int SOUND_DELAY = 5;
+    
     /**
      * superclass constructor that works for both gun subclasses
      * @param damage, damage to deal
@@ -25,6 +30,7 @@ public abstract class Ranged extends Actor
         this.owner = owner;
         this.cooldown = 0;
     }
+    
     /**
      * follows owner and finds closest zombie to target and then shoot at
      */
@@ -32,6 +38,8 @@ public abstract class Ranged extends Actor
     {
         if (owner == null || owner.getWorld() == null) return;
         setLocation(owner.getX() + 35, owner.getY());
+        
+        soundFix();
         
         if (cooldown > 0) {
             cooldown--;
@@ -46,6 +54,19 @@ public abstract class Ranged extends Actor
                 attack(closest);
                 cooldown = fireRate;
             }
+        }
+    }
+    
+    private void soundFix() {
+        if (soundCooldown > 0) {
+            soundCooldown--;
+            return;
+        }
+        
+        if (!soundQueue.isEmpty()) {
+            GreenfootSound sound = soundQueue.remove(0);
+            sound.play();
+            soundCooldown = SOUND_DELAY;
         }
     }
     
@@ -69,6 +90,7 @@ public abstract class Ranged extends Actor
         
         return closest;
     }
+    
     /**
      * sends projectile to zombie targets
      * @param target, nearest zombie that is found in the method above
@@ -77,8 +99,9 @@ public abstract class Ranged extends Actor
         if (target != null && target.getWorld() != null) {
             Projectile p = new Projectile(damage, target);
             getWorld().addObject(p, getX() + 20, getY());
-            shot.play();
+            
+            GreenfootSound shot = new GreenfootSound("shot.mp3");
+            soundQueue.add(shot);
         }
     }
-    
 }

@@ -4,6 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Big Boss that explodes and spawns penguins upon death
  * 
  * @author Cayden
+ * explosion sfx on pixabay
  * @version (a version number or a date)
  */
 public class Boss extends Zombie
@@ -19,6 +20,8 @@ public class Boss extends Zombie
     private GreenfootImage rightImage;
 
     private SuperStatBar hpBar;
+        private GreenfootSound explosion = new GreenfootSound ("explosion.mp3");
+
 
     public Boss()
     {
@@ -55,6 +58,7 @@ public class Boss extends Zombie
         
         if (world != null) {
             world.addObject(new Explosion(), x, y);
+            Greenfoot.playSound("explosion.mp3");
         }
         
         for(int i = 0; i < 3; i++) {

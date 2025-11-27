@@ -32,6 +32,8 @@ public class GameWorld extends World
     
     private int actCount;
     private GreenfootSound bgm = new GreenfootSound ("bgm.mp3");
+        private GreenfootSound groan = new GreenfootSound ("groan.mp3");
+
     /**
      * Simulation world where survivor has to survive past 5 waves or die.
      * Takes booleans from ChooseWorld depending on what the user selected.
@@ -130,6 +132,7 @@ public class GameWorld extends World
     //Progressively harder waves up to 5.
     public void waves(){
         wavesCounter++;
+        Greenfoot.playSound("groan.mp3");
         if (wavesCounter == 1){
             for(int i = 0; i < 5; i++){
                 spawnRegular();

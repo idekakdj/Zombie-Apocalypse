@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.target=Bat
-comment0.text=\r\n\ \ Bat\ class,\ spawns\ bat\ that\ spins\ when\ attacking\ and\ uses\ slash\ animation\r\n\ \ @author\ Jayden\r\n\ \ whack01\ by\ freesound_community\ on\ pixabay\r\n
+comment0.text=\n\ \ Bat\ class,\ spawns\ bat\ that\ spins\ when\ attacking\ and\ uses\ slash\ animation\n\ \ @author\ Jayden\n\ \ whack01\ by\ freesound_community\ on\ pixabay\n
 comment1.params=damage\ coolDown\ range\ owner
 comment1.target=Bat(int,\ int,\ int,\ Survivors)
-comment1.text=\r\n\ Bat\ constructor\r\n\ @param\ damage,\ damage\ bat\ deals\r\n\ @param\ coolDown,\ cooldown\ before\ attacking\r\n\ @param\ range,\ range\ for\ attacking\r\n\ @param\ owner,\ tracks\ the\ survivor\ owner\ to\ follow\ it\r\n
+comment1.text=\n\ Bat\ constructor\n\ @param\ damage,\ damage\ bat\ deals\n\ @param\ coolDown,\ cooldown\ before\ attacking\n\ @param\ range,\ range\ for\ attacking\n\ @param\ owner,\ tracks\ the\ survivor\ owner\ to\ follow\ it\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ follows\ survivor\ owner,\ spins\ when\ attacking\ and\ detects\ nearby\ zombies\ to\ attack\r\n
+comment2.text=\n\ follows\ survivor\ owner,\ spins\ when\ attacking\ and\ detects\ nearby\ zombies\ to\ attack\n
 comment3.params=
 comment3.target=void\ followOwner()
 comment4.params=
 comment4.target=void\ attackNearbyZombies()
 comment5.params=
 comment5.target=void\ playSound()
-comment5.text=\r\n\ plays\ sound\ when\ attacking\r\n
+comment5.text=\n\ plays\ sound\ when\ attacking\n
 numComments=6

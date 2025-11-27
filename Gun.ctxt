@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Gun
-comment0.text=\r\n\ Base\ gun\ class,\ calls\ on\ superclass\ act\ \r\n\ @author\ Paul\r\n
+comment0.text=\n\ Base\ gun\ class,\ calls\ on\ superclass\ act\ \n\ @author\ Paul\n
 comment1.params=damage\ fireRate\ owner
 comment1.target=Gun(int,\ int,\ Survivors)
 comment2.params=

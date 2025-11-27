@@ -45,6 +45,8 @@ public abstract class Survivors extends SuperSmoothMover
     private int repairCooldown = 10;
     private boolean returningToCenter = false;
     private boolean wasNighttime = false;
+        private GreenfootSound lego = new GreenfootSound ("lego.mp3");
+
     /**
      * gets user selection of items, checks for day and nighttime, moves away from zombies in range at night
      * spawns all equipment that is selected
@@ -252,6 +254,8 @@ public abstract class Survivors extends SuperSmoothMover
             if (distance < 40) {
                 Wall newWall = new Wall();
                 world.addObject(newWall, closestPosition[0], closestPosition[1]);
+                                Greenfoot.playSound("lego.mp3");  
+
                 return true;
             } else {
                 int dx = closestPosition[0] - getX();
